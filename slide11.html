@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 11: Mindset Shift</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .mindset-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 2rem;
+        }
+
+        .mindset-panel {
+            flex: 1;
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #eee;
+        }
+
+        .mindset-panel .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .mindset-panel h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .mindset-panel p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* "From" panel styling */
+        .panel-from .icon {
+            color: var(--alert-color);
+        }
+        .panel-from h3 {
+            color: var(--alert-color);
+        }
+
+        /* "To" panel styling */
+        .panel-to {
+            border-color: var(--primary-color);
+            background-color: #f9f6ff; /* สีม่วงอ่อนมากๆ */
+        }
+        .panel-to .icon {
+            color: var(--primary-color);
+        }
+        .panel-to h3 {
+            color: var(--primary-color);
+        }
+
+        .arrow-icon {
+            font-size: 4rem;
+            color: var(--light-text);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mindset-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .arrow-icon {
+                transform: rotate(90deg); /* เปลี่ยนลูกศรเป็นชี้ลง */
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Module 1: The New Mindset</h2>
+            <h1>Mindset Shift: เปลี่ยนมุมมอง</h1>
+            <p class="subtitle">หัวใจสำคัญของวันนี้ ไม่ใช่การ "เขียนโค้ด" แต่คือการ "สื่อสาร" ให้ AI เข้าใจเป้าหมายของเรา</p>
+
+            <div class="mindset-container">
+                <!-- From Panel -->
+                <div class="mindset-panel panel-from">
+                    <div class="icon"><i class="fas fa-file-code"></i></div>
+                    <h3>จาก: คนเขียนโค้ด</h3>
+                    <p>ต้องจำ Syntax<br>ต้อง Debug เอง<br>ใช้เวลานาน</p>
+                </div>
+
+                <div class="arrow-icon">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+
+                <!-- To Panel -->
+                <div class="mindset-panel panel-to">
+                    <div class="icon"><i class="fas fa-comments"></i></div>
+                    <h3>สู่: คนสั่งงาน (Prompter)</h3>
+                    <p>ใช้ภาษาคน<br>ให้ AI ช่วยแก้<br>ได้ผลลัพธ์เร็ว</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide10.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide12.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

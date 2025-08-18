@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 3: About Me</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .about-me-container {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* ระยะห่างระหว่างรูปกับข้อความ */
+        }
+
+        .profile-picture {
+            flex-shrink: 0; /* ป้องกันไม่ให้รูปถูกบีบ */
+            width: 250px;
+            height: 250px;
+            border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
+            object-fit: cover; /* ทำให้รูปพอดีกับกรอบโดยไม่เสียสัดส่วน */
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.3);
+            border: 5px solid #fff;
+        }
+
+        .bio-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .bio-text strong {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Responsive for this slide's layout */
+        @media (max-width: 768px) {
+            .about-me-container {
+                flex-direction: column; /* เปลี่ยนเป็นแนวตั้งบนมือถือ */
+                text-align: center;
+                gap: 25px;
+            }
+
+            .profile-picture {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Let's Connect! | รู้จักกันก่อน</h2>
+            <h1>วิทยากรก็เป็นเภสัชกรเหมือนกันครับ/ค่ะ</h1>
+            <hr>
+
+            <div class="about-me-container">
+                <img src="profile.jpg" alt="รูปโปรไฟล์วิทยากร" class="profile-picture">
+
+                <div class="bio-text">
+                    <p>
+                        สวัสดีครับ/ค่ะทุกคน ผม/ชื่อ <strong>[ชื่อของคุณ]</strong> นะครับ/คะ
+                        ปัจจุบันทำงานเป็น <strong>[ตำแหน่งของคุณ]</strong> ที่ <strong>[สถานที่ทำงานของคุณ]</strong>
+                    </p>
+                    <p>
+                        ผม/ฉันเข้าใจดีถึงความท้าทายที่เราต้องเจอในแต่ละวัน ทั้งเรื่อง Workload, ความซับซ้อนของยา และความเสี่ยงต่างๆ เพราะผม/ฉันก็เจอปัญหาเหล่านั้นเหมือนกับทุกคน
+                    </p>
+                    <p>
+                        วันนี้เลยอยากจะมาแชร์ "เครื่องมือ" ที่ช่วยให้ชีวิตเราง่ายขึ้น ไม่ใช่ในฐานะโปรแกรมเมอร์ แต่ในฐานะ <strong>"เพื่อนเภสัชกร"</strong> ที่เจอทางลัดแล้วอยากชวนทุกคนมาลองใช้ด้วยกันครับ
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide2.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide4.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

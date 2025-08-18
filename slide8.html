@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 8: Checklist</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .checklist-container {
+            margin-top: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start; /* จัดให้อยู่บนสุด เผื่อข้อความยาวหลายบรรทัด */
+            background-color: #f8f7fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+        
+        .checklist-item .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            width: 60px;
+            text-align: center;
+            margin-right: 20px;
+            padding-top: 5px; /* จัดตำแหน่งไอคอนให้อยู่กึ่งกลางข้อความบรรทัดแรก */
+        }
+
+        .checklist-item .text-content {
+            flex-grow: 1;
+        }
+
+        .checklist-item h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+            color: var(--dark-text);
+        }
+
+        .checklist-item p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        /* สไตล์พิเศษสำหรับข้อ 3 ที่สำคัญมาก */
+        .checklist-item.important {
+            background-color: #fff9e6; /* สีเหลืองอ่อนๆ */
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .checklist-item.important .icon {
+            color: var(--secondary-color); /* สีส้ม */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Mission Briefing</h2>
+            <h1>สิ่งที่ต้องเตรียม (Workshop Checklist)</h1>
+            <p class="subtitle">ก่อนจะเริ่มสร้าง มาตรวจเช็ค "อาวุธ" ของเราให้พร้อมกันก่อน!</p>
+
+            <div class="checklist-container">
+                <!-- Item 1: Google Account -->
+                <div class="checklist-item">
+                    <div class="icon"><i class="fab fa-google"></i></div>
+                    <div class="text-content">
+                        <h3>1. บัญชี Google Account</h3>
+                        <p>ใช้สำหรับเข้าถึง Google Sheets และ Google Apps Script (เชื่อว่าทุกคนน่าจะมีพร้อม!)</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Computer & Internet -->
+                <div class="checklist-item">
+                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="text-content">
+                        <h3>2. คอมพิวเตอร์และอินเทอร์เน็ต</h3>
+                        <p>Workshop ของเราทำบนเว็บทั้งหมด ไม่ต้องติดตั้งโปรแกรมใดๆ เพิ่มเติม</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: API Key (Important!) -->
+                <div class="checklist-item important">
+                    <div class="icon"><i class="fas fa-key"></i></div>
+                    <div class="text-content">
+                        <h3>3. Google AI (Gemini) API Key</h3>
+                        <p>
+                            นี่คือกุญแจสำหรับเชื่อมต่อกับ AI ของเรา
+                            <strong>สไลด์ถัดไปจะสอนวิธีรับกุญแจนี้ทีละขั้นตอน</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide7.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide9.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 17: F is for Format</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .comparison-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 2rem; }
+        .prompt-example { border-radius: 15px; padding: 25px; display: flex; flex-direction: column; }
+        .prompt-example h3 { font-size: 1.3rem; margin: 0 0 15px 0; display: flex; align-items: center; }
+        .prompt-example h3 i { margin-right: 10px; font-size: 1.5rem; }
+        .prompt-box { background-color: #f0f0f0; padding: 15px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 1rem; color: #333; margin-bottom: 15px; white-space: pre-wrap; word-wrap: break-word; }
+        .result-box { background-color: #f8f7fa; border: 1px solid #eee; padding: 15px; border-radius: 8px; flex-grow: 1; }
+        .result-box p { font-size: 1rem; line-height: 1.6; }
+        .bad-example { border: 2px solid #e0e0e0; }
+        .bad-example h3 { color: var(--alert-color); }
+        .good-example { border: 2px solid var(--primary-color); background-color: #f9f6ff; }
+        .good-example h3 { color: var(--primary-color); }
+        .good-example .prompt-box { background-color: #e9e0f8; }
+        .good-example strong { background-color: #d5c3f5; padding: 2px 4px; border-radius: 4px; }
+        
+        /* Style for the result table */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+        .result-table th, .result-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .result-table th {
+            background-color: #f2eefc; /* ม่วงอ่อนมากๆ */
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        .result-table tr:nth-child(even) {
+            background-color: #fdfcff;
+        }
+
+        @media (max-width: 768px) { .comparison-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>R-C-T-F Breakdown</h2>
+            <h1>"F" is for Format (รูปแบบ)</h1>
+            <p class="subtitle">กำหนดหน้าตาของ "ผลลัพธ์" ที่อยากได้ เพื่อให้ AI ส่งมอบงานที่พร้อมใช้งานทันที</p>
+
+            <div class="comparison-container">
+                <!-- Bad Example -->
+                <div class="prompt-example bad-example">
+                    <h3><i class="fas fa-times-circle"></i> แบบไม่กำหนด Format</h3>
+                    <div class="prompt-box">"เปรียบเทียบยาแก้แพ้ Loratadine กับ Cetirizine"</div>
+                    <div class="result-box">
+                        <p><strong>ผลลัพธ์ที่อาจได้:</strong><br>
+                        Loratadine เป็นยาแก้แพ้รุ่นที่สอง... ออกฤทธิ์ได้นาน... ส่วน Cetirizine ก็เป็นยารุ่นที่สองเช่นกัน แต่บางคนอาจจะรู้สึกง่วง...
+                        <br><br>
+                        <em>(เป็นข้อความยาวๆ ที่ต้องมานั่งอ่านจับใจความเอง)</em>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Good Example -->
+                <div class="prompt-example good-example">
+                    <h3><i class="fas fa-check-circle"></i> แบบกำหนด Format</h3>
+                    <div class="prompt-box">"เปรียบเทียบยาแก้แพ้ Loratadine กับ Cetirizine
+                    
+<strong>โดยให้ตอบในรูปแบบตาราง Markdown ที่มีคอลัมน์: 'หัวข้อ', 'Loratadine', 'Cetirizine'</strong>"</div>
+                    <div class="result-box">
+                        <p><strong>ผลลัพธ์ที่ดีขึ้น:</strong></p>
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>หัวข้อ</th>
+                                    <th>Loratadine</th>
+                                    <th>Cetirizine</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>กลุ่มยา</td>
+                                    <td>2nd Gen Antihis.</td>
+                                    <td>2nd Gen Antihis.</td>
+                                </tr>
+                                <tr>
+                                    <td>อาการง่วง</td>
+                                    <td>น้อยมาก</td>
+                                    <td>น้อย (มากกว่า)</td>
+                                </tr>
+                                <tr>
+                                    <td>การออกฤทธิ์</td>
+                                    <td>ช้ากว่าเล็กน้อย</td>
+                                    <td>เร็ว</td>
+                                </tr>
+                                <tr>
+                                    <td>การทาน</td>
+                                    <td>วันละ 1 ครั้ง</td>
+                                    <td>วันละ 1 ครั้ง</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 15px;"><em>(ข้อมูลเป็นระเบียบ พร้อม Copy ไปใช้งานต่อได้ทันที)</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide16.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide18.html" class="nav-button">ต่อไป</a>
+        </div>
+    </div>
+
+</body>
+</html>

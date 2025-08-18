@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 5: The Solution</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .solution-container {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .main-icon {
+            font-size: 6rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            /* Animation */
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        /* Keyframe animation for the icon */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .solution-container h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-container .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive for this slide's layout */
+        @media (max-width: 768px) {
+            .main-icon {
+                font-size: 5rem;
+            }
+            .solution-container h1 {
+                font-size: 2.5rem;
+            }
+            .solution-container .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+
+            <div class="solution-container">
+                <div class="main-icon">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <h2>The Game Changer</h2>
+                <h1>แล้วถ้าเรามี "ผู้ช่วยอัจฉริยะ" ล่ะ?</h1>
+                <p class="subtitle">
+                    ลองจินตนาการถึงผู้ช่วยที่ไม่เคยเหนื่อย ไม่เคยลาป่วย พร้อมทำงานที่ซ้ำซากให้เราตลอด 24 ชั่วโมง... เพื่อให้เราได้ใช้เวลาและความเชี่ยวชาญกับงานที่สำคัญที่สุด นั่นคือ "ผู้ป่วย"
+                </p>
+            </div>
+            
+        </div>
+
+        <div class="card-footer">
+            <a href="slide4.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide6.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

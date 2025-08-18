@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 9: Get API Key (1/2)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .tutorial-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .step-card {
+            text-align: center;
+        }
+
+        .step-card .step-number {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .step-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .step-card .screenshot {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        .link-button:hover {
+            background-color: var(--alert-color);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tutorial-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>Let's Get The Key! (Part 1)</h2>
+            <h1>ขั้นตอนการขอ API Key (1/2)</h1>
+            <p class="subtitle">มาทำไปพร้อมๆ กันช้าๆ นะครับ/คะ นี่คือกุญแจดอกสำคัญที่สุดของเรา</p>
+
+            <div class="tutorial-container">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <p>
+                        เข้าไปที่เว็บ <strong>Google AI Studio</strong><br>
+                        <a href="https://aistudio.google.com/" target="_blank" class="link-button">
+                            <i class="fas fa-external-link-alt"></i> คลิกที่นี่
+                        </a>
+                    </p>
+                    <img src="step1.png" alt="Screenshot of Google AI Studio homepage" class="screenshot">
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <p>มองหาเมนูทางซ้าย แล้วคลิกที่<br><strong><i class="fas fa-key"></i> Get API key</strong></p>
+                    <img src="step2.png" alt="Screenshot showing where to click Get API key" class="screenshot">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide8.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide10.html" class="nav-button">ต่อไป</a>
+        </div>
+    </div>
+
+</body>
+</html>

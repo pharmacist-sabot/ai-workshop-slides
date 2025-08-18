@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 4: The Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* สร้าง 3 คอลัมน์เท่าๆ กัน */
+            gap: 30px; /* ระยะห่างระหว่างกล่อง */
+            margin-top: 2.5rem;
+        }
+
+        .challenge-card {
+            background-color: #f8f7fa; /* สีพื้นหลังอ่อนๆ */
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(75, 68, 83, 0.1);
+        }
+
+        .challenge-card .icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color); /* ใช้สีส้มสดใส */
+            margin-bottom: 15px;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+
+        .challenge-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+        
+        /* Responsive for this slide's layout */
+        @media (max-width: 768px) {
+            .challenges-grid {
+                grid-template-columns: 1fr; /* เปลี่ยนเป็น 1 คอลัมน์ */
+                gap: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Our Daily Reality</h2>
+            <h1>ความท้าทายของเภสัชกรยุคดิจิทัล</h1>
+            <p class="subtitle">ปัญหาเหล่านี้ คือสิ่งที่เราต้องเจออยู่ทุกวัน... จริงไหมครับ/คะ?</p>
+
+            <div class="challenges-grid">
+                <!-- Challenge 1: Workload -->
+                <div class="challenge-card">
+                    <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Workload ที่หนักอึ้ง</h3>
+                    <p>ปริมาณใบสั่งยาที่เพิ่มขึ้น งานเอกสาร และงานให้คำปรึกษาที่ต้องแข่งกับเวลา</p>
+                </div>
+
+                <!-- Challenge 2: Medication Errors -->
+                <div class="challenge-card">
+                    <div class="icon"><i class="fa-solid fa-pills"></i></div>
+                    <h3>ความเสี่ยงคลาดเคลื่อนทางยา</h3>
+                    <p>ยาใหม่ๆ ที่ซับซ้อน, DDI ที่ต้องระวัง, และปัญหา LASA Drugs ที่เกิดขึ้นได้เสมอ</p>
+                </div>
+
+                <!-- Challenge 3: Repetitive Tasks -->
+                <div class="challenge-card">
+                    <div class="icon"><i class="fa-solid fa-repeat"></i></div>
+                    <h3>งานซ้ำซากจำเจ</h3>
+                    <p>การคีย์ข้อมูล, การสรุปข้อมูลยาพื้นฐาน, การตอบคำถามเดิมๆ ที่กินเวลาทำงานของเรา</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="slide3.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide5.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

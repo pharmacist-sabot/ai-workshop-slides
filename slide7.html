@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 7: The Final Product</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .demo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .video-wrapper {
+            width: 100%;
+            max-width: 750px; /* ขนาดของวิดีโอ */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(75, 68, 83, 0.2);
+            margin-top: 1.5rem;
+            border: 5px solid #fff;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block; /* แก้ปัญหามีช่องว่างใต้ video */
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+
+            <div class="demo-container">
+                <h2>Our North Star</h2>
+                <h1>เป้าหมายสุดท้ายของวันนี้</h1>
+                <p class="subtitle">
+                    ในอีกไม่กี่ชั่วโมงข้างหน้า ทุกคนจะได้เป็นเจ้าของ Web App "ผู้ช่วยตรวจสอบยา" หน้าตาแบบนี้... ที่สร้างขึ้นมาด้วยมือของคุณเอง!
+                </p>
+
+                <div class="video-wrapper">
+                    <!-- 
+                        คำแนะนำ: 
+                        - ใช้ไฟล์ .mp4 เพื่อประสิทธิภาพที่ดีที่สุด
+                        - autoplay: เล่นอัตโนมัติ
+                        - loop: เล่นวนซ้ำ
+                        - muted: ปิดเสียง (สำคัญมาก! เบราว์เซอร์ส่วนใหญ่จะไม่อนุญาตให้เล่นวิดีโออัตโนมัติหากไม่ปิดเสียง)
+                        - playsinline: สำหรับการแสดงผลที่ดีบนมือถือ
+                    -->
+                    <video src="final_product_demo.mp4" autoplay loop muted playsinline></video>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="card-footer">
+            <a href="slide6.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide8.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 13: The R-C-T-F Formula</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .formula-card {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border: 1px solid #eee;
+        }
+
+        .formula-card .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+
+        .formula-card .letter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .formula-card .content h3 {
+            font-size: 1.5rem;
+            margin: 0 0 5px 0;
+            color: var(--dark-text);
+        }
+
+        .formula-card .content p {
+            font-size: 1.1rem;
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .formula-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>The Secret Sauce</h2>
+            <h1>สูตรลับการสร้าง Prompt เทพ: R-C-T-F</h1>
+            <p class="subtitle">จำแค่ 4 องค์ประกอบนี้ ก็สามารถสั่งงาน AI ให้ทำงานซับซ้อนได้เหมือนมือโปร</p>
+
+            <div class="formula-grid">
+                <!-- R: Role -->
+                <div class="formula-card">
+                    <div class="letter">R</div>
+                    <div class="content">
+                        <h3>Role (บทบาท)</h3>
+                        <p><strong>"บอก AI ว่าเขาเป็นใคร"</strong><br>
+                        สวมบทบาทให้ AI เป็นผู้เชี่ยวชาญในเรื่องนั้นๆ</p>
+                    </div>
+                </div>
+
+                <!-- C: Context -->
+                <div class="formula-card">
+                    <div class="letter">C</div>
+                    <div class="content">
+                        <h3>Context (บริบท)</h3>
+                        <p><strong>"บอกข้อมูลเบื้องหลัง"</strong><br>
+                        ให้ข้อมูลประกอบที่จำเป็น เพื่อให้ AI เข้าใจสถานการณ์</p>
+                    </div>
+                </div>
+
+                <!-- T: Task -->
+                <div class="formula-card">
+                    <div class="letter">T</div>
+                    <div class="content">
+                        <h3>Task (งาน)</h3>
+                        <p><strong>"สั่งงานให้ชัดเจน"</strong><br>
+                        บอกสิ่งที่ต้องการให้ทำเป็นข้อๆ หรือทีละขั้นตอน</p>
+                    </div>
+                </div>
+
+                <!-- F: Format -->
+                <div class="formula-card">
+                    <div class="letter">F</div>
+                    <div class="content">
+                        <h3>Format (รูปแบบ)</h3>
+                        <p><strong>"กำหนดผลลัพธ์ที่อยากได้"</strong><br>
+                        ระบุรูปแบบของคำตอบ เช่น ตาราง, bullet points, JSON</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="slide12.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide14.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

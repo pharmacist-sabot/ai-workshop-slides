@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 2: Agenda</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .agenda-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .agenda-list li {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: var(--dark-text);
+        }
+
+        .agenda-list i {
+            font-size: 1.5rem;
+            color: var(--primary-color); /* ใช้สีม่วงหลัก */
+            width: 45px;
+            text-align: center;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .agenda-list li:hover i {
+            transform: scale(1.2); /* เพิ่ม animation เล็กน้อย */
+        }
+        
+        /* Responsive for this slide's layout */
+        @media (max-width: 768px) {
+            .agenda-list li {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h1>Agenda</h1>
+            <p class="subtitle">สิ่งที่เราจะมาปลดล็อกพลัง AI ไปด้วยกันในวันนี้</p>
+            
+            <ul class="agenda-list">
+                <li><i class="fa-solid fa-lightbulb"></i>Mindset ใหม่: คุณคือผู้กำกับ, AI คือผู้สร้าง</li>
+                <li><i class="fa-solid fa-wand-magic-sparkles"></i>ศิลปะการ "สั่งงาน" AI (Prompt Engineering)</li>
+                <li><i class="fa-solid fa-star"></i>Quick Win: AI ช่วยเขียนฟังก์ชันใน Google Sheets</li>
+                <li><i class="fa-solid fa-rocket"></i>โปรเจกต์หลัก: สร้าง Web App ตรวจสอบยาด้วยกัน</li>
+                <li><i class="fa-solid fa-shield-halved"></i>จริยธรรมและก้าวต่อไป (Ethics & Next Steps)</li>
+            </ul>
+        </div>
+
+        <div class="card-footer">
+            <a href="index.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide3.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

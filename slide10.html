@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 10: Get API Key (2/2)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- นำสไตล์จากสไลด์ 9 มาใช้ซ้ำ -->
+    <style>
+        .tutorial-container {
+            display: grid;
+            grid-template-columns: 1fr; /* สไลด์นี้มีขั้นตอนเดียว ใช้ 1 คอลัมน์ */
+            gap: 30px;
+            align-items: start;
+            max-width: 600px;
+            margin: 0 auto; /* จัดกลาง */
+        }
+        .step-card { text-align: center; }
+        .step-card .step-number { display: inline-block; background-color: var(--primary-color); color: white; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem; font-weight: 700; line-height: 40px; margin-bottom: 15px; }
+        .step-card p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+        .step-card .screenshot { width: 100%; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border: 1px solid #ddd; }
+        .warning-box {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-left: 5px solid var(--alert-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .warning-box p { margin: 0; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>Let's Get The Key! (Part 2)</h2>
+            <h1>ขั้นตอนการขอ API Key (2/2)</h1>
+            <p class="subtitle">ขั้นตอนสุดท้ายแล้วครับ ใกล้จะได้กุญแจมาแล้ว!</p>
+
+            <div class="tutorial-container">
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <p>คลิก <strong>"Create API key in new project"</strong> จากนั้น <strong>Copy Key</strong> ที่ปรากฏขึ้นมาเก็บไว้ในที่ปลอดภัย (เช่น Notepad)</p>
+                    <img src="step3.png" alt="Screenshot showing the created API key and copy button" class="screenshot">
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <p>
+                    <i class="fas fa-exclamation-triangle"></i> <strong>ข้อควรระวัง:</strong> API Key นี้เปรียบเสมือนรหัสผ่านส่วนตัว <strong>ห้ามเปิดเผยหรือส่งให้ใครเด็ดขาด!</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide9.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide11.html" class="nav-button">ต่อไป</a>
+        </div>
+    </div>
+
+</body>
+</html>
