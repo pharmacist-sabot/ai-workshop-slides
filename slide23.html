@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 23: Quick Win Project</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .quick-win-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .goal-box {
+            background-color: #f8f7fa;
+            border: 1px solid #eee;
+            border-left: 5px solid var(--secondary-color);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+            max-width: 750px;
+            margin: 0 auto 2.5rem auto; /* เว้นระยะห่างด้านล่าง */
+        }
+
+        .goal-box h3 {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            color: var(--dark-text);
+        }
+
+        .goal-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .goal-box li {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .goal-box li .icon {
+            color: var(--secondary-color);
+            width: 30px;
+        }
+
+        .gif-wrapper {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(75, 68, 83, 0.2);
+            margin: 0 auto;
+            border: 5px solid #fff;
+        }
+
+        .gif-wrapper img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Module 2: Quick Win!</h2>
+            <h1>โจทย์แรก: สร้าง "AI สรุปข้อมูลยา" ใน Sheets</h1>
+            <p class="subtitle">ได้เวลาลงมือปฏิบัติจริง! เราจะใช้ Prompt สั่งให้ AI เขียนโค้ดสร้างฟังก์ชันแรกของเรา เพื่อให้เห็นผลลัพธ์และสร้างความมั่นใจ</p>
+
+            <div class="quick-win-container">
+                <div class="goal-box">
+                    <h3><i class="fas fa-bullseye"></i> เป้าหมายของเรา:</h3>
+                    <ul>
+                        <li><span class="icon"><i class="fas fa-keyboard"></i></span><strong>Input:</strong> พิมพ์ชื่อยาในช่อง A2</li>
+                        <li><span class="icon"><i class="fas fa-mouse-pointer"></i></span><strong>Action:</strong> กดปุ่มจากเมนูที่เราสร้างขึ้นเอง</li>
+                        <li><span class="icon"><i class="fas fa-magic"></i></span><strong>Output:</strong> AI สรุปข้อมูลยาให้ในช่อง B2 ทันที!</li>
+                    </ul>
+                </div>
+
+                <div class="gif-wrapper">
+                    <img src="quick_win_demo.gif" alt="Demo of AI Drug Summarizer in Google Sheets">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="slide22.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide24.html" class="nav-button">เริ่มขั้นตอนที่ 1</a>
+        </div>
+    </div>
+
+</body>
+</html>

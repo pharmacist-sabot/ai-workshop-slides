@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 30: Quick Win Recap</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .recap-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .main-icon {
+            font-size: 6rem;
+            color: #34A853; /* Green for success */
+            margin-bottom: 2rem;
+            animation: tada 1.5s ease;
+        }
+
+        @keyframes tada {
+            from { transform: scale3d(1, 1, 1); }
+            10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
+            30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+            40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+            to { transform: scale3d(1, 1, 1); }
+        }
+
+        .recap-container h1 {
+            font-size: 3rem;
+        }
+
+        .key-message {
+            background-color: #f9f6ff;
+            border: 2px dashed var(--primary-color);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 750px;
+            margin-top: 2rem;
+        }
+
+        .key-message p {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 1.7;
+            color: var(--dark-text);
+            margin: 0;
+        }
+        
+        .key-message strong {
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <div class="recap-container">
+                <div class="main-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+
+                <h2>Mission Accomplished!</h2>
+                <h1>สรุป: เราทำอะไรไป?</h1>
+                
+                <div class="key-message">
+                    <p>
+                        เราไม่ได้ "เขียนโค้ด" แม้แต่บรรทัดเดียว!<br>
+                        เราแค่ <strong>"สั่งงาน"</strong> AI อย่างถูกต้อง...<br>
+                        แล้ว <strong>AI ก็สร้างเครื่องมือมาให้เรา</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide29.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide31.html" class="nav-button">ไปโปรเจกต์หลักกัน</a>
+        </div>
+    </div>
+
+</body>
+</html>

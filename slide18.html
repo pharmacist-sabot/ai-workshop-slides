@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 18: Activity</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Internal CSS for this slide only -->
+    <style>
+        .activity-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .question-side h3, .answer-side h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+        
+        .question-side .icon {
+            font-size: 5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .answer-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .answer-list li {
+            background-color: #f8f7fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .answer-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .answer-list .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* --- New Styles for Interaction --- */
+        .answer-side {
+            opacity: 0; /* ซ่อนไว้ตอนแรก */
+            transform: translateY(20px); /* ขยับลงเล็กน้อย */
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .answer-side.visible {
+            opacity: 1; /* ทำให้มองเห็น */
+            transform: translateY(0); /* ขยับกลับที่เดิม */
+        }
+        .reveal-button {
+            display: block;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+            font-family: 'Prompt', sans-serif;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .reveal-button:hover {
+            background-color: var(--alert-color);
+            transform: scale(1.05);
+        }
+        .reveal-button.hidden {
+            display: none; /* ซ่อนปุ่มเมื่อถูกกดแล้ว */
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .activity-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .question-side {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Let's Practice!</h2>
+            <h1>กิจกรรม: ลองคิดแบบโปรแกรมเมอร์</h1>
+            <p class="subtitle">เราจะ "สั่งงาน" AI ให้สร้าง "เว็บแอปตรวจสอบยา" ของเราได้อย่างไร? ลองช่วยกันแตกงานใหญ่ออกเป็นขั้นตอนย่อยๆ ดูครับ/ค่ะ</p>
+
+            <div class="activity-container">
+                <!-- Question Side -->
+                <div class="question-side">
+                    <div class="icon"><i class="fas fa-tasks"></i></div>
+                    <h3>โจทย์ของเรา:</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.7;">สร้าง Web App ที่สามารถรับข้อมูลใบสั่งยา แล้วให้ AI ช่วยวิเคราะห์หาความเสี่ยงเบื้องต้นได้</p>
+                    <button class="reveal-button" id="revealBtn">
+                        <i class="fas fa-lightbulb"></i> ดูแผนการ (Blueprint)
+                    </button>
+                </div>
+
+                <!-- Answer Side (will be revealed) -->
+                <div class="answer-side" id="answerSide">
+                    <h3>แผนการ (Blueprint) ของเรา:</h3>
+                    <ul class="answer-list">
+                        <li><span class="step-number">1</span>สร้างหน้าบ้าน (HTML) ให้มีช่องกรอกข้อความและปุ่ม</li>
+                        <li><span class="step-number">2</span>เขียนโค้ดหลังบ้าน (Apps Script) เพื่อเปิดหน้าเว็บนั้น</li>
+                        <li><span class="step-number">3</span>เขียนโค้ด "สมอง" หลัก (Apps Script) เพื่อรับข้อความและส่งไปวิเคราะห์ที่ AI</li>
+                        <li><span class="step-number">4</span>เขียนโค้ดเชื่อมหน้าบ้านกับหลังบ้านเข้าด้วยกัน</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="slide17.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide19.html" class="nav-button">ต่อไป</a>
+        </div>
+
+    </div>
+
+    <!-- JavaScript for the reveal effect -->
+    <script>
+        const revealButton = document.getElementById('revealBtn');
+        const answerSide = document.getElementById('answerSide');
+
+        revealButton.addEventListener('click', () => {
+            answerSide.classList.add('visible');
+            revealButton.classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>

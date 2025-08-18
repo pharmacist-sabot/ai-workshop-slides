@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 28: Step 3 - Install & Configure</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- นำสไตล์จากสไลด์ 24 มาใช้ซ้ำ -->
+    <style>
+        .step-container {
+            text-align: center;
+        }
+        .instructions {
+            text-align: left;
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #f8f7fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .instructions ol {
+            padding-left: 25px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        .instructions li {
+            margin-bottom: 15px;
+        }
+        .instructions .important {
+            background-color: #fffbe6;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid var(--alert-color);
+        }
+        .screenshot-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Quick Win: Step 4/4 (Installation)</h2>
+            <h1>ติดตั้งและตั้งค่าโค้ด</h1>
+            <p class="subtitle">มาติดตั้งโค้ดที่ AI สร้างให้ลงใน "โรงงาน" (Apps Script) ของเรากันครับ</p>
+
+            <div class="step-container">
+                <div class="instructions">
+                    <ol>
+                        <li>กลับไปที่หน้าต่าง Apps Script ที่เราเปิดค้างไว้</li>
+                        <li><strong>ลบโค้ดเก่า</strong> (`function myFunction...`) ที่มีอยู่ทิ้งให้หมด</li>
+                        <li><strong>วางโค้ดใหม่</strong> ที่ได้จาก AI ลงไปแทนที่</li>
+                        <li class="important">
+                            <strong>(สำคัญที่สุด!)</strong> หาบรรทัด <code>const API_KEY = "..."</code> แล้วนำ <strong>API Key</strong> ที่เราเก็บไว้มาวางแทนที่ <code>"YOUR_API_KEY_HERE"</code> (ต้องมีเครื่องหมายคำพูดครอบไว้เหมือนเดิม)
+                        </li>
+                        <li>กดที่ไอคอนรูปแผ่นดิสก์ <i class="fas fa-save"></i> <strong>เพื่อ Save Project</strong></li>
+                    </ol>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <img src="install_code.png" alt="Screenshot showing how to install and configure the Apps Script code">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide27.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide29.html" an class="nav-button">ไปดูผลลัพธ์กัน!</a>
+        </div>
+    </div>
+
+</body>
+</html>
