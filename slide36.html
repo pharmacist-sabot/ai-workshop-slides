@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 36: Step 2.2 - First Deployment</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- นำสไตล์จากสไลด์ 28 มาปรับใช้ -->
+    <style>
+        .step-container {
+            text-align: center;
+        }
+        .instructions {
+            text-align: left;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            background-color: #f8f7fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .instructions ol {
+            padding-left: 25px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        .instructions li {
+            margin-bottom: 15px;
+        }
+        .instructions .important {
+            background-color: #fffbe6;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid var(--alert-color);
+        }
+        .screenshot-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 2.2</h2>
+            <h1>ทดสอบครั้งที่ 1: นำเว็บขึ้นออนไลน์ (Deploy)!</h1>
+            <p class="subtitle">เราจะ "ปล่อยของ" เปลี่ยนโค้ดของเราให้กลายเป็น Web App ที่มีชีวิตและมี URL จริง</p>
+
+            <div class="step-container">
+                <div class="instructions">
+                    <p style="font-size: 1.15rem; margin-bottom: 20px;">
+                        <i class="fas fa-rocket"></i> ทำตามขั้นตอนการ Deploy อย่างระมัดระวังนะครับ:
+                    </p>
+                    <ol>
+                        <li>ที่มุมบนขวาของ Apps Script Editor, กดปุ่มสีน้ำเงิน <strong>Deploy</strong> และเลือก <strong>New deployment</strong></li>
+                        <li>คลิกไอคอนรูปเฟือง <i class="fas fa-cog"></i> และเลือก Type เป็น <strong>Web app</strong></li>
+                        <li class="important">ในส่วน <strong>Who has access</strong>, ให้เลือกเป็น <strong>Anyone</strong> (เพื่อให้ทุกคนสามารถเข้าทดสอบได้โดยไม่ต้องล็อกอิน)</li>
+                        <li>กดปุ่ม <strong>Deploy</strong> (อาจมีการขอ Authorization อีกครั้ง ให้กด Allow)</li>
+                        <li>เมื่อสำเร็จ, <strong>Copy URL</strong> ของ Web app ที่ได้มา แล้วนำไปเปิดใน Tab ใหม่ของเบราว์เซอร์</li>
+                    </ol>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <img src="deploy_webapp.png" alt="Screenshot showing the deployment steps for a Google Apps Script web app">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide35.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide37.html" class="nav-button">ไปดูผลลัพธ์การ Deploy</a>
+        </div>
+    </div>
+
+</body>
+</html>

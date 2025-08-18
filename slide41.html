@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 41: Step 3.2 - Install & Final Deploy</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- นำสไตล์จากสไลด์ก่อนๆ มาปรับใช้ -->
+    <style>
+        .step-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .instructions-panel h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        .instructions {
+            background-color: #f8f7fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .instructions ol {
+            padding-left: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .instructions li { margin-bottom: 10px; }
+        .instructions code {
+            background-color: #e9e0f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .screenshot-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .screenshot-wrapper img { width: 100%; display: block; }
+        @media (max-width: 768px) {
+            .step-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>Main Project: Step 3.2</h2>
+            <h1>ติดตั้ง JavaScript และ Deploy ครั้งสุดท้าย!</h1>
+            <p class="subtitle">ขั้นตอนสุดท้ายแล้ว! เราจะนำ "สายไฟ" ไปติดตั้งและเปิดใช้งานระบบทั้งหมด</p>
+
+            <div class="step-container">
+                <!-- Panel 1: Install JavaScript -->
+                <div class="instructions-panel">
+                    <h3><i class="fas fa-plug" style="color:var(--secondary-color)"></i> ตอนที่ 1: ติดตั้ง "สายไฟ"</h3>
+                    <div class="instructions">
+                        <ol>
+                            <li>เปิดไฟล์ <code>Index.html</code></li>
+                            <li>เลื่อนไปที่<strong>ล่างสุด</strong>ของไฟล์</li>
+                            <li><strong>วางโค้ด <code>&lt;script&gt;...&lt;/script&gt;</code> ทั้งหมด</strong> ที่ได้จาก AI ลงไปก่อนบรรทัดปิด <code>&lt;/body&gt;</code></li>
+                            <li>กด <i class="fas fa-save"></i> <strong>Save Project</strong></li>
+                        </ol>
+                    </div>
+                    <div class="screenshot-wrapper" style="margin-top: 15px;">
+                        <img src="install_js.png" alt="Screenshot showing where to paste the JavaScript code">
+                    </div>
+                </div>
+                
+                <!-- Panel 2: Final Deploy -->
+                <div class="instructions-panel">
+                    <h3><i class="fas fa-rocket" style="color:var(--primary-color)"></i> ตอนที่ 2: Deploy Version ใหม่</h3>
+                    <div class="instructions">
+                         <ol>
+                            <li>กดปุ่มสีน้ำเงิน <strong>Deploy</strong></li>
+                            <li>เลือก <strong>Manage deployments</strong></li>
+                            <li>คลิกไอคอนรูปดินสอ <i class="fas fa-edit"></i> เพื่อแก้ไข</li>
+                            <li>ในช่อง <strong>Version</strong>, เลือก <strong>New version</strong> (สำคัญมาก!)</li>
+                            <li>กดปุ่ม <strong>Deploy</strong> เพื่ออัปเดต Web App ของเรา</li>
+                        </ol>
+                    </div>
+                    <div class="screenshot-wrapper" style="margin-top: 15px;">
+                        <img src="redeploy.png" alt="Screenshot showing how to redeploy a new version">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide40.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide42.html" class="nav-button">Mission Complete!</a>
+        </div>
+    </div>
+
+</body>
+</html>

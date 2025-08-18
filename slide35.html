@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 35: Step 2.1 - The doGet Prompt</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- นำสไตล์ Master Prompt มาปรับใช้ -->
+    <style>
+        .master-prompt-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .prompt-wrapper {
+            position: relative;
+        }
+        .master-prompt-box {
+            background-color: #f6ffed; /* สีเขียวอ่อน */
+            border: 2px dashed #b7eb8f; /* เส้นประสีเขียว */
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            font-family: 'Sarabun', 'Prompt', sans-serif;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #52c41a; /* สีเขียว */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Prompt', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+        .copy-button:hover { background-color: #389e0d; }
+        .copy-button .fa-check { display: none; }
+        .copy-button.copied .fa-copy { display: none; }
+        .copy-button.copied .fa-check { display: inline-block; }
+        
+        .action-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .action-container ol {
+            padding-left: 20px;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .action-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 2.1</h2>
+            <h1>สั่ง AI เขียนโค้ด "เปิดประตูเว็บ"</h1>
+            <p class="subtitle">เราต้องสร้างฟังก์ชันพิเศษชื่อ `doGet` ซึ่งทำหน้าที่เป็นทางเข้าหลักของ Web App</p>
+
+            <div class="action-container">
+                <!-- Prompt Column -->
+                <div>
+                    <h4>1. Copy Prompt นี้ไปสั่ง AI:</h4>
+                    <div class="prompt-wrapper">
+                        <div class="master-prompt-box" id="promptTextContainer">
+<strong>บทบาท:</strong> โปรแกรมเมอร์ Google Apps Script
+
+<strong>งาน:</strong> เขียนฟังก์ชัน `doGet` เพื่อแสดงผล (serve) ไฟล์ HTML ที่ชื่อว่า `Index.html` ให้เป็น Web App
+                        </div>
+                        <button class="copy-button" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            <i class="fas fa-check"></i>
+                            <span id="copyBtnText">Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Column -->
+                <div>
+                    <h4>2. นำโค้ดที่ได้ไปติดตั้ง:</h4>
+                    <div style="background-color: #f8f7fa; padding: 20px; border-radius: 10px;">
+                        <ol>
+                            <li>กลับไปที่ Apps Script Editor</li>
+                            <li>เปิดไฟล์ <code>Code.gs</code></li>
+                            <li>ลบฟังก์ชัน <code>myFunction</code> ที่มีอยู่เดิมทิ้ง</li>
+                            <li><strong>วางโค้ด `doGet` ที่ได้จาก AI ลงไป</strong></li>
+                            <li>กด <i class="fas fa-save"></i> Save Project</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <p class="subtitle" style="text-align:center; margin-top: 2rem;">
+                เมื่อทำเสร็จแล้ว เราก็พร้อมที่จะ "Deploy" หรือนำเว็บของเราขึ้นออนไลน์เป็นครั้งแรกในสไลด์ถัดไป!
+            </p>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide34.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide36.html" class="nav-button">ต่อไป: Deploy!</a>
+        </div>
+    </div>
+
+    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    <script>
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                const copyButtonText = document.getElementById('copyBtnText');
+                copyButton.classList.add('copied');
+                copyButtonText.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyButton.classList.remove('copied');
+                    copyButtonText.innerText = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

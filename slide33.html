@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 33: Step 1.2 - The HTML Prompt</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- นำสไตล์ Master Prompt จากสไลด์ 26 มาปรับใช้ -->
+    <style>
+        .master-prompt-container {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .prompt-wrapper {
+            position: relative;
+        }
+        .master-prompt-box {
+            background-color: #e6f7ff; /* สีฟ้าอ่อน */
+            border: 2px dashed #91d5ff; /* เส้นประสีฟ้า */
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            font-family: 'Sarabun', 'Prompt', sans-serif;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #007BFF; /* สีฟ้า */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Prompt', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+        .copy-button:hover { background-color: #0056b3; }
+        .copy-button .fa-check { display: none; }
+        .copy-button.copied .fa-copy { display: none; }
+        .copy-button.copied .fa-check { display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 1.2</h2>
+            <h1>สั่ง AI สร้างหน้าฟอร์ม (The HTML Prompt)</h1>
+            <p class="subtitle">เราจะใช้ Prompt ภาษาไทย สั่งให้ AI เขียนโค้ด HTML ที่มีหน้าตาสวยงามด้วย Bootstrap 5</p>
+
+            <div class="master-prompt-container">
+                <div class="prompt-wrapper">
+                    <div class="master-prompt-box" id="promptTextContainer">
+<strong>บทบาท:</strong> คุณคือ Web Developer ผู้เชี่ยวชาญ
+
+<strong>งาน:</strong> โปรดสร้างโค้ด HTML ทั้งหมดสำหรับหน้าเว็บฟอร์ม "บันทึกความเสี่ยงด้านยา" โดยมีเงื่อนไขดังนี้:
+1.  ใช้ Bootstrap 5 จาก CDN เพื่อความสวยงาม (ไม่ต้องมีโค้ด CSS เอง)
+2.  ใส่หัวข้อหลักว่า "Medication Safety / Risk Reporting Form"
+3.  ฟอร์มจะต้องมีช่องกรอกข้อมูลต่อไปนี้ พร้อม `label` ที่ชัดเจน:
+    -   ช่องรับข้อมูล "วันที่เกิดเหตุ" (Event Date) โดยใช้ input type="date"
+    -   ช่องรับข้อมูล "รหัสผู้ป่วย (HN/AN)" (Patient ID) โดยใช้ input type="text"
+    -   ช่องรับข้อมูล "ยาที่เกี่ยวข้อง" (Medications Involved) โดยใช้ input type="text"
+    -   ช่องรับข้อมูล "ประเภทความเสี่ยง" (Risk Category) โดยใช้ dropdown (select) ซึ่งมีตัวเลือกคือ: 'Prescribing Error', 'Dispensing Error', 'Administration Error', 'Monitoring Error'
+    -   ช่องรับข้อมูล "รายละเอียดเหตุการณ์" (Event Description) โดยใช้ textarea ที่มีขนาด 5 แถว
+4.  ทุกช่องต้องมี `name` attribute ที่สอดคล้องกับ label (เช่น `name="eventDate"`)
+5.  มีปุ่ม Submit สีน้ำเงิน (primary) ที่มีข้อความว่า "Submit Report"
+
+<strong>รูปแบบ:</strong> ขอเฉพาะโค้ด HTML ที่สมบูรณ์เท่านั้น ไม่ต้องมีคำอธิบายอื่น
+                    </div>
+                    <button class="copy-button" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        <i class="fas fa-check"></i>
+                        <span id="copyBtnText">Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide32.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide34.html" class="nav-button">ต่อไป: ติดตั้งโค้ด HTML</a>
+        </div>
+    </div>
+
+    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    <script>
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                const copyButtonText = document.getElementById('copyBtnText');
+                copyButton.classList.add('copied');
+                copyButtonText.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyButton.classList.remove('copied');
+                    copyButtonText.innerText = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

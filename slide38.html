@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 38: Step 2.3 - The Backend Logic Prompt</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- นำสไตล์ Master Prompt จากสไลด์ 35 มาปรับใช้ -->
+    <style>
+        .master-prompt-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .prompt-wrapper {
+            position: relative;
+        }
+        .master-prompt-box {
+            background-color: #f6ffed; /* สีเขียวอ่อน */
+            border: 2px dashed #b7eb8f; /* เส้นประสีเขียว */
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            font-family: 'Sarabun', 'Prompt', sans-serif;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #52c41a; /* สีเขียว */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Prompt', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+        .copy-button:hover { background-color: #389e0d; }
+        .copy-button .fa-check { display: none; }
+        .copy-button.copied .fa-copy { display: none; }
+        .copy-button.copied .fa-check { display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 2.3</h2>
+            <h1>สั่ง AI เขียนโค้ด "รับข้อมูล" (Backend Logic)</h1>
+            <p class="subtitle">เราจะสร้างฟังก์ชัน `saveData` ที่ทำหน้าที่เป็น "เจ้าหน้าที่" รับข้อมูลจากฟอร์มไปบันทึกลง Sheet</p>
+
+            <div class="master-prompt-container">
+                <div class="prompt-wrapper">
+                    <div class="master-prompt-box" id="promptTextContainer">
+<strong>บทบาท:</strong> โปรแกรมเมอร์ Google Apps Script ผู้เชี่ยวชาญ
+
+<strong>บริบท:</strong> ฉันมี Web App ที่สร้างจากไฟล์ HTML ชื่อ `Index.html` และมี Google Sheet ชื่อ `Risk_Log` ที่มีคอลัมน์ตามลำดับดังนี้: Timestamp, ReporterEmail, EventDate, PatientID, EventDescription, MedicationInvolved, RiskCategory.
+
+<strong>งาน:</strong> โปรดเขียนฟังก์ชันชื่อ `saveData(formObject)` โดยให้ทำงานดังนี้:
+1.  เข้าถึง Spreadsheet ที่กำลังใช้งานอยู่ และเลือกชีทที่ชื่อว่า `Risk_Log`
+2.  ดึงอีเมลของผู้ใช้ที่กำลังล็อกอินอยู่ (Session.getActiveUser().getEmail())
+3.  เพิ่มแถวใหม่ (appendRow) ต่อท้ายข้อมูลที่มีอยู่
+4.  ข้อมูลในแถวใหม่จะต้องเรียงตามลำดับคอลัมน์ของชีท คือ:
+    - วันที่และเวลาปัจจุบัน (new Date())
+    - อีเมลของผู้ใช้ที่ดึงมา
+    - ข้อมูลจาก `formObject.eventDate`
+    - ข้อมูลจาก `formObject.patientId`
+    - ข้อมูลจาก `formObject.eventDescription`
+    - ข้อมูลจาก `formObject.medicationInvolved`
+    - ข้อมูลจาก `formObject.riskCategory`
+5.  เมื่อบันทึกสำเร็จ ให้ return ข้อความกลับไปว่า "บันทึกรายงานสำเร็จ!"
+
+<strong>รูปแบบ:</strong> ขอเฉพาะโค้ดฟังก์ชัน `saveData` เท่านั้น
+                    </div>
+                    <button class="copy-button" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        <i class="fas fa-check"></i>
+                        <span id="copyBtnText">Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide37.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide39.html" class="nav-button">ต่อไป: ติดตั้งโค้ด Backend</a>
+        </div>
+    </div>
+
+    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    <script>
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                const copyButtonText = document.getElementById('copyBtnText');
+                copyButton.classList.add('copied');
+                copyButtonText.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyButton.classList.remove('copied');
+                    copyButtonText.innerText = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

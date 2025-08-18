@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 39: Step 2.4 - Install Backend Code</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- นำสไตล์จากสไลด์ 34 มาปรับใช้ -->
+    <style>
+        .step-container {
+            text-align: center;
+        }
+        .instructions {
+            text-align: left;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            background-color: #f8f7fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .instructions ol {
+            padding-left: 25px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        .instructions li {
+            margin-bottom: 15px;
+        }
+        .instructions code {
+            background-color: #e9e0f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .screenshot-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 2.4</h2>
+            <h1>ติดตั้งโค้ด "เจ้าหน้าที่" (Backend)</h1>
+            <p class="subtitle">เราจะนำโค้ด `saveData` ไปประจำการในไฟล์ `Code.gs` เพื่อรอรับข้อมูล</p>
+
+            <div class="step-container">
+                <div class="instructions">
+                    <p style="font-size: 1.15rem; margin-bottom: 20px;">
+                        <i class="fas fa-info-circle"></i> กลับมาที่หน้าต่าง Apps Script Editor และทำตามขั้นตอนต่อไปนี้:
+                    </p>
+                    <ol>
+                        <li>ตรวจสอบให้แน่ใจว่าคุณกำลังเปิดไฟล์ <code>Code.gs</code></li>
+                        <li><strong>นำโค้ดฟังก์ชัน `saveData`</strong> ที่เพิ่งได้จาก AI มาวางต่อท้ายฟังก์ชัน `doGet` ที่มีอยู่เดิม</li>
+                        <li>กดที่ไอคอนรูปแผ่นดิสก์ <i class="fas fa-save"></i> <strong>เพื่อ Save Project</strong></li>
+                    </ol>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <img src="install_backend.png" alt="Screenshot showing where to paste the backend function in Code.gs">
+                </div>
+                 <p class="subtitle" style="text-align:center; margin-top: 2rem;">
+                    ตอนนี้ "เจ้าหน้าที่" ของเราเข้าประจำการแล้ว แต่เขายังไม่ได้ยินเสียงเรียกจาก "เคาน์เตอร์"...<br>ขั้นตอนต่อไป เราจะไปติดตั้ง "สายไฟ" เพื่อเชื่อมทั้งสองส่วนเข้าด้วยกัน!
+                </p>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide38.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide40.html" class="nav-button">ต่อไป: สร้างสายไฟ (JS)</a>
+        </div>
+    </div>
+
+</body>
+</html>

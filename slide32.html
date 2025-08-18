@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 32: Step 1.1 - Database Design</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- นำสไตล์จากสไลด์ 24 มาปรับใช้ -->
+    <style>
+        .step-container {
+            text-align: center;
+        }
+        .instructions {
+            text-align: left;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            background-color: #f8f7fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .instructions ol {
+            padding-left: 25px;
+        }
+        .instructions li {
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        .instructions code {
+            background-color: #e9e0f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .screenshot-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 1.1</h2>
+            <h1>ออกแบบฐานข้อมูลใน Google Sheets</h1>
+            <p class="subtitle">ก่อนจะสร้างฟอร์ม เราต้องเตรียม "ถัง" สำหรับเก็บข้อมูลให้พร้อมเสียก่อน</p>
+
+            <div class="step-container">
+                <div class="instructions">
+                    <p style="font-size: 1.15rem; margin-bottom: 20px;">
+                        <i class="fas fa-info-circle"></i> ในไฟล์ Google Sheets <strong>"AI Pharmacist Tools"</strong> เดิมของเรา ให้ทำตามขั้นตอนต่อไปนี้:
+                    </p>
+                    <ol>
+                        <li>สร้างชีทใหม่ (กดเครื่องหมาย <strong>+</strong> ที่มุมล่างซ้าย)</li>
+                        <li>เปลี่ยนชื่อชีทใหม่เป็น <code>Risk_Log</code></li>
+                        <li>ในแถวที่ 1 ของชีท <code>Risk_Log</code> ให้สร้างคอลัมน์ตามนี้:
+                            <ul>
+                                <li><strong>A1:</strong> <code>Timestamp</code></li>
+                                <li><strong>B1:</strong> <code>ReporterEmail</code></li>
+                                <li><strong>C1:</strong> <code>EventDate</code></li>
+                                <li><strong>D1:</strong> <code>PatientID</code></li>
+                                <li><strong>E1:</strong> <code>EventDescription</code></li>
+                                <li><strong>F1:</strong> <code>MedicationInvolved</code></li>
+                                <li><strong>G1:</strong> <code>RiskCategory</code></li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="screenshot-wrapper">
+                    <img src="database_setup.png" alt="Screenshot of setting up the Risk_Log Google Sheet">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide31.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide33.html" class="nav-button">ต่อไป: สั่ง AI สร้างฟอร์ม</a>
+        </div>
+    </div>
+
+</body>
+</html>

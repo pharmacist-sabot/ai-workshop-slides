@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 40: Step 3.1 - The JavaScript Prompt</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS for this slide only (CORRECTED) -->
+    <style>
+        .master-prompt-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .prompt-wrapper {
+            position: relative;
+        }
+        .master-prompt-box {
+            background-color: #fff2e8; /* สีส้มอ่อน */
+            border: 2px dashed #ffc069; /* เส้นประสีส้ม */
+            padding: 25px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            font-family: 'Sarabun', 'Prompt', sans-serif;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        /* --- New style to replace <strong> tag --- */
+        .master-prompt-box .prompt-label {
+            font-weight: 700;
+            color: #595959;
+        }
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color); /* สีส้ม */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Prompt', sans-serif;
+            transition: background-color 0.2s ease;
+        }
+        .copy-button:hover { background-color: var(--alert-color); }
+        .copy-button .fa-check { display: none; }
+        .copy-button.copied .fa-copy { display: none; }
+        .copy-button.copied .fa-check { display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h2>Main Project: Step 3.1</h2>
+            <h1>สั่ง AI เขียน "สายไฟ" (JavaScript)</h1>
+            <p class="subtitle">เราจะสร้างโค้ด JavaScript เพื่อเชื่อมปุ่ม Submit ในฟอร์มของเรา ให้ส่งข้อมูลไปหาฟังก์ชัน `saveData` ที่หลังบ้าน</p>
+
+            <div class="master-prompt-container">
+                <div class="prompt-wrapper">
+                    <div class="master-prompt-box" id="promptTextContainer">
+<span class="prompt-label">บทบาท:</span> โปรแกรมเมอร์ JavaScript ผู้เชี่ยวชาญ
+
+<span class="prompt-label">บริบท:</span> ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formObject)` ที่พร้อมรับข้อมูลจากฟอร์ม
+
+<span class="prompt-label">งาน:</span> โปรดเขียนโค้ด JavaScript ทั้งหมดที่ต้องใส่ใน &lt;script&gt; tag สำหรับไฟล์ `Index.html` โดยโค้ดจะต้อง:
+1.  หา form element ในหน้าเว็บ
+2.  ดักฟัง (listen for) event 'submit' ของ form นั้น
+3.  เมื่อ form ถูก submit, ให้สั่ง `event.preventDefault()` เพื่อป้องกันไม่ให้หน้าเว็บโหลดใหม่
+4.  เรียกใช้ฟังก์ชันหลังบ้าน `saveData` ผ่าน `google.script.run`
+5.  ใส่ `.withSuccessHandler()` เพื่อจัดการเมื่อโค้ดหลังบ้านทำงานสำเร็จ โดยให้แสดง alert box ด้วยข้อความที่ส่งกลับมา แล้วทำการ reset ฟอร์มให้ว่าง
+6.  ใส่ `.withFailureHandler()` เพื่อจัดการเมื่อเกิดข้อผิดพลาด โดยให้แสดง alert box พร้อมข้อความ error
+7.  ส่ง `event.target` (ซึ่งก็คือ form object) เป็น argument เข้าไปในฟังก์ชัน `saveData`
+
+<span class="prompt-label">รูปแบบ:</span> ขอเฉพาะโค้ดที่อยู่ภายใน &lt;script&gt; และ &lt;/script&gt; เท่านั้น
+                    </div>
+                    <button class="copy-button" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        <i class="fas fa-check"></i>
+                        <span id="copyBtnText">Copy</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide39.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide41.html" class="nav-button">ต่อไป: ติดตั้ง JavaScript</a>
+        </div>
+    </div>
+
+    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    <script>
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                const copyButtonText = document.getElementById('copyBtnText');
+                copyButton.classList.add('copied');
+                copyButtonText.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyButton.classList.remove('copied');
+                    copyButtonText.innerText = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

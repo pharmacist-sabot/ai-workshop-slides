@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 37: Step 2.2 - The Result</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .result-container {
+            text-align: center;
+        }
+
+        .screenshot-wrapper {
+            max-width: 800px;
+            margin: 1.5rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(75, 68, 83, 0.2);
+            border: 5px solid #fff;
+        }
+
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        .status-box {
+            background-color: #f8f7fa;
+            border-left: 5px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            max-width: 750px;
+            margin: 2rem auto 0 auto;
+            text-align: left;
+        }
+        
+        .status-box h3 {
+            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            color: var(--dark-text);
+        }
+        
+        .status-box p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-card">
+        
+        <div class="card-body">
+            <h1 style="text-align: center;">ผลลัพธ์การ Deploy ครั้งแรก</h1>
+            <p class="subtitle" style="text-align: center;">
+                ถ้าคุณเห็นหน้าตาแบบนี้... ยินดีด้วย! คุณได้สร้าง "หน้าบ้าน" ของ Web App สำเร็จแล้ว!
+            </p>
+
+            <div class="result-container">
+                <div class="screenshot-wrapper">
+                    <img src="first_deploy_result.png" alt="Screenshot of the successfully deployed web form">
+                </div>
+
+                <div class="status-box">
+                    <h3><i class="fas fa-tasks"></i> สถานะปัจจุบัน (Status)</h3>
+                    <p>
+                        ตอนนี้เรามีฟอร์มที่สวยงามแล้ว แต่ถ้าลองกรอกข้อมูลแล้วกด Submit... <strong>จะยังไม่มีอะไรเกิดขึ้น</strong>
+                        <br><br>
+                        เปรียบเสมือนเรามี "เคาน์เตอร์รับเรื่อง" ที่สวยงาม แต่ยังไม่มี "เจ้าหน้าที่" อยู่หลังเคาน์เตอร์เพื่อรับข้อมูลไปจัดการต่อ
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide36.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide38.html" class="nav-button">ไปสร้าง "เจ้าหน้าที่" กัน!</a>
+        </div>
+    </div>
+
+</body>
+</html>
