@@ -3,144 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 21: Warm-up Result</title>
+    <title>Slide 21: Warm-up Deconstruction</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .result-analysis-container {
+        .analysis-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 1.5rem;
-            align-items: flex-start;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 2rem;
         }
 
-        .ai-response-panel {
-            background-color: #f8f7fa;
+        .analysis-card {
+            background-color: #fcfbff;
             border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #eee;
-        }
-
-        .ai-response-panel .header {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--dark-text);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .ai-response-panel .header i {
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-
-        .ai-response-panel ul {
-            padding-left: 25px; /* เพิ่มระยะห่างให้ bullet */
-        }
-
-        .ai-response-panel li {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 15px;
-        }
-
-        .takeaways-panel h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--dark-text);
-        }
-
-        .takeaways-panel ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .takeaways-panel li {
-            font-size: 1.15rem;
+            padding: 20px;
+            border: 1px solid #f0f0f0;
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+        .analysis-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(75, 68, 83, 0.1);
         }
 
-        .takeaways-panel .icon {
-            color: #34A853; /* Green checkmark */
-            font-size: 1.5rem;
-            width: 35px;
+        .icon-wrapper {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Thematic coloring to match slide 13 */
+        .item-role .icon-wrapper { background-color: var(--primary-color); }
+        .item-context .icon-wrapper { background-color: var(--secondary-color); }
+        .item-task .icon-wrapper { background-color: #20c997; } /* Teal */
+        .item-format .icon-wrapper { background-color: #007bff; } /* Blue */
+
+        .text-content h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+            color: var(--dark-text);
+            text-align: left;
         }
 
-        /* Responsive */
+        .text-content p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--light-text);
+            margin: 0;
+            text-align: left;
+        }
+        
         @media (max-width: 768px) {
-            .result-analysis-container {
+            .analysis-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>The Result</h2>
-            <h1>ผลลัพธ์ที่ได้จากการ Warm-up</h1>
-            <p class="subtitle">นี่คือตัวอย่างคำตอบที่ดี ที่ได้จาก Prompt ที่เราใช้กันเมื่อครู่นี้ จะเห็นได้ว่า AI เข้าใจ "หน้าที่" ของมันอย่างสมบูรณ์</p>
+            <h2>Activity Debrief</h2>
+            <h1>ถอดรหัสผลลัพธ์ (Result Deconstruction)</h1>
+            <p class="subtitle">มาดูกันว่าส่วนประกอบ R-C-T-F ใน Prompt ของเรา ทำงานและสร้างผลลัพธ์ที่ยอดเยี่ยมได้อย่างไร</p>
 
-            <div class="result-analysis-container">
-                <!-- AI Response Panel -->
-                <div class="ai-response-panel">
-                    <div class="header"><i class="fas fa-robot"></i> ตัวอย่างคำตอบจาก AI</div>
-                    <ul>
-                        <li>
-                            <strong>เลือดจะออกง่ายกว่าปกติมาก:</strong> ยาทั้งสองตัวทำให้เลือดแข็งตัวช้าลง พอทานคู่กัน ถ้ามีแผลเลือดจะหยุดยาก หรืออาจเห็นรอยจ้ำเลือดตามตัวง่ายขึ้นครับ
-                        </li>
-                        <li>
-                            <strong>อาจระคายเคืองกระเพาะอาหาร:</strong> ยา Aspirin อาจทำให้ปวดท้องได้ง่ายขึ้นเมื่อทานกับ Warfarin ถ้ามีอาการแสบท้องหรืออุจจาระเป็นสีดำต้องรีบแจ้งแพทย์ทันที
-                        </li>
-                        <li>
-                            <strong>ต้องแจ้งแพทย์และเภสัชกรเสมอ:</strong> ไม่ว่าจะไปหาหมอที่ไหน หรือซื้อยาอะไรทานเอง ต้องแจ้งทุกครั้งว่ากำลังทานยา Warfarin อยู่ เพื่อความปลอดภัยสูงสุดนะครับ
-                        </li>
-                    </ul>
+            <div class="analysis-grid">
+                <!-- R: Role -->
+                <div class="analysis-card item-role">
+                    <div class="icon-wrapper">R</div>
+                    <div class="text-content">
+                        <h3>Role (บทบาท)</h3>
+                        <p>ใช้ภาษาเหมือนเภสัชกรที่ห่วงใย ไม่ใช่ภาษาทางวิชาการ</p>
+                    </div>
                 </div>
 
-                <!-- Key Takeaways Panel -->
-                <div class="takeaways-panel">
-                    <h3><i class="fas fa-lightbulb" style="color: var(--secondary-color);"></i> Key Takeaways: ทำไมคำตอบนี้ถึงดี?</h3>
-                    <ul>
-                        <li>
-                            <span class="icon"><i class="fas fa-check-circle"></i></span>
-                            <div>
-                                <strong>ตอบในบทบาท (Role) ที่ถูกต้อง:</strong> <br>ใช้ภาษาเหมือนเภสัชกรที่กำลังคุยกับผู้ป่วยจริงๆ ไม่ใช่ภาษาทางวิชาการ
-                            </div>
-                        </li>
-                        <li>
-                            <span class="icon"><i class="fas fa-check-circle"></i></span>
-                            <div>
-                                <strong>เข้าใจบริบท (Context):</strong> <br>รู้ว่าต้องสื่อสารกับ "ผู้สูงอายุ" จึงเลือกใช้คำที่เข้าใจง่ายและเน้นย้ำเรื่องความปลอดภัย
-                            </div>
-                        </li>
-                        <li>
-                            <span class="icon"><i class="fas fa-check-circle"></i></span>
-                            <div>
-                                <strong>ทำตามรูปแบบ (Format) ที่สั่ง:</strong> <br>สรุปเนื้อหาเป็น 3 ข้อสั้นๆ ตามที่เรากำหนดไว้ใน Prompt เป๊ะ!
-                            </div>
-                        </li>
-                    </ul>
+                <!-- C: Context -->
+                <div class="analysis-card item-context">
+                    <div class="icon-wrapper">C</div>
+                    <div class="text-content">
+                        <h3>Context (บริบท)</h3>
+                        <p>เลือกใช้คำที่ผู้สูงอายุเข้าใจง่าย เช่น "จ้ำเลือด"</p>
+                    </div>
+                </div>
+                
+                <!-- T: Task -->
+                <div class="analysis-card item-task">
+                    <div class="icon-wrapper">T</div>
+                    <div class="text-content">
+                        <h3>Task (งาน)</h3>
+                        <p>เน้น "สรุปเพื่อให้คำแนะนำ" ไม่ใช่แค่ "อธิบาย" ข้อมูล</p>
+                    </div>
+                </div>
+                
+                <!-- F: Format -->
+                <div class="analysis-card item-format">
+                    <div class="icon-wrapper">F</div>
+                    <div class="text-content">
+                        <h3>Format (รูปแบบ)</h3>
+                        <p>จัดระเบียบคำตอบเป็น 3 ข้อสั้นๆ ตามที่กำหนดไว้เป๊ะ</p>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <div class="card-footer">
             <a href="slide20.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide22.html" class="nav-button">ต่อไป</a>
         </div>
-
     </div>
-
 </body>
 </html>

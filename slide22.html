@@ -5,112 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 22: Module 1 Recap</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .recap-container {
+        .card-body {
             text-align: center;
-            margin-top: 3rem;
-        }
-
-        .summary-points {
-            list-style: none;
-            padding-left: 0;
-            max-width: 750px;
-            margin: 0 auto 3rem auto;
-            text-align: left;
-        }
-
-        .summary-points li {
-            font-size: 1.3rem;
             display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding: 15px;
-            background-color: #f8f7fa;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .summary-points .icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            width: 50px;
-            margin-right: 15px;
-        }
-
-        .next-step-box {
-            background-color: #f9f6ff;
-            border: 2px dashed var(--primary-color);
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .next-step-box h3 {
-            font-size: 1.8rem;
-            color: var(--dark-text);
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            gap: 15px;
         }
         
+        .recap-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์แนวนอน */
+            gap: 25px;
+            margin: 2rem 0;
+        }
+
+        .recap-item {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #eee;
+            transition: all 0.3s ease;
+        }
+        .recap-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(75, 68, 83, 0.08);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .recap-item .icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .recap-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+            color: var(--dark-text);
+        }
+        .recap-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        .next-module-announcement {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            margin-top: 1rem;
+        }
+        .next-module-announcement strong {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .summary-points li {
-                font-size: 1.1rem;
-            }
-            .next-step-box h3 {
-                font-size: 1.5rem;
-                flex-direction: column;
-                gap: 10px;
+        @media (max-width: 900px) {
+            .recap-container {
+                grid-template-columns: 1fr; /* Stack on mobile */
             }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Module 1 Complete!</h2>
-            <h1>สรุปสิ่งที่เราได้เรียนรู้</h1>
-            <p class="subtitle">เราได้ติดตั้ง "Mindset" และเรียนรู้ "ภาษา" ที่ใช้คุยกับ AI เรียบร้อยแล้ว</p>
+            <h1>คุณได้ปลดล็อก "ทักษะการสั่งงาน AI" แล้ว</h1>
+            <p class="subtitle">นี่คือ 3 เครื่องมือสำคัญที่เราได้เรียนรู้และติดตั้งใน "กล่องเครื่องมือ" ของเรา</p>
 
             <div class="recap-container">
-                <ul class="summary-points">
-                    <li>
-                        <span class="icon"><i class="fas fa-brain"></i></span>
-                        <div><strong>Mindset Shift:</strong> เราเปลี่ยนจาก "ผู้เขียนโค้ด" มาเป็น <strong>"ผู้กำกับ/ผู้สั่งงาน"</strong></div>
-                    </li>
-                    <li>
-                        <span class="icon"><i class="fas fa-comments"></i></span>
-                        <div><strong>What is a Prompt:</strong> Prompt คือ "ชุดคำสั่งภาษาคน" ที่เราใช้สื่อสารกับ AI</div>
-                    </li>
-                    <li>
-                        <span class="icon"><i class="fas fa-magic-wand-sparkles"></i></span>
-                        <div><strong>The R-C-T-F Formula:</strong> เรามี "สูตรลับ" ในการสร้าง Prompt ที่ทรงพลัง (Role, Context, Task, Format)</div>
-                    </li>
-                </ul>
+                <!-- Recap 1: Mindset -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>The Director Mindset</h3>
+                    <p>เปลี่ยนบทบาทจาก "ผู้สร้าง" มาเป็น "ผู้กำกับ"</p>
+                </div>
+                
+                <!-- Recap 2: Prompt -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-comments"></i></div>
+                    <h3>The Language of AI</h3>
+                    <p>เข้าใจว่า Prompt คือ "ภาษา" ที่ใช้สื่อสารกับ AI</p>
+                </div>
 
-                <div class="next-step-box">
-                    <h3>
-                        <span>ต่อไป... เราจะเริ่มสร้างของจริงกัน!</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <i class="fas fa-tools" style="color: var(--secondary-color);"></i>
-                    </h3>
+                <!-- Recap 3: R-C-T-F -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-scroll"></i></div>
+                    <h3>The R-C-T-F Formula</h3>
+                    <p>มี "สูตรลับ" ในการสร้าง Prompt ที่ทรงพลัง</p>
                 </div>
             </div>
-
         </div>
 
         <div class="card-footer">
             <a href="slide21.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide23.html" class="nav-button">เริ่มสร้าง Quick Win!</a>
+            <a href="slide23.html" class="nav-button">เริ่ม Module 2</a>
         </div>
     </div>
-
 </body>
 </html>
