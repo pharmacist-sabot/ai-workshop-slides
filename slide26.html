@@ -5,121 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 26: The Master Prompt</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- นำ Internal CSS จากเวอร์ชันก่อนหน้ามาใช้ -->
     <style>
-        .master-prompt-container {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .prompt-wrapper {
-            position: relative;
-        }
+        .progress-bar { display: flex; gap: 5px; margin-bottom: 1rem; } .progress-segment { flex: 1; height: 6px; border-radius: 3px; background-color: #e0e0e0; transition: background-color 0.5s ease; } .progress-segment.active { background-color: var(--primary-color); } .progress-segment.completed { background-color: var(--primary-dark); }
+        .prompt-container { position: relative; margin-top: 1.5rem; }
         .master-prompt-box {
-            background-color: #fffbe6;
-            border: 2px dashed #ffd666;
-            padding: 25px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            line-height: 1.8; /* ปรับ line-height สำหรับภาษาไทย */
-            text-align: left;
-            font-family: 'Sarabun', 'Prompt', sans-serif; /* เพิ่ม Sarabun เพื่อการอ่านที่ดีขึ้น */
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            background-color: #2d2d2d; color: #e0e0e0; border: 2px solid var(--primary-color);
+            padding: 25px; border-radius: 12px; font-size: 0.95rem; line-height: 1.8;
+            font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; word-wrap: break-word;
         }
-        .prompt-anno {
-            font-weight: bold;
-            padding: 3px 6px;
-            border-radius: 5px;
-            color: white;
-            font-family: 'Prompt', sans-serif;
-            font-size: 0.8rem;
-            margin-right: 5px; /* เพิ่มระยะห่างเล็กน้อย */
-        }
-        .anno-r { background-color: #c34a36; }
-        .anno-c { background-color: #007BFF; }
-        .anno-t { background-color: #34A853; }
-        .anno-f { background-color: #ff8066; }
+        .prompt-part { margin-bottom: 15px; } .prompt-part:last-child { margin-bottom: 0; }
+        .prompt-part .tag { font-weight: bold; padding: 3px 8px; border-radius: 5px; font-size: 0.8rem; margin-right: 8px; }
+        .tag-r { color: #f8c5c0; } .tag-c { color: #c0d3f8; } .tag-t { color: #b9f6ca; } .tag-f { color: #f8eac0; }
         .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-family: 'Prompt', sans-serif;
-            transition: background-color 0.2s ease;
+            position: absolute; top: 15px; right: 15px; background-color: #444; color: white; border: 1px solid #666;
+            padding: 8px 15px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-family: 'Prompt', sans-serif; transition: all 0.2s ease;
         }
-        .copy-button:hover { background-color: var(--primary-dark); }
-        .copy-button .fa-check { display: none; }
-        .copy-button.copied .fa-copy { display: none; }
-        .copy-button.copied .fa-check { display: inline-block; }
+        .copy-button:hover { background-color: #555; }
+        .copy-button.copied { background-color: #20c997; border-color: #20c997; }
     </style>
-    <!-- เพิ่ม Google Font Sarabun สำหรับการอ่านภาษาไทยที่ดีขึ้น -->
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Quick Win: Step 3/4 (The Magic)</h2>
-            <h1>The Master Prompt! (คำสั่งวิเศษ)</h1>
-            <p class="subtitle">ได้เวลาสั่งงาน! ให้ Copy Prompt ภาษาไทยทั้งหมดนี้ไปวางใน Gemini (หรือ ChatGPT) เพื่อให้ AI สร้างโค้ดให้เรา</p>
-
-            <div class="master-prompt-container">
-                <div class="prompt-wrapper">
-                    <div class="master-prompt-box" id="promptTextContainer">
-<span class="prompt-anno anno-r">บทบาท</span> คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน Google Apps Script และมีความรู้ด้านเภสัชกรรมเป็นอย่างดี
-
-<span class="prompt-anno anno-c">บริบท</span> ฉันกำลังสร้างเครื่องมือใน Google Sheet ที่ชื่อชีทว่า "Drug Summarizer" โดยในคอลัมน์ A (เริ่มจาก A2) จะเป็นชื่อยา และฉันต้องการให้ข้อมูลสรุปจาก AI ไปแสดงในคอลัมน์ B (เริ่มจาก B2)
-
-<span class="prompt-anno anno-t">งาน</span> โปรดเขียนโค้ด Google Apps Script ที่ทำงานตามขั้นตอนต่อไปนี้ทั้งหมด:
-1.  สร้าง Custom Menu บน Spreadsheet ชื่อว่า "AI Tools"
-2.  ในเมนูนั้น ให้มีเมนูย่อยชื่อว่า "Summarize Drug Info"
-3.  เมื่อคลิกที่เมนูย่อยนั้น ให้เรียกใช้ฟังก์ชันชื่อ `summarizeDrug`
-4.  ในฟังก์ชัน `summarizeDrug` จะต้อง:
-    a. ดึงชื่อยาจากเซลล์ A2 ของชีท "Drug Summarizer"
-    b. สร้าง Prompt ใหม่สำหรับ AI เภสัชกรคลินิกโดยเฉพาะ เพื่อขอข้อมูลสรุปประเด็นสำคัญสำหรับให้คำปรึกษาผู้ป่วย (counseling points) ของยานั้นๆ เป็นภาษาไทย ไม่เกิน 5 ข้อในรูปแบบ bullet points
-    c. เรียกใช้ Gemini API ด้วย Prompt ใหม่ที่สร้างขึ้น
-    d. นำผลลัพธ์ที่ได้จาก AI ไปใส่ในเซลล์ B2
-5.  โค้ดจะต้องมีฟังก์ชันสำหรับเรียก Gemini API ด้วย โดยให้ตั้งชื่อว่า `callGeminiAPI` ซึ่งใช้ UrlFetchApp และมีตัวแปร `API_KEY` สำหรับให้ผู้ใช้เติมค่าเอง
-
-<span class="prompt-anno anno-f">รูปแบบ</span> ขอเฉพาะโค้ด Apps Script ที่สมบูรณ์และพร้อมใช้งานเท่านั้น ไม่ต้องมีคำอธิบายใดๆ นอกเหนือจากคอมเมนต์ในโค้ด
-                    </div>
-                    <button class="copy-button" id="copyBtn">
-                        <i class="fas fa-copy"></i>
-                        <i class="fas fa-check"></i>
-                        <span id="copyBtnText">Copy</span>
-                    </button>
+            <h2>Quick Win: Step 3/4</h2>
+            <div class="progress-bar">
+                <div class="progress-segment completed"></div><div class="progress-segment completed"></div><div class="progress-segment active"></div><div class="progress-segment"></div>
+            </div>
+            <h1><i class="fas fa-wand-magic-sparkles" style="color:var(--primary-color);"></i> สั่งงาน AI ด้วย Master Prompt</h1>
+            <p class="subtitle">Copy Prompt ทั้งหมดนี้ ไปวางใน Gemini (หรือ AI ตัวอื่น) แล้วกด Enter</p>
+            <div class="prompt-container">
+                <div class="master-prompt-box" id="promptTextContainer">
+<span class="prompt-part"><span class="tag tag-r">[บทบาท]</span>คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน Google Apps Script และมีความรู้ด้านเภสัชกรรม</span>
+<span class="prompt-part"><span class="tag tag-c">[บริบท]</span>ฉันกำลังสร้างเครื่องมือใน Google Sheet ที่ชื่อชีทว่า "Drug Summarizer" โดยคอลัมน์ A จะเป็น Drug Name และคอลัมน์ B จะเป็น AI Summary</span>
+<span class="prompt-part"><span class="tag tag-t">[งาน]</span>โปรดเขียนโค้ดที่ทำงานดังนี้:
+1. สร้างเมนูชื่อ "AI Tools" และเมนูย่อย "Summarize Drug Info"
+2. เมื่อคลิกเมนูย่อย ให้ดึงชื่อยาจากเซลล์ A2
+3. สร้าง Prompt ใหม่เพื่อขอข้อมูล "counseling points" ของยานั้นๆ เป็นภาษาไทยไม่เกิน 5 ข้อ
+4. เรียกใช้ Gemini API ด้วย Prompt ใหม่
+5. นำผลลัพธ์ที่ได้ไปใส่ในเซลล์ B2
+6. สร้างฟังก์ชัน `callGeminiAPI` ที่มีตัวแปร `API_KEY` ให้เติมค่าเอง</span>
+<span class="prompt-part"><span class="tag tag-f">[รูปแบบ]</span>ขอเฉพาะโค้ด Apps Script ที่พร้อมใช้งานเท่านั้น</span>
                 </div>
+                <button class="copy-button" id="copyBtn"><i class="fas fa-copy"></i> <span>Copy</span></button>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide25.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide27.html" class="nav-button">ไปดูผลลัพธ์จาก AI</a>
+            <a href="slide27.html" class="nav-button">ขั้นตอนต่อไป</a>
         </div>
     </div>
-
-    <!-- JavaScript ไม่เปลี่ยนแปลง -->
     <script>
-        const copyButton = document.getElementById('copyBtn');
-        const promptTextContainer = document.getElementById('promptTextContainer');
-        copyButton.addEventListener('click', () => {
-            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
-                const copyButtonText = document.getElementById('copyBtnText');
-                copyButton.classList.add('copied');
-                copyButtonText.innerText = 'Copied!';
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const btn = document.getElementById('copyBtn');
+            const text = document.getElementById('promptTextContainer').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.querySelector('span').innerText = 'Copied!';
                 setTimeout(() => {
-                    copyButton.classList.remove('copied');
-                    copyButtonText.innerText = 'Copy';
+                    btn.classList.remove('copied');
+                    btn.querySelector('span').innerText = 'Copy';
                 }, 2000);
             });
         });

@@ -3,85 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 28: Step 3 - Install & Configure</title>
+    <title>Slide 28: Tech Deconstructed</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- นำสไตล์จากสไลด์ 24 มาใช้ซ้ำ -->
+    <!-- Internal CSS for this slide only -->
     <style>
-        .step-container {
-            text-align: center;
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 2rem;
         }
-        .instructions {
-            text-align: left;
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #f8f7fa;
-            padding: 25px;
+
+        .knowledge-card {
+            background-color: #fcfbff;
             border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #f0f0f0;
         }
-        .instructions ol {
-            padding-left: 25px;
-            font-size: 1.15rem;
-            line-height: 1.8;
+
+        .knowledge-card .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-        .instructions li {
-            margin-bottom: 15px;
+
+        .knowledge-card .icon {
+            font-size: 2.5rem;
         }
-        .instructions .important {
-            background-color: #fffbe6;
-            padding: 10px;
-            border-radius: 5px;
-            border-left: 3px solid var(--alert-color);
+        .knowledge-card h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
         }
-        .screenshot-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+
+        .analogy-box {
+            background-color: var(--card-background);
+            border-left: 4px solid;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
         }
-        .screenshot-wrapper img {
-            width: 100%;
-            display: block;
+        .analogy-box p {
+            font-size: 1.05rem;
+            margin: 0;
+        }
+
+        .explanation ul {
+            list-style: none;
+            padding: 0;
+        }
+        .explanation li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .explanation li i {
+            margin-right: 12px;
+            margin-top: 4px;
+        }
+
+        /* Thematic Coloring */
+        .endpoint-card .icon { color: var(--secondary-color); }
+        .endpoint-card h3 { color: var(--secondary-color); }
+        .endpoint-card .analogy-box { border-color: var(--secondary-color); }
+        .endpoint-card .explanation i { color: var(--secondary-color); }
+        
+        .key-card .icon { color: var(--primary-color); }
+        .key-card h3 { color: var(--primary-color); }
+        .key-card .analogy-box { border-color: var(--primary-color); }
+        .key-card .explanation i { color: var(--primary-color); }
+        
+        @media (max-width: 900px) {
+            .knowledge-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Quick Win: Step 4/4 (Installation)</h2>
-            <h1>ติดตั้งและตั้งค่าโค้ด</h1>
-            <p class="subtitle">มาติดตั้งโค้ดที่ AI สร้างให้ลงใน "โรงงาน" (Apps Script) ของเรากันครับ</p>
+            <h1>ไขรหัสเบื้องหลัง: API คืออะไร?</h1>
+            <p class="subtitle">API Key และ API Endpoint ที่เราเพิ่งใช้ไป... มันคืออะไรกันแน่?</p>
 
-            <div class="step-container">
-                <div class="instructions">
-                    <ol>
-                        <li>กลับไปที่หน้าต่าง Apps Script ที่เราเปิดค้างไว้</li>
-                        <li><strong>ลบโค้ดเก่า</strong> (`function myFunction...`) ที่มีอยู่ทิ้งให้หมด</li>
-                        <li><strong>วางโค้ดใหม่</strong> ที่ได้จาก AI ลงไปแทนที่</li>
-                        <li class="important">
-                            <strong>(สำคัญที่สุด!)</strong> หาบรรทัด <code>const API_KEY = "..."</code> แล้วนำ <strong>API Key</strong> ที่เราเก็บไว้มาวางแทนที่ <code>"YOUR_API_KEY_HERE"</code> (ต้องมีเครื่องหมายคำพูดครอบไว้เหมือนเดิม)
-                        </li>
-                        <li>กดที่ไอคอนรูปแผ่นดิสก์ <i class="fas fa-save"></i> <strong>เพื่อ Save Project</strong></li>
-                    </ol>
+            <div class="knowledge-grid">
+                <!-- API Endpoint -->
+                <div class="knowledge-card endpoint-card">
+                    <div class="header">
+                        <i class="fas fa-building icon"></i>
+                        <h3>API Endpoint</h3>
+                    </div>
+                    <div class="analogy-box">
+                        <p><strong>เปรียบเสมือน:</strong> ที่อยู่ของโรงแรม (เช่น Google Hotel)</p>
+                    </div>
+                    <div class="explanation">
+                        <ul>
+                            <li><i class="fas fa-check"></i>คือ "ที่อยู่" บนอินเทอร์เน็ตที่เราต้องส่งคำขอไปหา AI</li>
+                            <li><i class="fas fa-check"></i>เป็นที่อยู่สาธารณะ ใครๆ ก็รู้ได้</li>
+                            <li><i class="fas fa-check"></i>บอกว่าเรากำลังจะไปใช้บริการของใคร (ในที่นี้คือ Gemini)</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="screenshot-wrapper">
-                    <img src="install_code.png" alt="Screenshot showing how to install and configure the Apps Script code">
+                <!-- API Key -->
+                <div class="knowledge-card key-card">
+                    <div class="header">
+                        <i class="fas fa-key icon"></i>
+                        <h3>API Key</h3>
+                    </div>
+                    <div class="analogy-box">
+                        <p><strong>เปรียบเสมือน:</strong> คีย์การ์ดเข้าห้องพักของคุณ</p>
+                    </div>
+                    <div class="explanation">
+                        <ul>
+                            <li><i class="fas fa-check"></i>คือ "รหัสลับ" ที่พิสูจน์ว่าเราเป็นใคร และมีสิทธิ์เข้าใช้บริการ</li>
+                            <li><i class="fas fa-check"></i>เป็นของส่วนตัว ห้ามให้ใครเห็นเด็ดขาด!</li>
+                            <li><i class="fas fa-check"></i>ใช้ยืนยันตัวตนและนับโควต้าการใช้งานของเรา</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide27.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide29.html" an class="nav-button">ไปดูผลลัพธ์กัน!</a>
+            <a href="slide29.html" class="nav-button">ไปทดสอบผลลัพธ์กัน</a>
         </div>
     </div>
-
 </body>
 </html>

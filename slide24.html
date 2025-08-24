@@ -2,81 +2,58 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 24: Step 1 - Prepare Sheet</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Internal CSS for this slide only -->
+    <!-- CSS หลักสำหรับสไลด์ชุดนี้ -->
     <style>
-        .step-container {
-            text-align: center;
-        }
-
-        .instructions {
-            text-align: left;
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: #f8f7fa;
-            padding: 25px;
-            border-radius: 15px;
-        }
-
-        .instructions ol {
-            padding-left: 25px;
-        }
-
-        .instructions li {
-            font-size: 1.15rem;
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
+        .progress-bar { display: flex; gap: 5px; margin-bottom: 1rem; }
+        .progress-segment { flex: 1; height: 6px; border-radius: 3px; background-color: #e0e0e0; transition: background-color 0.5s ease; }
+        .progress-segment.active { background-color: var(--primary-color); }
+        .progress-segment.completed { background-color: var(--primary-dark); }
         
-        .screenshot-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+        .instruction-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center; margin-top: 1.5rem; }
+        .instructions-panel h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--dark-text); font-weight: 500; }
+        .instructions-panel ol { list-style: none; padding: 0; counter-reset: step-counter; }
+        .instructions-panel li { position: relative; padding-left: 40px; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7; }
+        .instructions-panel li::before {
+            counter-increment: step-counter; content: counter(step-counter); position: absolute; left: 0; top: 0;
+            width: 30px; height: 30px; border-radius: 50%; background-color: #34A853; /* Green for Step 1 */
+            color: white; font-weight: 700; text-align: center; line-height: 30px;
         }
-        .screenshot-wrapper img {
-            width: 100%;
-            display: block;
-        }
+        .screenshot-wrapper { border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #ddd; }
+        .screenshot-wrapper img { width: 100%; display: block; }
+        @media (max-width: 900px) { .instruction-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
             <h2>Quick Win: Step 1/4</h2>
-            <h1>เตรียมพิมพ์เขียว (Google Sheets)</h1>
-            <p class="subtitle">มาสร้าง "บ้าน" สำหรับเก็บข้อมูลของเรากันก่อนครับ/ค่ะ ทำตามนี้ได้เลย</p>
-
-            <div class="step-container">
-                <div class="instructions">
+            <div class="progress-bar">
+                <div class="progress-segment active"></div><div class="progress-segment"></div><div class="progress-segment"></div><div class="progress-segment"></div>
+            </div>
+            <h1><i class="fas fa-table-cells" style="color:#34A853;"></i> เตรียมฐานข้อมูล (Google Sheets)</h1>
+            <div class="instruction-layout">
+                <div class="instructions-panel">
+                    <h3>สิ่งที่ต้องทำ:</h3>
                     <ol>
                         <li>เปิด <a href="https://sheets.google.com/create" target="_blank">Google Sheets ใหม่</a></li>
-                        <li>ตั้งชื่อไฟล์ว่า <strong>"AI Pharmacist Tools"</strong></li>
-                        <li>ตั้งชื่อชีทด้านล่างว่า <strong>"Drug Summarizer"</strong></li>
-                        <li>ที่ช่อง A1 พิมพ์ <strong>"Drug Name"</strong> และช่อง B1 พิมพ์ <strong>"AI Summary"</strong></li>
+                        <li>ตั้งชื่อไฟล์ว่า "AI Pharmacist Tools"</li>
+                        <li>ตั้งชื่อชีทว่า "Drug Summarizer"</li>
+                        <li>ตั้งชื่อ A1 "Drug Name" และ B1 "AI Summary"</li>
                     </ol>
                 </div>
-
                 <div class="screenshot-wrapper">
-                    <img src="setup_sheet.png" alt="Screenshot of setting up the Google Sheet">
+                    <img src="images/google-sheet-test.png" alt="Screenshot of setting up the Google Sheet">
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide23.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide25.html" class="nav-button">ขั้นตอนต่อไป</a>
         </div>
     </div>
-
 </body>
 </html>
