@@ -4,28 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 1: Title Slide</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .main-content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; 
+            gap: 40px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .title-section h2 {
+            color: var(--secondary-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .details-section {
+            background-color: #fdfcff; 
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(75, 68, 83, 0.05);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-item .icon {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+            padding-top: 3px;
+        }
+
+        .detail-item .text-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .detail-item .text-content strong {
+            display: block;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+        
+        .detail-item .text-content span {
+            color: var(--light-text);
+            font-weight: 400;
+        }
+        
+        /* Responsive for this specific layout */
+        @media (max-width: 850px) {
+            .main-content-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .details-section {
+                margin-top: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div class="slide-card">
         
         <div class="card-body">
-            <h2>AI-Powered Pharmacist Workshop</h2>
-            <h1>ปลดล็อกพลัง AI ช่วยงานเภสัชกร</h1>
-            <p class="subtitle">
-                สร้าง Web App ตรวจสอบ Medication Error ด้วยภาษาคน โดยไม่ต้องเขียนโค้ดเอง
-            </p>
-            <hr>
-            <p class="speaker-info">
-                <strong>วิทยากร:</strong> [ใส่ชื่อของคุณตรงนี้]<br>
-                <strong>ตำแหน่ง:</strong> [ใส่ตำแหน่งของคุณ]
-            </p>
+
+            <div class="main-content-grid">
+                
+                <!-- Left Column: Title -->
+                <div class="title-section">
+                    <h2>AI-Powered Pharmacist Workshop</h2>
+                    <h1>ปลดล็อกพลัง AI<br>เพื่องานเภสัชกร</h1>
+                    <p class="subtitle">
+                        สร้าง Web App บันทึกและรายงาน Medication Error ได้ง่ายๆ โดยไม่ต้องเขียนโค้ดเองแม้แต่บรรทัดเดียว
+                    </p>
+                </div>
+
+                <!-- Right Column: Details -->
+                <div class="details-section">
+                    <div class="detail-item">
+                        <i class="fas fa-user-tie icon"></i>
+                        <div class="text-content">
+                            <strong>วิทยากร</strong>
+                            <span>ภก. สุรเดช ประถมศักดิ์</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-hospital icon"></i>
+                        <div class="text-content">
+                            <strong>ตำแหน่ง</strong>
+                            <span>เภสัชกรชำนาญการ รพ.สระโบสถ์</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-alt icon"></i>
+                        <div class="text-content">
+                            <strong>วันที่</strong>
+                            <span>24 กันยายน 2568</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
         <div class="card-footer">
             <a href="#" class="nav-button disabled">ย้อนกลับ</a>
-            <a href="slide2.html" class="nav-button">ต่อไป</a>
+            <a href="slide2.html" class="nav-button">เริ่มเลย</a>
         </div>
 
     </div>

@@ -5,47 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 3: About Me</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .about-me-container {
-            display: flex;
+        .slide-card {
+            overflow: hidden; /* Prevent background from leaking out */
+        }
+
+        .about-me-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
             align-items: center;
-            gap: 40px; /* ระยะห่างระหว่างรูปกับข้อความ */
+            gap: 40px;
+            position: relative;
+        }
+
+        .profile-column {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* The "Wow" factor: a colored background panel */
+        .profile-column::before {
+            content: '';
+            position: absolute;
+            top: -60px; /* Pull it outside the card's padding */
+            left: -60px; /* Pull it outside the card's padding */
+            width: 380px;
+            height: calc(100% + 120px);
+            background: linear-gradient(135deg, rgba(132, 94, 194, 0.05), rgba(132, 94, 194, 0.1));
+            border-radius: 20px;
+            z-index: -1;
         }
 
         .profile-picture {
-            flex-shrink: 0; /* ป้องกันไม่ให้รูปถูกบีบ */
-            width: 250px;
-            height: 250px;
-            border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
-            object-fit: cover; /* ทำให้รูปพอดีกับกรอบโดยไม่เสียสัดส่วน */
-            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.3);
-            border: 5px solid #fff;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 8px solid #fff;
+            box-shadow: 0 10px 30px rgba(75, 68, 83, 0.2);
         }
 
-        .bio-text p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .bio-text strong {
+        .info-column h1 {
+            font-size: 2.8rem;
             color: var(--primary-color);
-            font-weight: 500;
+            margin-bottom: 0.25rem;
+            line-height: 1.1;
+        }
+        
+        .info-column .job-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
         }
 
-        /* Responsive for this slide's layout */
-        @media (max-width: 768px) {
-            .about-me-container {
-                flex-direction: column; /* เปลี่ยนเป็นแนวตั้งบนมือถือ */
-                text-align: center;
-                gap: 25px;
-            }
+        .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.7;
+            padding-left: 20px;
+            border-left: 3px solid var(--secondary-color);
+            margin-bottom: 2rem;
+            color: var(--dark-text);
+        }
 
+        .key-highlights {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .key-highlights li {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .key-highlights i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .about-me-layout {
+                grid-template-columns: 1fr; /* Stack vertically */
+                text-align: center;
+            }
+            .profile-column::before {
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                height: 250px;
+            }
             .profile-picture {
                 width: 200px;
                 height: 200px;
+            }
+            .quote {
+                padding: 0 15px;
+                border-left: none;
+                border-top: 3px solid var(--secondary-color);
+                border-bottom: 3px solid var(--secondary-color);
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            .key-highlights li {
+                justify-content: center;
             }
         }
     </style>
@@ -55,24 +134,24 @@
     <div class="slide-card">
         
         <div class="card-body">
-            <h2>Let's Connect! | รู้จักกันก่อน</h2>
-            <h1>วิทยากรก็เป็นเภสัชกรเหมือนกันครับ/ค่ะ</h1>
-            <hr>
+            <div class="about-me-layout">
+                <div class="profile-column">
+                    <img src="/images/profile.jpg" alt="รูปโปรไฟล์วิทยากร สุรเดช ประถมศักดิ์" class="profile-picture">
+                </div>
 
-            <div class="about-me-container">
-                <img src="profile.jpg" alt="รูปโปรไฟล์วิทยากร" class="profile-picture">
-
-                <div class="bio-text">
-                    <p>
-                        สวัสดีครับ/ค่ะทุกคน ผม/ชื่อ <strong>[ชื่อของคุณ]</strong> นะครับ/คะ
-                        ปัจจุบันทำงานเป็น <strong>[ตำแหน่งของคุณ]</strong> ที่ <strong>[สถานที่ทำงานของคุณ]</strong>
+                <div class="info-column">
+                    <h1>สุรเดช ประถมศักดิ์</h1>
+                    <p class="job-title">เภสัชกรชำนาญการ, โรงพยาบาลสระโบสถ์</p>
+                    
+                    <p class="quote">
+                        "ผมไม่ใช่โปรแกรมเมอร์ แต่เป็นเพื่อนเภสัชกรที่เจอเครื่องมือดีๆ แล้วอยากชวนทุกคนมาลองใช้ด้วยกันครับ"
                     </p>
-                    <p>
-                        ผม/ฉันเข้าใจดีถึงความท้าทายที่เราต้องเจอในแต่ละวัน ทั้งเรื่อง Workload, ความซับซ้อนของยา และความเสี่ยงต่างๆ เพราะผม/ฉันก็เจอปัญหาเหล่านั้นเหมือนกับทุกคน
-                    </p>
-                    <p>
-                        วันนี้เลยอยากจะมาแชร์ "เครื่องมือ" ที่ช่วยให้ชีวิตเราง่ายขึ้น ไม่ใช่ในฐานะโปรแกรมเมอร์ แต่ในฐานะ <strong>"เพื่อนเภสัชกร"</strong> ที่เจอทางลัดแล้วอยากชวนทุกคนมาลองใช้ด้วยกันครับ
-                    </p>
+                    
+                    <ul class="key-highlights">
+                        <li><i class="fas fa-user-doctor"></i><span>เข้าใจปัญหาหน้างานจริง เพราะเราเจอเหมือนกัน</span></li>
+                        <li><i class="fas fa-laptop-code"></i><span>หลงใหลในการใช้เทคโนโลยีแก้ปัญหาให้ง่ายขึ้น</span></li>
+                        <li><i class="fas fa-handshake-angle"></i><span>เป้าหมายวันนี้: ทำให้ทุกคนสร้าง App ของตัวเองได้</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -81,7 +160,6 @@
             <a href="slide2.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide4.html" class="nav-button">ต่อไป</a>
         </div>
-
     </div>
 
 </body>

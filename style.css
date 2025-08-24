@@ -1,23 +1,16 @@
-/* ================================================= */
-/*          MAIN THEME STYLESHEET (style.css)        */
-/* ================================================= */
-
-/* --- 1. Import Google Font (Prompt) --- */
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap');
 
-/* --- 2. Define Color Palette using CSS Variables --- */
 :root {
-    --primary-color: #845ec2;      /* ม่วงหลัก */
-    --primary-dark: #6b4a9b;       /* ม่วงเข้ม (สำหรับ hover) */
-    --secondary-color: #ff8066;     /* ส้ม (สำหรับ accent/call to action) */
-    --dark-text: #4b4453;         /* เทาเข้ม (สำหรับข้อความหลัก) */
-    --light-text: #b0a8b9;        /* เทาอ่อน (สำหรับคำบรรยาย) */
-    --alert-color: #c34a36;        /* แดง (เผื่อใช้) */
-    --background-color: #f8f7fa;   /* สีพื้นหลังที่เข้ากับสีม่วง */
+    --primary-color: #845ec2;      
+    --primary-dark: #6b4a9b;       
+    --secondary-color: #ff8066;   
+    --dark-text: #4b4453;      
+    --light-text: #b0a8b9;      
+    --alert-color: #c34a36;        
+    --background-color: #f8f7fa;  
     --card-background: #ffffff;
 }
 
-/* --- 3. Basic Reset & Body Styling --- */
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +28,6 @@ body {
     padding: 20px;
 }
 
-/* --- 4. The Main Slide Card Element --- */
 .slide-card {
     background-color: var(--card-background);
     border-radius: 20px;
@@ -49,14 +41,12 @@ body {
     border: 1px solid #eee;
 }
 
-/* --- 5. Card Content Area --- */
 .card-body {
     flex-grow: 1;
 }
 
-/* --- 6. General Typography --- */
 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
@@ -86,7 +76,6 @@ hr {
     margin: 2.5rem 0;
 }
 
-/* --- 7. Navigation Footer --- */
 .card-footer {
     display: flex;
     justify-content: space-between;
@@ -121,7 +110,6 @@ hr {
     transform: none;
 }
 
-/* --- 8. General Responsive Design --- */
 @media (max-width: 768px) {
     body {
         padding: 10px;
