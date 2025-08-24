@@ -3,58 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 20: AI Warm-up</title>
+    <title>Slide 20: AI Warm-up Activity</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Internal CSS for this slide only (UPDATED) -->
+    <!-- Internal CSS for this slide only -->
     <style>
-        .warmup-container {
+        .activity-container {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .action-box {
-            background-color: #f8f7fa;
-            border: 1px solid #eee;
+            background-color: var(--card-background);
+            border: 2px solid var(--primary-color);
             border-radius: 15px;
             padding: 30px;
             max-width: 800px;
-            margin: 0 auto 2rem auto;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(132, 94, 194, 0.15);
         }
 
         .action-box h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
             color: var(--dark-text);
+            font-weight: 500;
         }
 
-        /* --- Updated Styles for Prompt Box --- */
         .prompt-wrapper {
-            position: relative; /* ทำให้ปุ่ม copy อ้างอิงตำแหน่งจากกรอบนี้ได้ */
+            position: relative; /* ทำให้ปุ่ม copy อ้างอิงตำแหน่งได้ */
         }
 
         .prompt-to-copy {
-            background-color: #e9e0f8; /* ม่วงอ่อน */
-            border: 1px dashed var(--primary-color);
+            background-color: #f9f6ff;
+            border: 2px dashed var(--primary-color);
             padding: 20px;
             border-radius: 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.7;
             text-align: left;
-            padding-right: 80px; 
+            color: var(--dark-text);
+            /* เว้นที่ว่างด้านขวาสำหรับปุ่ม copy */
+            padding-right: 120px;
         }
 
         .prompt-to-copy strong {
+            color: var(--primary-color);
             font-weight: 500;
         }
         
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Prompt', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .copy-button:hover {
+            background-color: var(--primary-dark);
+        }
+        .copy-button.copied {
+            background-color: #20c997; /* Teal color for success */
+        }
+
         .link-buttons-container {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap; /* ให้ปุ่มขึ้นบรรทัดใหม่บนจอเล็ก */
         }
         
         .ai-link-button {
@@ -62,7 +88,7 @@
             background-color: var(--secondary-color);
             color: white;
             padding: 12px 25px;
-            border-radius: 25px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -74,17 +100,14 @@
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Time to Play!</h2>
-            <h1>มาลองคุยกับ AI ครั้งแรก (Warm-up)</h1>
-            <p class="subtitle">เราจะใช้สูตร R-C-T-F ที่เพิ่งเรียนไป มาลองสั่งงาน AI ด้วย Prompt ที่ไม่เกี่ยวกับโค้ดกันก่อน เพื่อให้คุ้นเคยกับ Interface ครับ/ค่ะ</p>
+            <h1>กิจกรรม Warm-up: สั่งงาน AI ครั้งแรก</h1>
+            <p class="subtitle">เราจะใช้สูตร R-C-T-F ที่เพิ่งเรียนไป มาลองสั่งงาน AI ด้วย Prompt ง่ายๆ เพื่อให้คุ้นเคยกับการใช้งานจริง</p>
 
-            <div class="warmup-container">
+            <div class="activity-container">
                 <div class="action-box">
-                    <h3><i class="fas fa-hand-pointer"></i> <u>ขั้นตอน:</u> เปิดเว็บ AI แล้ว Copy Prompt นี้ไปวาง</h3>
+                    <h3><i class="fas fa-rocket"></i> ภารกิจ: Copy Prompt นี้ไปวางใน AI</h3>
                     
                     <div class="prompt-wrapper">
                         <div class="prompt-to-copy" id="promptTextContainer">
@@ -92,6 +115,7 @@
                             ช่วยสรุป DDI ระหว่าง Warfarin กับ Aspirin เพื่อให้คำแนะนำผู้ป่วยสูงอายุด้วยภาษาที่เข้าใจง่ายที่สุด
                             <strong>โดยให้ตอบเป็น 3 ข้อสั้นๆ</strong>
                         </div>
+                        <button class="copy-button" id="copyBtn"><i class="fas fa-copy"></i> Copy</button>
                     </div>
 
                     <div class="link-buttons-container">
@@ -108,5 +132,27 @@
         </div>
     </div>
    
+    <!-- JavaScript สำหรับปุ่ม Copy -->
+    <script>
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+
+        copyButton.addEventListener('click', () => {
+            // ใช้ API ของเบราว์เซอร์ในการ copy ข้อความ
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                // ถ้า copy สำเร็จ
+                copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyButton.classList.add('copied');
+
+                // เปลี่ยนกลับเป็นเหมือนเดิมใน 2 วินาที
+                setTimeout(() => {
+                    copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                    copyButton.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    </script>
 </body>
 </html>
