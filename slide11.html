@@ -5,118 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 11: Mindset Shift</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .mindset-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
+        .card-body { text-align: center; }
+
+        .mindset-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; /* From | Arrow | To */
+            align-items: stretch; /* ทำให้ panel สูงเท่ากัน */
+            gap: 20px;
             margin-top: 2rem;
         }
 
-        .mindset-panel {
-            flex: 1;
-            text-align: center;
-            padding: 30px;
+        .panel {
+            background-color: #f8f7fa;
+            border: 1px solid #eee;
             border-radius: 15px;
-            border: 2px solid #eee;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .panel .icon-wrapper {
+            flex-shrink: 0;
+            font-size: 2.5rem;
         }
 
-        .mindset-panel .icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .mindset-panel h3 {
-            font-size: 1.5rem;
+        .panel .text-wrapper h3 {
+            text-align: left;
+            font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin: 0 0 5px 0;
         }
 
-        .mindset-panel p {
-            font-size: 1.1rem;
+        .panel .text-wrapper p {
+            text-align: left;
+            font-size: 0.95rem;
             line-height: 1.6;
-            opacity: 0.8;
+            margin: 0;
         }
 
-        /* "From" panel styling */
-        .panel-from .icon {
-            color: var(--alert-color);
+        /* Styling for "From" panel */
+        .panel.from {
+            color: var(--light-text);
         }
-        .panel-from h3 {
-            color: var(--alert-color);
+        .panel.from .icon-wrapper {
+            color: var(--light-text);
         }
-
-        /* "To" panel styling */
-        .panel-to {
-            border-color: var(--primary-color);
-            background-color: #f9f6ff; /* สีม่วงอ่อนมากๆ */
+        
+        /* Styling for "To" panel (The new mindset) */
+        .panel.to {
+            background-color: #f9f6ff;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.1);
         }
-        .panel-to .icon {
+        .panel.to .icon-wrapper {
             color: var(--primary-color);
         }
-        .panel-to h3 {
+        .panel.to h3 {
             color: var(--primary-color);
         }
+        .panel.to p {
+            color: var(--dark-text);
+        }
 
-        .arrow-icon {
-            font-size: 4rem;
+        .arrow-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow-separator i {
+            font-size: 3rem;
             color: var(--light-text);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .mindset-container {
-                flex-direction: column;
-                gap: 20px;
+        @media (max-width: 900px) {
+            .mindset-comparison {
+                grid-template-columns: 1fr;
             }
-            .arrow-icon {
-                transform: rotate(90deg); /* เปลี่ยนลูกศรเป็นชี้ลง */
+            .arrow-separator i {
+                transform: rotate(90deg);
+                margin: 15px 0;
             }
         }
     </style>
-
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Module 1: The New Mindset</h2>
-            <h1>Mindset Shift: เปลี่ยนมุมมอง</h1>
-            <p class="subtitle">หัวใจสำคัญของวันนี้ ไม่ใช่การ "เขียนโค้ด" แต่คือการ "สื่อสาร" ให้ AI เข้าใจเป้าหมายของเรา</p>
+            <h2>Module 1: New Mindset & Prompting</h2>
+            <h1>เปลี่ยนบทบาท: จากผู้สร้าง สู่ผู้กำกับ</h1>
+            <p class="subtitle">เราไม่ได้มาเรียนเขียนโค้ด แต่มาเรียนวิธี "สั่งงาน" ให้โปรแกรมเมอร์ที่เก่งที่สุด<br>ทำงานให้เรา... นั่นก็คือ AI</p>
 
-            <div class="mindset-container">
-                <!-- From Panel -->
-                <div class="mindset-panel panel-from">
-                    <div class="icon"><i class="fas fa-file-code"></i></div>
-                    <h3>จาก: คนเขียนโค้ด</h3>
-                    <p>ต้องจำ Syntax<br>ต้อง Debug เอง<br>ใช้เวลานาน</p>
+            <div class="mindset-comparison">
+                <!-- FROM Panel -->
+                <div class="panel from">
+                    <div class="icon-wrapper"><i class="fas fa-keyboard"></i></div>
+                    <div class="text-wrapper">
+                        <h3>แบบเดิม: ผู้สร้าง</h3>
+                        <p>ต้องลงมือเขียนโค้ดเองทั้งหมด ใช้เวลา และต้องมีความรู้ทางเทคนิค</p>
+                    </div>
                 </div>
 
-                <div class="arrow-icon">
-                    <i class="fas fa-long-arrow-alt-right"></i>
+                <!-- Arrow -->
+                <div class="arrow-separator">
+                    <i class="fas fa-arrow-right-long"></i>
                 </div>
 
-                <!-- To Panel -->
-                <div class="mindset-panel panel-to">
-                    <div class="icon"><i class="fas fa-comments"></i></div>
-                    <h3>สู่: คนสั่งงาน (Prompter)</h3>
-                    <p>ใช้ภาษาคน<br>ให้ AI ช่วยแก้<br>ได้ผลลัพธ์เร็ว</p>
+                <!-- TO Panel -->
+                <div class="panel to">
+                    <div class="icon-wrapper"><i class="fas fa-user-tie"></i></div>
+                    <div class="text-wrapper">
+                        <h3>แบบใหม่: ผู้กำกับ</h3>
+                        <p>กำหนดเป้าหมายที่ชัดเจน และสั่งการ AI ซึ่งเป็นผู้สร้างให้ทำงานแทน</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="card-footer">
             <a href="slide10.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide12.html" class="nav-button">ต่อไป</a>
+            <a href="slide12.html" class="nav-button">หลักการสั่งงาน AI</a>
         </div>
-
     </div>
-
 </body>
 </html>

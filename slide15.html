@@ -5,67 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 15: C is for Context</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- นำ Internal CSS จากสไลด์ 14 มาใช้ซ้ำ (โครงสร้างเหมือนกัน) -->
     <style>
-        .comparison-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 2rem; }
-        .prompt-example { border-radius: 15px; padding: 25px; display: flex; flex-direction: column; }
-        .prompt-example h3 { font-size: 1.3rem; margin: 0 0 15px 0; display: flex; align-items: center; }
-        .prompt-example h3 i { margin-right: 10px; font-size: 1.5rem; }
-        .prompt-box { background-color: #f0f0f0; padding: 15px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 1rem; color: #333; margin-bottom: 15px; white-space: pre-wrap; word-wrap: break-word; }
-        .result-box { background-color: #f8f7fa; border: 1px solid #eee; padding: 15px; border-radius: 8px; flex-grow: 1; }
-        .result-box p { font-size: 1rem; line-height: 1.6; }
-        .bad-example { border: 2px solid #e0e0e0; }
-        .bad-example h3 { color: var(--alert-color); }
-        .good-example { border: 2px solid var(--primary-color); background-color: #f9f6ff; }
-        .good-example h3 { color: var(--primary-color); }
-        .good-example .prompt-box { background-color: #e9e0f8; }
-        .good-example strong { background-color: #d5c3f5; padding: 2px 4px; border-radius: 4px; }
-        @media (max-width: 768px) { .comparison-container { grid-template-columns: 1fr; } }
+        .breakdown-header { position: relative; }
+        .breakdown-header h1 {
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .breakdown-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .prompt-evolution-container { margin-top: 1.5rem; }
+        .prompt-editor {
+            background-color: #2d2d2d;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            color: #e0e0e0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .prompt-line { display: flex; align-items: flex-start; margin-bottom: 10px; }
+        .prompt-line:last-child { margin-bottom: 0; }
+        .prompt-line i { margin-right: 15px; font-size: 1.2rem; line-height: 1.6; }
+        .prompt-line.before { color: #ff8a80; } /* Reddish */
+        .prompt-line.after { color: #b9f6ca; } /* Greenish */
+        .prompt-line .highlight {
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .result-panel {
+            border: 1px solid;
+            padding: 20px;
+            border-radius: 0 0 12px 12px;
+        }
+        .result-panel h3 { display: flex; align-items: center; margin: 0 0 10px 0; }
+        .result-panel h3 i { margin-right: 10px; font-size: 1.5rem; }
+        .result-panel p { margin: 0; font-size: 1rem; line-height: 1.6; }
+        @media (max-width: 768px) { .prompt-editor { font-size: 0.9rem; } }
+
+        /* --- THEME FOR C: CONTEXT --- */
+        .theme-context h1::after { background-color: var(--secondary-color); }
+        .theme-context .highlight { background-color: rgba(255, 128, 102, 0.4); }
+        .theme-context .result-panel { background-color: #fff8f6; border-color: #ffe8e2; }
+        .theme-context .result-panel h3 { color: var(--secondary-color); }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
         <div class="card-body">
-            <h2>R-C-T-F Breakdown</h2>
-            <h1>"C" is for Context (บริบท)</h1>
-            <p class="subtitle">ให้ข้อมูลเบื้องหลังที่จำเป็น เพื่อให้ AI ไม่ต้อง "เดา" และให้คำตอบได้ตรงประเด็น</p>
-
-            <div class="comparison-container">
-                <!-- Bad Example -->
-                <div class="prompt-example bad-example">
-                    <h3><i class="fas fa-times-circle"></i> แบบทั่วไป (ไม่มีบริบท)</h3>
-                    <div class="prompt-box">"Act as a Google Apps Script expert. Write a function to check for errors."</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่อาจได้:</strong><br>
-                        AI อาจจะสร้างฟังก์ชันกว้างๆ ที่ใช้ตรวจสอบ error ทั่วไปในโค้ด ซึ่งไม่เกี่ยวกับงานของเราเลย<br><br>
-                        <em>(ทำงานได้ แต่ไม่ตรงกับที่เราต้องการ)</em>
-                        </p>
+            <div class="breakdown-header theme-context">
+                <h2>R-C-T-F Breakdown</h2>
+                <h1>"C" is for Context (บริบท)</h1>
+                <p class="subtitle">ให้ข้อมูลเบื้องหลังที่จำเป็น เพื่อให้ AI ไม่ต้อง "เดา" และทำงานได้ตรงเป้า</p>
+            </div>
+            <div class="prompt-evolution-container">
+                <div class="prompt-editor">
+                    <div class="prompt-line before">
+                        <i class="fas fa-minus-circle"></i>
+                        <span>"ในฐานะผู้เชี่ยวชาญ Google Apps Script, ช่วยเขียนฟังก์ชันสำหรับตรวจสอบข้อผิดพลาด"</span>
+                    </div>
+                    <div class="prompt-line after">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>"ในฐานะผู้เชี่ยวชาญ Google Apps Script, <span class="highlight">ฉันเป็นเภสัชกรกำลังสร้างเว็บแอปเพื่อลดความคลาดเคลื่อนทางยา โดยในแอปจะมีช่องให้กรอกข้อมูลยาและมีปุ่มกด</span> ช่วยเขียนฟังก์ชันสำหรับตรวจสอบข้อผิดพลาด"</span>
                     </div>
                 </div>
-
-                <!-- Good Example -->
-                <div class="prompt-example good-example">
-                    <h3><i class="fas fa-check-circle"></i> แบบให้บริบท</h3>
-                    <div class="prompt-box">"Act as a Google Apps Script expert. <strong>I am a pharmacist building a web app to reduce medication errors. The app has a textarea for prescription input and a button.</strong> Write a function to check for errors."</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่ดีขึ้น:</strong><br>
-                        AI จะเข้าใจทันทีว่า "errors" ในที่นี้หมายถึง "medication errors" และอาจจะสร้างฟังก์ชันชื่อ `checkForMedicationErrors(prescriptionText)` ที่พร้อมรับข้อมูลจาก textarea มาวิเคราะห์ต่อ<br><br>
-                        <em>(ตรงเป้าหมาย และช่วยให้เราทำงานต่อได้เร็วขึ้นมาก)</em>
-                        </p>
-                    </div>
+                <div class="result-panel">
+                    <h3><i class="fas fa-bullseye"></i> ผลลัพธ์ที่ตรงเป้าขึ้น</h3>
+                    <p>AI จะเข้าใจทันทีว่า "ข้อผิดพลาด" คือ "ความคลาดเคลื่อนทางยา" และจะสร้างโค้ดที่เกี่ยวข้องกับงานของเราโดยตรง เช่น ฟังก์ชันชื่อ `checkForMedicationErrors()`</p>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
-            <a href="slide14.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide16.html" class="nav-button">ต่อไป</a>
+            <a href="slide14.html" class="nav-button">ย้อนกลับ (R)</a>
+            <a href="slide16.html" class="nav-button">ต่อไป (T)</a>
         </div>
     </div>
-
 </body>
 </html>

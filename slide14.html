@@ -5,137 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 14: R is for Role</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Internal CSS for this slide only -->
     <style>
-        .comparison-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 2rem;
+        .breakdown-header {
+            position: relative;
         }
-
-        .prompt-example {
-            border-radius: 15px;
-            padding: 25px;
+        .breakdown-header h1 {
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .breakdown-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .prompt-evolution-container {
+            margin-top: 1.5rem;
+        }
+        .prompt-editor {
+            background-color: #2d2d2d;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            color: #e0e0e0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .prompt-line {
             display: flex;
-            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 10px;
         }
-
-        .prompt-example h3 {
-            font-size: 1.3rem;
-            margin: 0 0 15px 0;
+        .prompt-line:last-child {
+            margin-bottom: 0;
+        }
+        .prompt-line i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .prompt-line.before {
+            color: #ff8a80; /* Reddish */
+        }
+        .prompt-line.after {
+            color: #b9f6ca; /* Greenish */
+        }
+        .prompt-line .highlight {
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .result-panel {
+            border: 1px solid;
+            padding: 20px;
+            border-radius: 0 0 12px 12px;
+        }
+        .result-panel h3 {
             display: flex;
             align-items: center;
+            margin: 0 0 10px 0;
         }
-        
-        .prompt-example h3 i {
+        .result-panel h3 i {
             margin-right: 10px;
             font-size: 1.5rem;
         }
-
-        .prompt-box {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 15px;
-            white-space: pre-wrap; /* ให้ตัดคำขึ้นบรรทัดใหม่ */
-            word-wrap: break-word;
-        }
-
-        .result-box {
-            background-color: #f8f7fa;
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 8px;
-            flex-grow: 1; /* ทำให้กล่องผลลัพธ์สูงเท่ากัน */
-        }
-        
-        .result-box p {
+        .result-panel p {
+            margin: 0;
             font-size: 1rem;
             line-height: 1.6;
         }
-
-        /* "Bad" example styling */
-        .bad-example {
-            border: 2px solid #e0e0e0;
-        }
-        .bad-example h3 {
-            color: var(--alert-color);
-        }
-
-        /* "Good" example styling */
-        .good-example {
-            border: 2px solid var(--primary-color);
-            background-color: #f9f6ff;
-        }
-        .good-example h3 {
-            color: var(--primary-color);
-        }
-        .good-example .prompt-box {
-            background-color: #e9e0f8;
-        }
-        .good-example strong {
-            background-color: #d5c3f5;
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-        
-        /* Responsive */
         @media (max-width: 768px) {
-            .comparison-container {
-                grid-template-columns: 1fr;
+            .prompt-editor {
+                font-size: 0.9rem;
             }
+        }
+
+        /* --- THEME FOR R: ROLE --- */
+        .theme-role h1::after {
+            background-color: var(--primary-color);
+        }
+        .theme-role .highlight {
+            background-color: rgba(132, 94, 194, 0.4);
+        }
+        .theme-role .result-panel {
+            background-color: #f9f6ff;
+            border-color: #e9e0f8;
+        }
+        .theme-role .result-panel h3 {
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
         <div class="card-body">
-            <h2>R-C-T-F Breakdown</h2>
-            <h1>"R" is for Role (บทบาท)</h1>
-            <p class="subtitle">เริ่มต้นด้วยการบอก AI ว่า <strong>"คุณคือใคร"</strong> เพื่อปลดล็อกความสามารถขั้นสูงของเขา</p>
-
-            <div class="comparison-container">
-                <!-- Bad Example -->
-                <div class="prompt-example bad-example">
-                    <h3><i class="fas fa-times-circle"></i> แบบทั่วไป (ไม่มีบทบาท)</h3>
-                    <div class="prompt-box">"สรุป DDI ระหว่าง Warfarin กับ Aspirin"</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่อาจได้:</strong><br>
-                        "Warfarin และ Aspirin เป็นยาสลายลิ่มเลือดทั้งคู่ การใช้ร่วมกันจะเพิ่มความเสี่ยงเลือดออก..."<br><br>
-                        <em>(คำตอบถูกต้อง แต่เป็นเชิงวิชาการทั่วไป)</em>
-                        </p>
+            <div class="breakdown-header theme-role">
+                <h2>R-C-T-F Breakdown</h2>
+                <h1>"R" is for Role (บทบาท)</h1>
+                <p class="subtitle">เริ่มต้นด้วยการ "สวมบทบาท" ให้ AI เพื่อปลดล็อกความสามารถขั้นสูง</p>
+            </div>
+            
+            <div class="prompt-evolution-container">
+                <div class="prompt-editor">
+                    <div class="prompt-line before">
+                        <i class="fas fa-minus-circle"></i>
+                        <span>"สรุป DDI ระหว่าง Warfarin กับ Aspirin"</span>
+                    </div>
+                    <div class="prompt-line after">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>"<span class="highlight">ในฐานะเภสัชกรชุมชนผู้เชี่ยวชาญ</span> ช่วยสรุป DDI ระหว่าง Warfarin กับ Aspirin เพื่อให้คำแนะนำผู้ป่วยสูงอายุด้วยภาษาที่เข้าใจง่ายที่สุด 3 ข้อ"</span>
                     </div>
                 </div>
-
-                <!-- Good Example -->
-                <div class="prompt-example good-example">
-                    <h3><i class="fas fa-check-circle"></i> แบบกำหนดบทบาท</h3>
-                    <div class="prompt-box">"<strong>ในฐานะเภสัชกรชุมชนผู้เชี่ยวชาญ</strong> ช่วยสรุป DDI ระหว่าง Warfarin กับ Aspirin เพื่อให้คำแนะนำผู้ป่วยสูงอายุด้วยภาษาที่เข้าใจง่ายที่สุด 3 ข้อ"</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่ดีขึ้น:</strong><br>
-                        "คุณลุงครับ ยาสองตัวนี้ห้ามทานด้วยกันนะครับ เพราะว่า:<br>
-                        1. <strong>เลือดจะออกง่ายขึ้นเยอะเลย:</strong> อาจมีจ้ำเลือดตามตัว หรือเลือดหยุดยาก<br>
-                        2. <strong>อาจมีเลือดออกในท้อง:</strong> ทำให้ปวดท้องหรืออุจจาระเป็นสีดำได้<br>
-                        3. <strong>ต้องแจ้งหมอทุกครั้ง:</strong> ถ้าไปหาหมอที่อื่น ต้องบอกท่านเสมอว่าทานยา Warfarin อยู่นะครับ"
-                        </p>
-                    </div>
+                <div class="result-panel">
+                    <h3><i class="fas fa-wand-magic-sparkles"></i> ผลลัพธ์ที่ดีขึ้น</h3>
+                    <p>AI จะเปลี่ยนจากการให้ข้อมูลวิชาการทั่วไป มาเป็นการให้คำแนะนำที่เน้นผู้ป่วยเป็นศูนย์กลาง ใช้ภาษาที่เข้าใจง่าย และจัดลำดับความสำคัญตามที่เราสั่ง</p>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide13.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide15.html" class="nav-button">ต่อไป</a>
+            <a href="slide15.html" class="nav-button">ต่อไป (C)</a>
         </div>
     </div>
-
 </body>
-</html> 
+</html>

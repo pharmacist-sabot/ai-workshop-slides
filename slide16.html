@@ -5,75 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 16: T is for Task</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- นำ Internal CSS จากสไลด์ 14 มาใช้ซ้ำ (โครงสร้างเหมือนกัน) -->
     <style>
-        .comparison-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 2rem; }
-        .prompt-example { border-radius: 15px; padding: 25px; display: flex; flex-direction: column; }
-        .prompt-example h3 { font-size: 1.3rem; margin: 0 0 15px 0; display: flex; align-items: center; }
-        .prompt-example h3 i { margin-right: 10px; font-size: 1.5rem; }
-        .prompt-box { background-color: #f0f0f0; padding: 15px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 1rem; color: #333; margin-bottom: 15px; white-space: pre-wrap; word-wrap: break-word; }
-        .result-box { background-color: #f8f7fa; border: 1px solid #eee; padding: 15px; border-radius: 8px; flex-grow: 1; }
-        .result-box p { font-size: 1rem; line-height: 1.6; }
-        .bad-example { border: 2px solid #e0e0e0; }
-        .bad-example h3 { color: var(--alert-color); }
-        .good-example { border: 2px solid var(--primary-color); background-color: #f9f6ff; }
-        .good-example h3 { color: var(--primary-color); }
-        .good-example .prompt-box { background-color: #e9e0f8; }
-        .good-example strong { background-color: #d5c3f5; padding: 2px 4px; border-radius: 4px; }
-        @media (max-width: 768px) { .comparison-container { grid-template-columns: 1fr; } }
+        .breakdown-header { position: relative; }
+        .breakdown-header h1 {
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        .breakdown-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            border-radius: 2px;
+        }
+        .prompt-evolution-container { margin-top: 1.5rem; }
+        .prompt-editor {
+            background-color: #2d2d2d;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            color: #e0e0e0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .prompt-line { display: flex; align-items: flex-start; margin-bottom: 10px; }
+        .prompt-line:last-child { margin-bottom: 0; }
+        .prompt-line i { margin-right: 15px; font-size: 1.2rem; line-height: 1.6; }
+        .prompt-line.before { color: #ff8a80; } /* Reddish */
+        .prompt-line.after { color: #b9f6ca; } /* Greenish */
+        .prompt-line .highlight {
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fff;
+        }
+        .result-panel {
+            border: 1px solid;
+            padding: 20px;
+            border-radius: 0 0 12px 12px;
+        }
+        .result-panel h3 { display: flex; align-items: center; margin: 0 0 10px 0; }
+        .result-panel h3 i { margin-right: 10px; font-size: 1.5rem; }
+        .result-panel p { margin: 0; font-size: 1rem; line-height: 1.6; }
+        @media (max-width: 768px) { .prompt-editor { font-size: 0.9rem; } }
+
+        /* --- THEME FOR T: TASK --- */
+        .theme-task h1::after { background-color: #20c997; }
+        .theme-task .highlight { background-color: rgba(32, 201, 151, 0.4); }
+        .theme-task .result-panel { background-color: #f2fffa; border-color: #d6f5eb; }
+        .theme-task .result-panel h3 { color: #20c997; }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
         <div class="card-body">
-            <h2>R-C-T-F Breakdown</h2>
-            <h1>"T" is for Task (งาน)</h1>
-            <p class="subtitle">สั่งงานให้ชัดเจนเหมือนสอนงานน้องใหม่ ยิ่งบอกเป็นขั้นตอน ยิ่งได้ผลลัพธ์ที่ตรงใจ</p>
-
-            <div class="comparison-container">
-                <!-- Bad Example -->
-                <div class="prompt-example bad-example">
-                    <h3><i class="fas fa-times-circle"></i> แบบคลุมเครือ</h3>
-                    <div class="prompt-box">"วิเคราะห์ใบสั่งยานี้: 'Amoxicillin 500mg 1 cap tid pc'"</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่อาจได้:</strong><br>
-                        "Amoxicillin 500mg คือยาปฏิชีวนะ รับประทานครั้งละ 1 แคปซูล 3 เวลาหลังอาหาร"<br><br>
-                        <em>(AI แค่ "อธิบาย" แต่ไม่ได้ "วิเคราะห์" ตามที่เราต้องการ)</em>
-                        </p>
+            <div class="breakdown-header theme-task">
+                <h2>R-C-T-F Breakdown</h2>
+                <h1>"T" is for Task (งาน)</h1>
+                <p class="subtitle">สั่งงานให้ชัดเจนเหมือนสอนงานน้องใหม่ ยิ่งบอกเป็นขั้นตอน ยิ่งได้ผลลัพธ์ที่ตรงใจ</p>
+            </div>
+            <div class="prompt-evolution-container">
+                <div class="prompt-editor">
+                    <div class="prompt-line before">
+                        <i class="fas fa-minus-circle"></i>
+                        <span>"วิเคราะห์ใบสั่งยานี้: 'Amoxicillin 500mg 1 cap tid pc'"</span>
+                    </div>
+                    <div class="prompt-line after">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>"วิเคราะห์ใบสั่งยานี้: 'Amoxicillin 500mg 1 cap tid pc' <span class="highlight">โดยให้ตรวจสอบ 3 ประเด็น: 1. ขนาดยาเหมาะสมหรือไม่, 2. ข้อบ่งใช้, 3. คำแนะนำผู้ป่วย</span>"</span>
                     </div>
                 </div>
-
-                <!-- Good Example -->
-                <div class="prompt-example good-example">
-                    <h3><i class="fas fa-check-circle"></i> แบบระบุ Task ชัดเจน</h3>
-                    <div class="prompt-box">"วิเคราะห์ใบสั่งยานี้: 'Amoxicillin 500mg 1 cap tid pc'
-                    
-<strong>โดยให้ตรวจสอบในประเด็นต่อไปนี้:
-1. Dosing: ขนาดยาเหมาะสมหรือไม่
-2. Indication: ยานี้มักใช้รักษาโรคอะไร
-3. Counseling: มีคำแนะนำอะไรที่ต้องบอกผู้ป่วยบ้าง</strong>"</div>
-                    <div class="result-box">
-                        <p><strong>ผลลัพธ์ที่ดีขึ้น:</strong><br>
-                        <strong>1. Dosing:</strong> เหมาะสม (เป็น standard dose สำหรับผู้ใหญ่)
-                        <br>
-                        <strong>2. Indication:</strong> ใช้รักษาการติดเชื้อแบคทีเรีย เช่น คออักเสบ, ทอนซิลอักเสบ
-                        <br>
-                        <strong>3. Counseling:</strong> ต้องทานยาให้ครบตามแพทย์สั่งแม้ว่าอาการจะดีขึ้นแล้ว เพื่อป้องกันเชื้อดื้อยา และอาจทำให้ถ่ายเหลวได้
-                        </p>
-                    </div>
+                <div class="result-panel">
+                    <h3><i class="fas fa-list-check"></i> ผลลัพธ์ที่เป็นระบบ</h3>
+                    <p>AI จะเลิก "อธิบาย" แต่จะ "วิเคราะห์" ตามหัวข้อที่เราสั่ง ทำให้ได้คำตอบที่เป็นโครงสร้าง ชัดเจน และนำไปใช้งานได้จริง</p>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
-            <a href="slide15.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide17.html" class="nav-button">ต่อไป</a>
+            <a href="slide15.html" class="nav-button">ย้อนกลับ (C)</a>
+            <a href="slide17.html" class="nav-button">ต่อไป (F)</a>
         </div>
     </div>
-
 </body>
 </html>

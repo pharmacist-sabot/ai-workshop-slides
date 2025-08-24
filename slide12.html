@@ -5,113 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 12: What is a Prompt?</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .concept-container {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .definition-box {
-            background-color: #f9f6ff; /* สีม่วงอ่อน */
-            border-left: 5px solid var(--primary-color);
+        .chat-simulation-container {
+            background: linear-gradient(135deg, #f7f5fb, #fbfafd);
+            border-radius: 20px;
             padding: 30px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            margin-top: 2rem;
+            border: 1px solid #eee;
+            box-shadow: 0 8px 30px rgba(75, 68, 83, 0.08);
         }
 
-        .definition-box .term {
-            font-size: 2.5rem;
+        .chat-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        .chat-row:last-child { margin-bottom: 0; }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .avatar.user { background-color: var(--primary-color); }
+        .avatar.ai { background: linear-gradient(45deg, var(--secondary-color), #ffb38a); }
+
+        .chat-bubble {
+            background-color: var(--card-background);
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+            max-width: 80%;
+        }
+
+        .chat-bubble.user-bubble { border-top-left-radius: 0; }
+        .chat-bubble.ai-bubble { border-top-left-radius: 0; }
+
+        .chat-bubble h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .chat-bubble p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 0;
+            color: var(--dark-text);
+        }
+        
+        .chat-bubble strong { color: var(--primary-color); }
+        .prompt-label {
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--primary-color);
-        }
-
-        .definition-box .pronunciation {
-            font-size: 1.2rem;
-            color: var(--dark-text);
-            opacity: 0.7;
-            margin-bottom: 15px;
-        }
-
-        .definition-box p {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: var(--dark-text);
-            font-weight: 400;
-        }
-
-        .analogy-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
         }
         
-        .analogy-icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
+        .final-takeaway {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1.2rem;
+            color: var(--dark-text);
         }
 
-        .analogy-text {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        
-        /* Responsive */
         @media (max-width: 768px) {
-            .definition-box .term {
-                font-size: 2rem;
-            }
-            .definition-box p {
-                font-size: 1.1rem;
-            }
+            .chat-row { flex-direction: column; align-items: center; text-align: center; }
+            .avatar { margin-right: 0; margin-bottom: 10px; }
+            .chat-bubble { max-width: 100%; }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>The Core Concept</h2>
-            <h1>หัวใจของการสื่อสาร: "Prompt" คืออะไร?</h1>
-            
-            <div class="concept-container">
-                <div class="definition-box">
-                    <div class="term">Prompt</div>
-                    <div class="pronunciation">(พรอมต์)</div>
-                    <p>
-                        คือ <strong>"ชุดคำสั่ง"</strong> ที่เราใช้สื่อสารกับ AI ด้วยภาษาคน<br>เพื่อให้ AI สร้างผลลัพธ์ตามที่เราต้องการ
-                    </p>
+            <h1>หัวใจของการสั่งงาน: "Prompt" คืออะไร?</h1>
+            <p class="subtitle">คิดซะว่าเรากำลัง "แชท" กับผู้ช่วยที่ฉลาดที่สุดในโลก และนี่คือวิธีที่เราจะคุยกับเขา</p>
+
+            <div class="chat-simulation-container">
+                <!-- User's Prompt -->
+                <div class="chat-row">
+                    <div class="avatar user"><i class="fas fa-user-tie"></i></div>
+                    <div class="chat-bubble user-bubble">
+                        <div class="prompt-label">Prompt (พรอมต์)</div>
+                        <p>
+                            คือ <strong>ชุดคำสั่ง</strong> ที่เรา (ผู้กำกับ) ป้อนให้ AI ด้วยภาษาคน<br>เปรียบเสมือน "การเขียนใบสั่งยา" ที่ต้องชัดเจนและครบถ้วน
+                        </p>
+                    </div>
                 </div>
 
-                <div class="analogy-section">
-                    <div class="analogy-text">มันก็เหมือนกับ...</div>
-                    <div class="analogy-icon"><i class="fas fa-magic"></i></div>
-                    <div class="analogy-text"><strong>"การร่ายมนตร์"</strong></div>
-                    <div class="analogy-icon"><i class="fas fa-file-prescription"></i></div>
-                    <div class="analogy-text"><strong>"การเขียนใบสั่งยา"</strong></div>
+                <!-- AI's Response -->
+                <div class="chat-row">
+                    <div class="avatar ai"><i class="fas fa-robot"></i></div>
+                    <div class="chat-bubble ai-bubble">
+                        <h3>Output (ผลลัพธ์)</h3>
+                        <p>
+                            คือ <strong>ผลงาน</strong> ที่ AI (ผู้สร้าง) สร้างขึ้นตามคำสั่งใน Prompt ของเรา
+                        </p>
+                    </div>
                 </div>
-
-                <p class="subtitle" style="margin-top: 2rem;">
-                    ยิ่งเราเขียนละเอียดและชัดเจนเท่าไหร่ ผลลัพธ์ที่ได้ก็ยิ่งแม่นยำและน่าทึ่งมากเท่านั้น!
-                </p>
             </div>
-
         </div>
 
         <div class="card-footer">
             <a href="slide11.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide13.html" class="nav-button">ต่อไป</a>
+            <a href="slide13.html" class="nav-button">ส่วนประกอบของ Prompt</a>
         </div>
-
     </div>
-
 </body>
 </html>
