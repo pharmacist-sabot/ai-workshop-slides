@@ -5,121 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 6: Our Tools</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 2.5rem;
+        .process-flow {
+            display: flex;
+            align-items: stretch; /* Make cards have same height */
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+            width: 100%;
         }
 
         .tool-card {
-            background-color: var(--card-background);
+            flex: 1; /* Distribute space evenly */
+            background: linear-gradient(180deg, var(--card-background) 90%, #f9f8fc 100%);
             border-radius: 15px;
-            padding: 30px 25px;
+            padding: 25px;
             text-align: center;
             border: 1px solid #eee;
-            position: relative;
-            overflow: hidden; /* สำหรับ background effect */
+            box-shadow: 0 5px 15px rgba(75, 68, 83, 0.04);
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .tool-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px V30px rgba(75, 68, 83, 0.1);
-        }
-        
-        .tool-card .logo-container {
-            height: 80px; /* กำหนดความสูงเพื่อให้โลโก้อยู่ระดับเดียวกัน */
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 12px 30px rgba(75, 68, 83, 0.1);
         }
 
-        .tool-card img {
-            max-height: 60px;
-            max-width: 150px;
+        .icon-container {
+            font-size: 3rem;
+            margin-bottom: 15px;
         }
+        /* Specific Icon Colors */
+        .icon-sheets { color: #188038; } /* Google Green */
+        .icon-script { color: #4285F4; } /* Google Blue */
+        .icon-ai { color: var(--primary-color); } /* Our Theme Purple */
         
-        /* สไตล์สำหรับโลโก้ Apps Script ที่เป็น Font Icon */
-        .tool-card .icon-logo {
-            font-size: 50px;
-            color: #4285F4; /* Google Blue */
-        }
-
         .tool-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 500;
             color: var(--dark-text);
             margin-bottom: 10px;
         }
 
         .tool-card .role {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            color: var(--primary-color); /* สีม่วง */
+            color: #fff;
+            background-color: var(--secondary-color);
+            padding: 5px 12px;
+            border-radius: 50px;
+            display: inline-block;
             margin-bottom: 15px;
         }
 
         .tool-card p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.6;
-            color: var(--dark-text);
-            opacity: 0.8;
+            color: var(--light-text);
+            flex-grow: 1; /* Make p tags take up remaining space */
         }
         
-        /* Responsive for this slide's layout */
-        @media (max-width: 768px) {
-            .tools-grid {
-                grid-template-columns: 1fr; /* เปลี่ยนเป็น 1 คอลัมน์ */
-                gap: 20px;
+        .plus-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--light-text);
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .process-flow {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tool-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            .plus-separator {
+                transform: rotate(90deg);
+                margin: 5px 0;
             }
         }
     </style>
-
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Meet The Team</h2>
-            <h1>แนะนำ "ทีมงาน" ของเราในวันนี้</h1>
-            <p class="subtitle">เราจะใช้เครื่องมือ 3 อย่างนี้ ที่ทุกคนเข้าถึงได้ฟรี มาสร้างผู้ช่วยของเรากัน</p>
+            <h1>เครื่องมือสร้างสรรค์ของเรา</h1>
+            <p class="subtitle">เราจะใช้เครื่องมือ 3 อย่างนี้ทำงานร่วมกัน เปรียบเสมือน "ทีม" ที่จะสร้าง Web App ของเราขึ้นมา</p>
 
-            <div class="tools-grid">
+            <div class="process-flow">
                 <!-- Tool 1: Google Sheets -->
                 <div class="tool-card">
-                    <div class="logo-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Google_Sheets_logo_%282020%29.svg/1200px-Google_Sheets_logo_%282020%29.svg.png" alt="Google Sheets Logo">
-                    </div>
+                    <div class="icon-container icon-sheets"><i class="fas fa-table-cells"></i></div>
                     <h3>Google Sheets</h3>
-                    <div class="role">"พิมพ์เขียว และ ฐานข้อมูล"</div>
-                    <p>ไม่ใช่แค่ตาราง แต่เป็นบ้านสำหรับเก็บข้อมูลและผลลัพธ์ทั้งหมดของเรา</p>
+                    <div class="role">ฐานข้อมูลและบ้าน</div>
+                    <p>เป็นที่เก็บข้อมูลทั้งหมด, กำหนดโครงสร้าง, และแสดงผลลัพธ์สุดท้าย</p>
                 </div>
+
+                <div class="plus-separator"><i class="fas fa-plus"></i></div>
 
                 <!-- Tool 2: Google Apps Script -->
                 <div class="tool-card">
-                    <div class="logo-container">
-                        <img src="https://cdn.icon-icons.com/icons2/2108/PNG/512/google_apps_script_icon_130907.png" alt="Google Apps Script Logo" style="max-height: 70px;">
-                    </div>
+                    <div class="icon-container icon-script"><i class="fas fa-bolt-lightning"></i></div>
                     <h3>Google Apps Script</h3>
-                    <div class="role">"โรงงานสร้างโค้ดอัตโนมัติ"</div>
-                    <p>สะพานเชื่อมที่ทำให้ Sheets ของเราคุยกับ AI และสร้างเป็นเว็บแอปได้</p>
+                    <div class="role">สะพานเชื่อมพลัง</div>
+                    <p>ตัวกลางที่รับคำสั่งจาก Web App, ส่งไปให้ AI, และนำผลลัพธ์กลับมาที่ Sheets</p>
                 </div>
+                
+                <div class="plus-separator"><i class="fas fa-plus"></i></div>
 
-                <!-- Tool 3: Generative AI -->
+                <!-- Tool 3: Generative AI (Gemini) -->
                 <div class="tool-card">
-                    <div class="logo-container">
-                       <img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" alt="Google AI Logo" style="max-height: 24px; margin-bottom: 5px;"><br>
-                       <span style="font-size: 1.5rem; font-weight: 500; color: #5f6368; margin-left: 8px;">Gemini</span>
-                    </div>
+                    <div class="icon-container icon-ai"><i class="fas fa-brain"></i></div>
                     <h3>Generative AI</h3>
-                    <div class="role">"หัวหน้าช่าง / โปรแกรมเมอร์ส่วนตัว"</div>
-                    <p>ผู้เชี่ยวชาญที่เราจะ "สั่งงาน" ด้วยภาษาคน ให้เขาเขียนโค้ดและวิเคราะห์ข้อมูลให้เรา</p>
+                    <div class="role">หัวใจและสมอง</div>
+                    <p>โปรแกรมเมอร์ส่วนตัว ที่จะเขียนโค้ดและวิเคราะห์ข้อมูลให้เราตามคำสั่ง</p>
                 </div>
             </div>
         </div>
@@ -128,8 +137,6 @@
             <a href="slide5.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide7.html" class="nav-button">ต่อไป</a>
         </div>
-
     </div>
-
 </body>
 </html>

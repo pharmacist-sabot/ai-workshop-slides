@@ -5,107 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 9: Get API Key (1/2)</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Internal CSS for this slide only -->
+    <!-- Internal CSS for this slide pair -->
     <style>
-        .tutorial-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
         }
-
-        .step-card {
-            text-align: center;
-        }
-
-        .step-card .step-number {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
+        .step-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 40px;
-            margin-bottom: 15px;
-        }
-
-        .step-card p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .step-card .screenshot {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
-        }
-        
-        .link-button {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: 10px;
+            background-color: #ddd;
             transition: all 0.3s ease;
         }
-        .link-button:hover {
-            background-color: var(--alert-color);
-            transform: scale(1.05);
+        .step-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.3);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .tutorial-container {
-                grid-template-columns: 1fr;
-            }
+        .tutorial-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Text on left, image slightly larger on right */
+            gap: 40px;
+            align-items: center;
+            margin-top: 1.5rem;
         }
+
+        .instructions ol {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: step-counter;
+        }
+        .instructions li {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .instructions li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            line-height: 32px;
+        }
+        .screenshot-wrapper img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(75, 68, 83, 0.15);
+            border: 1px solid #ddd;
+        }
+        .action-button {
+            display: inline-block; background-color: var(--secondary-color); color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: 500; margin-top: 5px; transition: all 0.3s ease;
+        }
+        .action-button:hover { background-color: var(--alert-color); transform: scale(1.05); }
+
+        @media (max-width: 850px) { .tutorial-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
         <div class="card-body">
-            <h2>Let's Get The Key! (Part 1)</h2>
-            <h1>ขั้นตอนการขอ API Key (1/2)</h1>
-            <p class="subtitle">มาทำไปพร้อมๆ กันช้าๆ นะครับ/คะ นี่คือกุญแจดอกสำคัญที่สุดของเรา</p>
+            <h2>Let's Get The Key (Part 1/2)</h2>
+            <h1>ขั้นตอนการขอ API Key</h1>
+            <div class="progress-steps">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+            </div>
 
-            <div class="tutorial-container">
-                <!-- Step 1 -->
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <p>
-                        เข้าไปที่เว็บ <strong>Google AI Studio</strong><br>
-                        <a href="https://aistudio.google.com/" target="_blank" class="link-button">
-                            <i class="fas fa-external-link-alt"></i> คลิกที่นี่
-                        </a>
-                    </p>
-                    <img src="step1.png" alt="Screenshot of Google AI Studio homepage" class="screenshot">
+            <div class="tutorial-layout">
+                <div class="instructions">
+                    <ol>
+                        <li>
+                            <strong>ไปที่ Google AI Studio</strong><br>
+                            คลิกปุ่มด้านล่างเพื่อเปิดหน้าเว็บในแท็บใหม่
+                            <a href="https://aistudio.google.com/" target="_blank" class="action-button">
+                                <i class="fas fa-external-link-alt"></i> &nbsp; เปิดเว็บไซต์
+                            </a>
+                        </li>
+                        <li>
+                            <strong>หาเมนู Get API key</strong><br>
+                            ด้านบน ขวามือ <i class="fas fa-key"></i> <strong>Get API key</strong>
+                        </li>
+                    </ol>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <p>มองหาเมนูทางซ้าย แล้วคลิกที่<br><strong><i class="fas fa-key"></i> Get API key</strong></p>
-                    <img src="step2.png" alt="Screenshot showing where to click Get API key" class="screenshot">
+                <div class="screenshot-wrapper">
+                    <!-- ใส่ภาพประกอบ 2 ขั้นตอนแรกในภาพเดียว -->
+                    <img src="images/api-step-1.png" alt="ภาพประกอบขั้นตอนที่ 1 และ 2">
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide8.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide10.html" class="nav-button">ต่อไป</a>
+            <a href="slide10.html" class="nav-button">ขั้นตอนต่อไป</a>
         </div>
     </div>
-
 </body>
 </html>

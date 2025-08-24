@@ -5,115 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 8: Checklist</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .checklist-container {
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
             margin-top: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        .checklist-item {
-            display: flex;
-            align-items: flex-start; /* จัดให้อยู่บนสุด เผื่อข้อความยาวหลายบรรทัด */
-            background-color: #f8f7fa;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+        .check-card {
+            background-color: var(--card-background);
             border: 1px solid #eee;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
         }
         
-        .checklist-item .icon {
-            font-size: 2.5rem;
+        .check-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(75, 68, 83, 0.1);
+        }
+
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgba(176, 168, 185, 0.25); 
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .check-card .icon {
+            font-size: 2.8rem;
             color: var(--primary-color);
-            width: 60px;
-            text-align: center;
-            margin-right: 20px;
-            padding-top: 5px; /* จัดตำแหน่งไอคอนให้อยู่กึ่งกลางข้อความบรรทัดแรก */
+            margin-bottom: 15px;
         }
 
-        .checklist-item .text-content {
-            flex-grow: 1;
-        }
-
-        .checklist-item h3 {
-            font-size: 1.3rem;
+        .check-card h3 {
+            font-size: 1.2rem;
             font-weight: 500;
-            margin: 0 0 5px 0;
             color: var(--dark-text);
+            margin-bottom: 10px;
         }
 
-        .checklist-item p {
-            margin: 0;
-            font-size: 1.1rem;
+        .check-card p {
+            font-size: 0.95rem;
+            color: var(--light-text);
             line-height: 1.6;
-            color: var(--dark-text);
-            opacity: 0.8;
+            flex-grow: 1; 
+        }
+        
+        /* Highlight the important card */
+        .check-card.important {
+            background-color: #fffaf0;
+            border-color: var(--secondary-color);
         }
 
-        /* สไตล์พิเศษสำหรับข้อ 3 ที่สำคัญมาก */
-        .checklist-item.important {
-            background-color: #fff9e6; /* สีเหลืองอ่อนๆ */
-            border-left: 5px solid var(--secondary-color);
+        .check-card.important .icon {
+            color: var(--secondary-color);
+        }
+        .check-card.important:hover {
+             box-shadow: 0 12px 30px rgba(255, 128, 102, 0.2);
         }
 
-        .checklist-item.important .icon {
-            color: var(--secondary-color); /* สีส้ม */
+        /* Responsive */
+        @media (max-width: 900px) {
+            .checklist-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Mission Briefing</h2>
-            <h1>สิ่งที่ต้องเตรียม (Workshop Checklist)</h1>
-            <p class="subtitle">ก่อนจะเริ่มสร้าง มาตรวจเช็ค "อาวุธ" ของเราให้พร้อมกันก่อน!</p>
+            <h2>3 Steps to Get Ready</h2>
+            <h1>เช็คลิสต์เตรียมความพร้อม</h1>
+            <p class="subtitle">เราต้องการเพียง 3 สิ่งนี้เท่านั้น เพื่อเริ่มต้นการสร้าง Web App ของเรา</p>
 
-            <div class="checklist-container">
-                <!-- Item 1: Google Account -->
-                <div class="checklist-item">
+            <div class="checklist-grid">
+                <!-- Step 1: Google Account -->
+                <div class="check-card">
+                    <div class="step-number">1</div>
                     <div class="icon"><i class="fab fa-google"></i></div>
-                    <div class="text-content">
-                        <h3>1. บัญชี Google Account</h3>
-                        <p>ใช้สำหรับเข้าถึง Google Sheets และ Google Apps Script (เชื่อว่าทุกคนน่าจะมีพร้อม!)</p>
-                    </div>
+                    <h3>Google Account</h3>
+                    <p>สำหรับเข้าใช้งาน Google Sheets และ Apps Script (เชื่อว่าทุกคนมีพร้อม)</p>
                 </div>
 
-                <!-- Item 2: Computer & Internet -->
-                <div class="checklist-item">
+                <!-- Step 2: Computer & Internet -->
+                <div class="check-card">
+                    <div class="step-number">2</div>
                     <div class="icon"><i class="fas fa-laptop-code"></i></div>
-                    <div class="text-content">
-                        <h3>2. คอมพิวเตอร์และอินเทอร์เน็ต</h3>
-                        <p>Workshop ของเราทำบนเว็บทั้งหมด ไม่ต้องติดตั้งโปรแกรมใดๆ เพิ่มเติม</p>
-                    </div>
+                    <h3>คอมพิวเตอร์ & อินเทอร์เน็ต</h3>
+                    <p>Workshop ของเราทำบนเว็บทั้งหมด ไม่ต้องติดตั้งโปรแกรมใดๆ เพิ่มเติม</p>
                 </div>
 
-                <!-- Item 3: API Key (Important!) -->
-                <div class="checklist-item important">
+                <!-- Step 3: API Key (Important!) -->
+                <div class="check-card important">
+                    <div class="step-number">3</div>
                     <div class="icon"><i class="fas fa-key"></i></div>
-                    <div class="text-content">
-                        <h3>3. Google AI (Gemini) API Key</h3>
-                        <p>
-                            นี่คือกุญแจสำหรับเชื่อมต่อกับ AI ของเรา
-                            <strong>สไลด์ถัดไปจะสอนวิธีรับกุญแจนี้ทีละขั้นตอน</strong>
-                        </p>
-                    </div>
+                    <h3>Gemini API Key</h3>
+                    <p>กุญแจสำคัญสำหรับเชื่อมต่อกับ AI <strong>(สไลด์ถัดไปจะสอนวิธีรับกุญแจนี้)</strong></p>
                 </div>
             </div>
         </div>
 
         <div class="card-footer">
             <a href="slide7.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide9.html" class="nav-button">ต่อไป</a>
+            <a href="slide9.html" class="nav-button">ไปรับ API Key กัน</a>
         </div>
-
     </div>
-
 </body>
 </html>

@@ -3,70 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 7: The Final Product</title>
+    <title>Slide 7: Free AI Tools</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .demo-container {
+        .ai-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .video-wrapper {
-            width: 100%;
-            max-width: 750px; /* ขนาดของวิดีโอ */
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(75, 68, 83, 0.2);
-            margin-top: 1.5rem;
-            border: 5px solid #fff;
+            gap: 10px; 
         }
 
-        .video-wrapper video {
-            width: 100%;
-            height: auto;
-            display: block; /* แก้ปัญหามีช่องว่างใต้ video */
+        .ai-item {
+            display: flex;
+            align-items: center;
+            background-color: #fcfbff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .ai-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 17px; 
+        }
+
+        .logo-wrapper {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .info-wrapper {
+            flex-grow: 1; 
+        }
+
+        .info-wrapper h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            margin: 0;
+        }
+
+        .info-wrapper p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin: 2px 0 0 0;
+        }
+        
+        .visit-button {
+            flex-shrink: 0; 
+            text-decoration: none;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap; 
+        }
+
+        .visit-button:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ai-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+            }
+            .info-wrapper {
+                margin: 15px 0;
+            }
+            .visit-button {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
-
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-
-            <div class="demo-container">
-                <h2>Our North Star</h2>
-                <h1>เป้าหมายสุดท้ายของวันนี้</h1>
-                <p class="subtitle">
-                    ในอีกไม่กี่ชั่วโมงข้างหน้า ทุกคนจะได้เป็นเจ้าของ Web App "ผู้ช่วยตรวจสอบยา" หน้าตาแบบนี้... ที่สร้างขึ้นมาด้วยมือของคุณเอง!
-                </p>
-
-                <div class="video-wrapper">
-                    <!-- 
-                        คำแนะนำ: 
-                        - ใช้ไฟล์ .mp4 เพื่อประสิทธิภาพที่ดีที่สุด
-                        - autoplay: เล่นอัตโนมัติ
-                        - loop: เล่นวนซ้ำ
-                        - muted: ปิดเสียง (สำคัญมาก! เบราว์เซอร์ส่วนใหญ่จะไม่อนุญาตให้เล่นวิดีโออัตโนมัติหากไม่ปิดเสียง)
-                        - playsinline: สำหรับการแสดงผลที่ดีบนมือถือ
-                    -->
-                    <video src="final_product_demo.mp4" autoplay loop muted playsinline></video>
-                </div>
-            </div>
+            <h1>เลือก "สมอง AI" ที่คุณจะใช้งาน</h1>
+            <p class="subtitle">วันนี้เราจะใช้ Google AI Studio เป็นหลักในการสร้าง Web App ของเรา</p>
             
+            <ul class="ai-list">
+                <!-- 1. Google AI Studio -->
+                <li class="ai-item">
+                    <div class="logo-wrapper">
+                        <img src="images/google-ai-studio.svg" alt="Google AI Studio Logo">
+                    </div>
+                    <div class="info-wrapper">
+                        <h3>Google AI Studio (Gemini)</h3>
+                        <p>เข้าถึงโมเดล Gemini ล่าสุดโดยตรงจาก Google</p>
+                    </div>
+                    <a href="https://aistudio.google.com/prompts/new_chat" target="_blank" class="visit-button">ลองใช้งาน</a>
+                </li>
+                
+                <!-- 2. ChatGPT -->
+                <li class="ai-item">
+                    <div class="logo-wrapper">
+                        <img src="images/chatgpt.png" alt="ChatGPT Logo">
+                    </div>
+                    <div class="info-wrapper">
+                        <h3>ChatGPT</h3>
+                        <p>โมเดล AI ยอดนิยมที่มีความสามารถรอบด้าน</p>
+                    </div>
+                    <a href="https://chatgpt.com/" target="_blank" class="visit-button">ลองใช้งาน</a>
+                </li>
+
+                <!-- 3. Qwen (Alibaba) -->
+                <li class="ai-item">
+                    <div class="logo-wrapper">
+                        <img src="images/qwen.png" alt="Qwen Logo">
+                    </div>
+                    <div class="info-wrapper">
+                        <h3>Qwen (Tongyi Qianwen)</h3>
+                        <p>โมเดลภาษาขนาดใหญ่จาก Alibaba Cloud</p>
+                    </div>
+                    <a href="https://chat.qwen.ai/" target="_blank" class="visit-button">ลองใช้งาน</a>
+                </li>
+                
+                <!-- 4. Microsoft Copilot -->
+                <li class="ai-item">
+                    <div class="logo-wrapper">
+                        <img src="images/copilot.jfif" alt="Microsoft Copilot Logo">
+                    </div>
+                    <div class="info-wrapper">
+                        <h3>Microsoft Copilot</h3>
+                        <p>ผู้ช่วย AI ที่ผสานพลังการค้นหาจาก Bing</p>
+                    </div>
+                    <a href="https://copilot.microsoft.com/chats/" target="_blank" class="visit-button">ลองใช้งาน</a>
+                </li>
+            </ul>
         </div>
 
         <div class="card-footer">
             <a href="slide6.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide8.html" class="nav-button">ต่อไป</a>
         </div>
-
     </div>
-
 </body>
 </html>

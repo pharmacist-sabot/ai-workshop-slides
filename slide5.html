@@ -5,84 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 5: The Solution</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Internal CSS for this slide only -->
     <style>
-        .solution-container {
-            text-align: center;
-            padding: 2rem 0;
+        .transition-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: stretch; 
+            gap: 25px;
+            margin-top: 2rem;
         }
 
-        .main-icon {
-            font-size: 6rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            /* Animation */
-            animation: pulse 2s infinite ease-in-out;
+        .column {
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #f8f7fa;
+            border: 1px solid #eee;
         }
         
-        /* Keyframe animation for the icon */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .solution-container h1 {
-            font-size: 2.5rem;
+        .column h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
             margin-bottom: 1.5rem;
+            text-align: center;
         }
 
-        .solution-container .subtitle {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        .column ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* Responsive for this slide's layout */
-        @media (max-width: 768px) {
-            .main-icon {
-                font-size: 5rem;
+        .column li {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        /* Column-Specific Styling */
+        .column.before h3 {
+            color: var(--light-text);
+        }
+        .column.before i {
+            color: var(--alert-color);
+            opacity: 0.6;
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .column.after {
+            background-color: var(--card-background);
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.1);
+        }
+        .column.after h3 {
+            color: var(--primary-color);
+        }
+        .column.after i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 30px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        .arrow-separator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .arrow-separator i {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            animation: pointRight 1.5s infinite ease-in-out;
+        }
+
+        /* Keyframe animation for the arrow */
+        @keyframes pointRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 850px) {
+            .transition-container {
+                grid-template-columns: 1fr; /* Stack them */
+                gap: 15px;
             }
-            .solution-container h1 {
-                font-size: 2.5rem;
+            .arrow-separator i {
+                transform: rotate(90deg); /* Point arrow down */
+                margin: 10px 0;
+                animation: pointDown 1.5s infinite ease-in-out;
             }
-            .solution-container .subtitle {
-                font-size: 1.2rem;
+            @keyframes pointDown {
+                0%, 100% { transform: rotate(90deg) translateY(0); }
+                50% { transform: rotate(90deg) translateY(10px); }
             }
         }
     </style>
-
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
+            <h1>ขอแนะนำ "ผู้ช่วย AI" ประจำตัวเภสัชกร</h1>
+            <p class="subtitle">เปลี่ยนความท้าทายให้กลายเป็นโอกาส เพื่อให้เราได้ใช้เวลาและความเชี่ยวชาญกับงานที่สำคัญที่สุด</p>
 
-            <div class="solution-container">
-                <div class="main-icon">
-                    <i class="fa-solid fa-robot"></i>
+            <div class="transition-container">
+                <!-- BEFORE Column -->
+                <div class="column before">
+                    <h3>โลกการทำงานแบบเดิม</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-layer-group"></i><span>Workload ที่หนักอึ้ง</span></li>
+                        <li><i class="fa-solid fa-triangle-exclamation"></i><span>ความคลาดเคลื่อนทางยา</span></li>
+                        <li><i class="fa-solid fa-repeat"></i><span>งานซ้ำซากจำเจ</span></li>
+                    </ul>
+                </div>
+                
+                <!-- ARROW -->
+                <div class="arrow-separator">
+                    <i class="fa-solid fa-arrow-right-long"></i>
                 </div>
 
-                <h2>The Game Changer</h2>
-                <h1>แล้วถ้าเรามี "ผู้ช่วยอัจฉริยะ" ล่ะ?</h1>
-                <p class="subtitle">
-                    ลองจินตนาการถึงผู้ช่วยที่ไม่เคยเหนื่อย ไม่เคยลาป่วย พร้อมทำงานที่ซ้ำซากให้เราตลอด 24 ชั่วโมง... เพื่อให้เราได้ใช้เวลาและความเชี่ยวชาญกับงานที่สำคัญที่สุด นั่นคือ "ผู้ป่วย"
-                </p>
+                <!-- AFTER Column -->
+                <div class="column after">
+                    <h3>โลกใหม่ที่มี AI เป็นผู้ช่วย</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-robot"></i>งานอัตโนมัติ: ลดภาระงานเอกสาร</li>
+                        <li><i class="fa-solid fa-shield-halved"></i>ระบบสนับสนุน: ช่วยตรวจสอบลดความเสี่ยง</li>
+                        <li><i class="fa-solid fa-brain"></i>เพิ่มประสิทธิภาพ: โฟกัสกับงานที่ต้องใช้ทักษะสูง</li>
+                    </ul>
+                </div>
             </div>
-            
         </div>
 
         <div class="card-footer">
             <a href="slide4.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide6.html" class="nav-button">ต่อไป</a>
         </div>
-
     </div>
-
 </body>
 </html>
