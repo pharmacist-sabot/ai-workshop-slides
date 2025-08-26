@@ -5,92 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slide 32: Step 1.1 - Database Design</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- นำสไตล์จากสไลด์ 24 มาปรับใช้ -->
+    <!-- Internal CSS for this slide only -->
     <style>
-        .step-container {
-            text-align: center;
+        .instruction-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 2rem;
         }
-        .instructions {
-            text-align: left;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            background-color: #f8f7fa;
-            padding: 25px;
-            border-radius: 15px;
+
+        .instructions-panel h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
-        .instructions ol {
-            padding-left: 25px;
+        .instructions-panel ol {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
         }
-        .instructions li {
-            font-size: 1.15rem;
-            margin-bottom: 15px;
+        .instructions-panel li {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
             line-height: 1.7;
         }
-        .instructions code {
-            background-color: #e9e0f8;
+        .instructions-panel li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute; left: 0; top: 0; width: 32px; height: 32px;
+            border-radius: 50%; background-color: #34A853; /* Green for Sheets */
+            color: white; font-weight: 700; text-align: center; line-height: 32px;
+        }
+        .instructions-panel code {
+            background-color: #e6f4ea; /* Light Green */
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #d4eadc;
         }
-        .screenshot-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+
+        .table-preview-panel {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 25px;
         }
-        .screenshot-wrapper img {
+        .table-preview-panel h3 {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .table-simulation {
             width: 100%;
-            display: block;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .table-simulation th {
+            background-color: #e6f4ea; /* Light Green */
+            color: #155724;
+            padding: 12px;
+            border: 1px solid #c3e6cb;
+            font-weight: 700;
+        }
+        .table-simulation td {
+            background-color: #fff;
+            padding: 12px;
+            border: 1px solid #eee;
+            color: var(--light-text);
+        }
+        
+        @media (max-width: 900px) {
+            .instruction-layout {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Main Project: Step 1.1</h2>
             <h1>ออกแบบฐานข้อมูลใน Google Sheets</h1>
-            <p class="subtitle">ก่อนจะสร้างฟอร์ม เราต้องเตรียม "ถัง" สำหรับเก็บข้อมูลให้พร้อมเสียก่อน</p>
+            <p class="subtitle">ก่อนจะสร้างฟอร์ม เราต้องเตรียม "หลังบ้าน" สำหรับเก็บข้อมูลให้พร้อมเสียก่อน</p>
 
-            <div class="step-container">
-                <div class="instructions">
-                    <p style="font-size: 1.15rem; margin-bottom: 20px;">
-                        <i class="fas fa-info-circle"></i> ในไฟล์ Google Sheets <strong>"AI Pharmacist Tools"</strong> เดิมของเรา ให้ทำตามขั้นตอนต่อไปนี้:
-                    </p>
+            <div class="instruction-layout">
+                <!-- Left Column: Steps to do -->
+                <div class="instructions-panel">
+                    <h3><i class="fas fa-list-check"></i> สิ่งที่ต้องทำ:</h3>
                     <ol>
-                        <li>สร้างชีทใหม่ (กดเครื่องหมาย <strong>+</strong> ที่มุมล่างซ้าย)</li>
+                        <li>ในไฟล์ "AI Pharmacist Tools" ให้สร้างชีทใหม่ (กด <i class="fas fa-plus"></i>)</li>
                         <li>เปลี่ยนชื่อชีทใหม่เป็น <code>Risk_Log</code></li>
-                        <li>ในแถวที่ 1 ของชีท <code>Risk_Log</code> ให้สร้างคอลัมน์ตามนี้:
-                            <ul>
-                                <li><strong>A1:</strong> <code>Timestamp</code></li>
-                                <li><strong>B1:</strong> <code>ReporterEmail</code></li>
-                                <li><strong>C1:</strong> <code>EventDate</code></li>
-                                <li><strong>D1:</strong> <code>PatientID</code></li>
-                                <li><strong>E1:</strong> <code>EventDescription</code></li>
-                                <li><strong>F1:</strong> <code>MedicationInvolved</code></li>
-                                <li><strong>G1:</strong> <code>RiskCategory</code></li>
-                            </ul>
-                        </li>
+                        <li>สร้างหัวตารางในแถวที่ 1 ตามนี้</li>
                     </ol>
                 </div>
-
-                <div class="screenshot-wrapper">
-                    <img src="database_setup.png" alt="Screenshot of setting up the Risk_Log Google Sheet">
+                
+                <!-- Right Column: Visual Result -->
+                <div class="table-preview-panel">
+                    <h3><i class="fas fa-table-cells"></i> หน้าตาผลลัพธ์ที่ต้องการ:</h3>
+                    <table class="table-simulation">
+                        <thead>
+                            <tr>
+                                <th>A: Timestamp</th>
+                                <th>B: EventDate</th>
+                                <th>C: PatientType</th>
+                                <th>D: SeverityLevel</th>
+                                <th>E: Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>(ข้อมูลจะมาอัตโนมัติ)</td>
+                                <td>(ข้อมูลจากฟอร์ม)</td>
+                                <td>(ข้อมูลจากฟอร์ม)</td>
+                                <td>(ข้อมูลจากฟอร์ม)</td>
+                                <td>(ข้อมูลจากฟอร์ม)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide31.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide33.html" class="nav-button">ต่อไป: สั่ง AI สร้างฟอร์ม</a>
         </div>
     </div>
-
 </body>
 </html>

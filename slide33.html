@@ -3,109 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 33: Step 1.2 - The HTML Prompt</title>
+    <title>Slide 33: Step 2 - The HTML Prompt</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font Sarabun -->
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- นำสไตล์ Master Prompt จากสไลด์ 26 มาปรับใช้ -->
+    <!-- Internal CSS for this slide -->
     <style>
-        .master-prompt-container {
-            text-align: center;
-            margin-top: 1rem;
+        .instruction-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 2rem;
         }
-        .prompt-wrapper {
-            position: relative;
+
+        .analysis-panel h3 {
+            font-size: 1.3rem; font-weight: 500;
+            margin-bottom: 20px; color: var(--dark-text);
         }
-        .master-prompt-box {
-            background-color: #e6f7ff; /* สีฟ้าอ่อน */
-            border: 2px dashed #91d5ff; /* เส้นประสีฟ้า */
-            padding: 25px;
+        .analysis-panel ul { list-style: none; padding: 0; }
+        .analysis-panel li {
+            display: flex; align-items: flex-start;
+            margin-bottom: 18px; font-size: 1rem;
+        }
+        .analysis-panel li i {
+            color: var(--primary-color); margin-right: 15px;
+            margin-top: 5px; font-size: 1.1rem;
+        }
+
+        .prompt-trigger-panel {
+            background-color: #f9f6ff;
+            border: 2px dashed var(--primary-color);
             border-radius: 15px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: left;
-            font-family: 'Sarabun', 'Prompt', sans-serif;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            padding: 40px; text-align: center;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 300px;
+        }
+        .show-prompt-button {
+            background: var(--primary-color); color: white;
+            font-family: 'Prompt', sans-serif; font-size: 1.2rem;
+            font-weight: 500; padding: 15px 40px; border-radius: 50px;
+            border: none; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(132, 94, 194, 0.3);
+        }
+        .show-prompt-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.4);
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(40, 40, 60, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible {
+            display: flex; opacity: 1;
+        }
+        .modal-content {
+            background: var(--card-background);
+            border-radius: 15px; padding: 30px;
+            width: 90%; max-width: 700px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 1.5rem; color: var(--primary-color); }
+        .close-button {
+            background: #f1f1f1; border: none; border-radius: 50%;
+            width: 35px; height: 35px; cursor: pointer;
+            font-size: 1.2rem; color: #888;
+            transition: all 0.2s ease;
+        }
+        .close-button:hover { background: #e0e0e0; color: #333; }
+        .prompt-to-copy {
+            background-color: #f8f7fa; border: 1px solid #eee;
+            padding: 20px; border-radius: 8px; font-size: 1rem;
+            line-height: 1.8; font-family: 'Sarabun', 'Courier New', monospace;
+            white-space: pre-wrap; word-wrap: break-word;
+            max-height: 50vh; overflow-y: auto;
         }
         .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #007BFF; /* สีฟ้า */
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-family: 'Prompt', sans-serif;
-            transition: background-color 0.2s ease;
+            background: var(--secondary-color); color: white;
+            border: none; padding: 10px 20px; border-radius: 8px;
+            cursor: pointer; font-size: 1rem; font-family: 'Prompt', sans-serif;
+            margin-top: 20px; float: right; transition: all 0.2s ease;
         }
-        .copy-button:hover { background-color: #0056b3; }
-        .copy-button .fa-check { display: none; }
-        .copy-button.copied .fa-copy { display: none; }
-        .copy-button.copied .fa-check { display: inline-block; }
+        .copy-button:hover { background: var(--alert-color); }
+        .copy-button.copied { background: #20c997; }
+
+        @media (max-width: 900px) { .instruction-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Main Project: Step 1.2</h2>
-            <h1>สั่ง AI สร้างหน้าฟอร์ม (The HTML Prompt)</h1>
-            <p class="subtitle">เราจะใช้ Prompt ภาษาไทย สั่งให้ AI เขียนโค้ด HTML ที่มีหน้าตาสวยงามด้วย Bootstrap 5</p>
+            <h1><i class="fab fa-html5" style="color:var(--secondary-color);"></i> สั่ง AI สร้างหน้าฟอร์ม (HTML)</h1>
+            <p class="subtitle">เราจะใช้ Prompt ที่สมบูรณ์ สั่งให้ AI เขียนโค้ดหน้าบ้าน (Frontend) ทั้งหมดให้เรา</p>
 
-            <div class="master-prompt-container">
-                <div class="prompt-wrapper">
-                    <div class="master-prompt-box" id="promptTextContainer">
-<strong>บทบาท:</strong> คุณคือ Web Developer ผู้เชี่ยวชาญ
+            <div class="instruction-layout">
+                <!-- Left Column: Analysis -->
+                <div class="analysis-panel">
+                    <h3><i class="fas fa-lightbulb"></i> หัวใจของ Prompt นี้:</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <strong>Role:</strong> สั่งให้เป็นผู้เชี่ยวชาญ Bootstrap 5</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Context:</strong> บอกว่าจะนำไปใช้ใน Google Apps Script</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Task:</strong> ระบุชนิดของ Input แต่ละช่องอย่างชัดเจน</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Format:</strong> ขอเฉพาะโค้ด HTML ที่สมบูรณ์เท่านั้น</li>
+                    </ul>
+                </div>
 
-<strong>งาน:</strong> โปรดสร้างโค้ด HTML ทั้งหมดสำหรับหน้าเว็บฟอร์ม "บันทึกความเสี่ยงด้านยา" โดยมีเงื่อนไขดังนี้:
-1.  ใช้ Bootstrap 5 จาก CDN เพื่อความสวยงาม (ไม่ต้องมีโค้ด CSS เอง)
-2.  ใส่หัวข้อหลักว่า "Medication Safety / Risk Reporting Form"
-3.  ฟอร์มจะต้องมีช่องกรอกข้อมูลต่อไปนี้ พร้อม `label` ที่ชัดเจน:
-    -   ช่องรับข้อมูล "วันที่เกิดเหตุ" (Event Date) โดยใช้ input type="date"
-    -   ช่องรับข้อมูล "รหัสผู้ป่วย (HN/AN)" (Patient ID) โดยใช้ input type="text"
-    -   ช่องรับข้อมูล "ยาที่เกี่ยวข้อง" (Medications Involved) โดยใช้ input type="text"
-    -   ช่องรับข้อมูล "ประเภทความเสี่ยง" (Risk Category) โดยใช้ dropdown (select) ซึ่งมีตัวเลือกคือ: 'Prescribing Error', 'Dispensing Error', 'Administration Error', 'Monitoring Error'
-    -   ช่องรับข้อมูล "รายละเอียดเหตุการณ์" (Event Description) โดยใช้ textarea ที่มีขนาด 5 แถว
-4.  ทุกช่องต้องมี `name` attribute ที่สอดคล้องกับ label (เช่น `name="eventDate"`)
-5.  มีปุ่ม Submit สีน้ำเงิน (primary) ที่มีข้อความว่า "Submit Report"
-
-<strong>รูปแบบ:</strong> ขอเฉพาะโค้ด HTML ที่สมบูรณ์เท่านั้น ไม่ต้องมีคำอธิบายอื่น
-                    </div>
-                    <button class="copy-button" id="copyBtn">
-                        <i class="fas fa-copy"></i>
-                        <i class="fas fa-check"></i>
-                        <span id="copyBtnText">Copy</span>
+                <!-- Right Column: Prompt Trigger -->
+                <div class="prompt-trigger-panel">
+                    <button class="show-prompt-button" id="showPromptBtn">
+                        <i class="fas fa-scroll"></i> &nbsp; แสดง Master Prompt
                     </button>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide32.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide34.html" class="nav-button">ต่อไป: ติดตั้งโค้ด HTML</a>
         </div>
     </div>
 
-    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    <!-- Modal HTML (Hidden by default) -->
+    <div class="modal-overlay" id="promptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>HTML Master Prompt</h3>
+                <button class="close-button" id="closePromptBtn">&times;</button>
+            </div>
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือ Senior Frontend Developer ที่เชี่ยวชาญด้าน HTML และ Bootstrap 5
+
+ฉันกำลังสร้าง Web App ที่จะรันบน Google Apps Script สำหรับให้เภสัชกรใช้บันทึกความเสี่ยงด้านยา
+
+โปรดสร้างโค้ดสำหรับไฟล์ HTML ไฟล์เดียว ที่ทำงานตามเงื่อนไขต่อไปนี้ทั้งหมด:
+1.  ใช้ Bootstrap 5 CDN ล่าสุด (CSS และ JS)
+2.  ออกแบบ Layout ให้ดูสะอาดตา ทันสมัย และ Responsive
+3.  ใส่หัวข้อหลักว่า "Medication Safety Reporting Form"
+4.  สร้างฟอร์มที่มีช่องกรอกข้อมูลต่อไปนี้ พร้อม label ที่ชัดเจน:
+    -   วันที่เกิดเหตุ (EventDate): ใช้ &lt;input type="date"&gt;
+    -   ประเภทผู้ป่วย (PatientType): ใช้ &lt;select&gt; ที่มีตัวเลือก "ผู้ป่วยนอก" และ "ผู้ป่วยใน"
+    -   ระดับความรุนแรง (SeverityLevel): ใช้ &lt;select&gt; ที่มีตัวเลือก "A" ถึง "I"
+    -   รายละเอียดเหตุการณ์ (Description): ใช้ &lt;textarea&gt; ที่มี 4 แถว
+5.  มีปุ่ม Submit สีน้ำเงิน (primary) ที่มีข้อความว่า "Submit Report"
+
+ขอเฉพาะโค้ด HTML ที่สมบูรณ์และพร้อมใช้งานเท่านั้น ไม่ต้องมีคำอธิบายอื่น</div>
+            <button class="copy-button" id="copyBtn">
+                <i class="fas fa-copy"></i>
+                <span>Copy</span>
+            </button>
+        </div>
+    </div>
+    
     <script>
+        const showPromptBtn = document.getElementById('showPromptBtn');
+        const promptModal = document.getElementById('promptModal');
+        const closePromptBtn = document.getElementById('closePromptBtn');
         const copyButton = document.getElementById('copyBtn');
         const promptTextContainer = document.getElementById('promptTextContainer');
+
+        // Function to show the modal
+        showPromptBtn.addEventListener('click', () => {
+            promptModal.classList.add('visible');
+        });
+
+        // Function to hide the modal
+        const hideModal = () => {
+            promptModal.classList.remove('visible');
+        };
+
+        closePromptBtn.addEventListener('click', hideModal);
+        // Also close if user clicks on the overlay background
+        promptModal.addEventListener('click', (event) => {
+            if (event.target === promptModal) {
+                hideModal();
+            }
+        });
+
+        // Copy button logic
         copyButton.addEventListener('click', () => {
             navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
-                const copyButtonText = document.getElementById('copyBtnText');
+                const btnSpan = copyButton.querySelector('span');
                 copyButton.classList.add('copied');
-                copyButtonText.innerText = 'Copied!';
+                btnSpan.innerText = 'Copied!';
                 setTimeout(() => {
                     copyButton.classList.remove('copied');
-                    copyButtonText.innerText = 'Copy';
+                    btnSpan.innerText = 'Copy';
                 }, 2000);
             });
         });
