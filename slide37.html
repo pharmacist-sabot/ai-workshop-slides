@@ -3,84 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 37: Step 2.2 - The Result</title>
+    <title>Slide 37: The Result</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .result-container {
+        .result-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; /* Image slightly larger */
+            gap: 40px;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .screenshot-panel {
             text-align: center;
         }
-
+        .screenshot-panel h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #34A853; /* Green for success */
+        }
         .screenshot-wrapper {
-            max-width: 800px;
-            margin: 1.5rem auto;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(75, 68, 83, 0.2);
+            box-shadow: 0 15px 40px rgba(75, 68, 83, 0.2);
             border: 5px solid #fff;
         }
-
         .screenshot-wrapper img {
             width: 100%;
             display: block;
         }
 
-        .status-box {
-            background-color: #f8f7fa;
-            border-left: 5px solid var(--primary-color);
-            padding: 25px;
-            border-radius: 0 10px 10px 0;
-            max-width: 750px;
-            margin: 2rem auto 0 auto;
-            text-align: left;
-        }
-        
-        .status-box h3 {
-            font-size: 1.4rem;
-            margin: 0 0 15px 0;
+        .analysis-panel h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
             color: var(--dark-text);
         }
-        
-        .status-box p {
-            font-size: 1.15rem;
+        .status-list {
+            list-style: none;
+            padding: 0;
+        }
+        .status-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
             line-height: 1.7;
-            margin: 0;
+        }
+        .status-list li .icon {
+            font-size: 1.5rem;
+            width: 35px;
+            margin-top: 5px;
+        }
+        .status-check { color: #34A853; } /* Green */
+        .status-cross { color: var(--alert-color); } /* Red */
+        
+        @media (max-width: 900px) {
+            .result-layout {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h1 style="text-align: center;">ผลลัพธ์การ Deploy ครั้งแรก</h1>
-            <p class="subtitle" style="text-align: center;">
-                ถ้าคุณเห็นหน้าตาแบบนี้... ยินดีด้วย! คุณได้สร้าง "หน้าบ้าน" ของ Web App สำเร็จแล้ว!
-            </p>
+            <h1>ผลลัพธ์การ Deploy ครั้งแรก</h1>
+            <p class="subtitle">ถ้าคุณเห็นหน้าตาแบบนี้... ยินดีด้วย คุณได้สร้าง "หน้าบ้าน" ของ Web App สำเร็จแล้ว</p>
 
-            <div class="result-container">
-                <div class="screenshot-wrapper">
-                    <img src="first_deploy_result.png" alt="Screenshot of the successfully deployed web form">
+            <div class="result-layout">
+                <!-- Left Column: The "What We Have" -->
+                <div class="screenshot-panel">
+                    <h3><i class="fas fa-check-circle"></i> นี่คือสิ่งที่เรามีตอนนี้:</h3>
+                    <div class="screenshot-wrapper">
+                        <img src="first_deploy_result.png" alt="Screenshot of the successfully deployed web form">
+                    </div>
                 </div>
 
-                <div class="status-box">
-                    <h3><i class="fas fa-tasks"></i> สถานะปัจจุบัน (Status)</h3>
-                    <p>
-                        ตอนนี้เรามีฟอร์มที่สวยงามแล้ว แต่ถ้าลองกรอกข้อมูลแล้วกด Submit... <strong>จะยังไม่มีอะไรเกิดขึ้น</strong>
-                        <br><br>
-                        เปรียบเสมือนเรามี "เคาน์เตอร์รับเรื่อง" ที่สวยงาม แต่ยังไม่มี "เจ้าหน้าที่" อยู่หลังเคาน์เตอร์เพื่อรับข้อมูลไปจัดการต่อ
-                    </p>
+                <!-- Right Column: The "What's Next" -->
+                <div class="analysis-panel">
+                    <h3><i class="fas fa-tasks"></i> วิเคราะห์สถานะปัจจุบัน:</h3>
+                    <ul class="status-list">
+                        <li>
+                            <div class="icon status-check"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <strong>หน้าบ้าน (Frontend):</strong><br>
+                                เรามีฟอร์มที่สวยงาม พร้อมให้ผู้ใช้กรอกข้อมูล
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon status-cross"><i class="fas fa-times-circle"></i></div>
+                            <div>
+                                <strong>หลังบ้าน (Backend):</strong><br>
+                                ยังไม่มี "เจ้าหน้าที่" หรือโค้ดใดๆ มารับข้อมูลที่ถูกส่งเข้ามา
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div class="card-footer">
             <a href="slide36.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide38.html" class="nav-button">ไปสร้าง "เจ้าหน้าที่" กัน!</a>
+            <a href="slide38.html" class="nav-button">ไปสร้าง "หลังบ้าน" กัน</a>
         </div>
     </div>
-
 </body>
 </html>
