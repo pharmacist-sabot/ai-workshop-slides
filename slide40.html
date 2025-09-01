@@ -3,76 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 40: Step 3.1 - The JavaScript Prompt</title>
+    <title>Slide 40: The JavaScript Prompt</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font Sarabun -->
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide only (CORRECTED) -->
+    <!-- Internal CSS for this slide -->
     <style>
-        .master-prompt-container {
-            text-align: center;
-            margin-top: 1.5rem;
+        .instruction-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 2rem;
         }
-        .prompt-wrapper {
-            position: relative;
+
+        .analysis-panel h3 {
+            font-size: 1.3rem; font-weight: 500;
+            margin-bottom: 20px; color: var(--dark-text);
         }
-        .master-prompt-box {
-            background-color: #fff2e8; /* สีส้มอ่อน */
-            border: 2px dashed #ffc069; /* เส้นประสีส้ม */
-            padding: 25px;
+        .analysis-panel ul { list-style: none; padding: 0; }
+        .analysis-panel li {
+            display: flex; align-items: flex-start;
+            margin-bottom: 18px; font-size: 1rem;
+        }
+        .analysis-panel li i {
+            color: var(--secondary-color); margin-right: 15px;
+            margin-top: 5px; font-size: 1.1rem;
+        }
+
+        .prompt-trigger-panel {
+            background-color: #fff8f6;
+            border: 2px dashed var(--secondary-color);
             border-radius: 15px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            text-align: left;
-            font-family: 'Sarabun', 'Prompt', sans-serif;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            padding: 40px; text-align: center;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 300px;
         }
-        /* --- New style to replace <strong> tag --- */
-        .master-prompt-box .prompt-label {
-            font-weight: 700;
-            color: #595959;
+        .show-prompt-button {
+            background: var(--secondary-color); color: white;
+            font-family: 'Prompt', sans-serif; font-size: 1.2rem;
+            font-weight: 500; padding: 15px 40px; border-radius: 50px;
+            border: none; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 128, 102, 0.3);
+        }
+        .show-prompt-button:hover {
+            background-color: var(--alert-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 128, 102, 0.4);
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
+            z-index: 1000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--card-background); border-radius: 15px; padding: 30px;
+            width: 90%; max-width: 700px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative; transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 1.5rem; color: var(--secondary-color); }
+        .close-button {
+            background: #f1f1f1; border: none; border-radius: 50%; width: 35px; height: 35px;
+            cursor: pointer; font-size: 1.2rem; color: #888; transition: all 0.2s ease;
+        }
+        .close-button:hover { background: #e0e0e0; color: #333; }
+        .prompt-to-copy {
+            background-color: #f8f7fa; border: 1px solid #eee;
+            padding: 20px; border-radius: 8px; font-size: 1rem;
+            line-height: 1.8; font-family: 'Sarabun', 'Courier New', monospace;
+            white-space: pre-wrap; word-wrap: break-word;
+            max-height: 50vh; overflow-y: auto;
         }
         .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--secondary-color); /* สีส้ม */
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-family: 'Prompt', sans-serif;
-            transition: background-color 0.2s ease;
+            background: var(--primary-color); color: white;
+            border: none; padding: 10px 20px; border-radius: 8px;
+            cursor: pointer; font-size: 1rem; font-family: 'Prompt', sans-serif;
+            margin-top: 20px; float: right; transition: all 0.2s ease;
         }
-        .copy-button:hover { background-color: var(--alert-color); }
-        .copy-button .fa-check { display: none; }
-        .copy-button.copied .fa-copy { display: none; }
-        .copy-button.copied .fa-check { display: inline-block; }
+        .copy-button:hover { background: var(--primary-dark); }
+        .copy-button.copied { background: #20c997; }
+
+        @media (max-width: 900px) { .instruction-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Main Project: Step 3.1</h2>
-            <h1>สั่ง AI เขียน "สายไฟ" (JavaScript)</h1>
-            <p class="subtitle">เราจะสร้างโค้ด JavaScript เพื่อเชื่อมปุ่ม Submit ในฟอร์มของเรา ให้ส่งข้อมูลไปหาฟังก์ชัน `saveData` ที่หลังบ้าน</p>
+            <h1><i class="fab fa-js-square" style="color:var(--secondary-color);"></i> สั่ง AI เขียน "สายไฟ" (JavaScript)</h1>
+            <p class="subtitle">เราจะสร้างโค้ด JavaScript เพื่อเชื่อมปุ่ม Submit ในฟอร์มของเรา ให้ส่งข้อมูลไปหาฟังก์ชัน saveData</p>
 
-            <div class="master-prompt-container">
-                <div class="prompt-wrapper">
-                    <div class="master-prompt-box" id="promptTextContainer">
-<span class="prompt-label">บทบาท:</span> โปรแกรมเมอร์ JavaScript ผู้เชี่ยวชาญ
+            <div class="instruction-layout">
+                <!-- Left Column: Analysis -->
+                <div class="analysis-panel">
+                    <h3><i class="fas fa-lightbulb"></i> หัวใจของ Prompt นี้:</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i>บอก AI ว่าเราใช้ google.script.run ซึ่งเป็นคำสั่งพิเศษของ Apps Script</li>
+                        <li><i class="fas fa-check-circle"></i>สั่งงานเป็นขั้นตอนที่โปรแกรมเมอร์เข้าใจ (ดัก event, ป้องกัน reload, เรียกฟังก์ชันหลังบ้าน)</li>
+                        <li><i class="fas fa-check-circle"></i>ระบุคำสั่งสำคัญ เช่น .withSuccessHandler() และ .withFailureHandler()</li>
+                    </ul>
+                </div>
 
-<span class="prompt-label">บริบท:</span> ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formObject)` ที่พร้อมรับข้อมูลจากฟอร์ม
+                <!-- Right Column: Prompt Trigger -->
+                <div class="prompt-trigger-panel">
+                    <button class="show-prompt-button" id="showPromptBtn">
+                        <i class="fas fa-scroll"></i> &nbsp; แสดง Master Prompt
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="slide39.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide41.html" class="nav-button">ต่อไป: ติดตั้ง JavaScript</a>
+        </div>
+    </div>
 
-<span class="prompt-label">งาน:</span> โปรดเขียนโค้ด JavaScript ทั้งหมดที่ต้องใส่ใน &lt;script&gt; tag สำหรับไฟล์ `Index.html` โดยโค้ดจะต้อง:
+    <!-- Modal HTML (Hidden by default) -->
+    <div class="modal-overlay" id="promptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>JavaScript Master Prompt</h3>
+                <button class="close-button" id="closePromptBtn">&times;</button>
+            </div>
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ JavaScript ผู้เชี่ยวชาญ
+
+ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formObject)` ที่พร้อมรับข้อมูลจากฟอร์ม
+
+โปรดเขียนโค้ด JavaScript ทั้งหมดที่ต้องใส่ใน &lt;script&gt; tag สำหรับไฟล์ `Index.html` โดยโค้ดจะต้อง:
 1.  หา form element ในหน้าเว็บ
 2.  ดักฟัง (listen for) event 'submit' ของ form นั้น
 3.  เมื่อ form ถูก submit, ให้สั่ง `event.preventDefault()` เพื่อป้องกันไม่ให้หน้าเว็บโหลดใหม่
@@ -81,35 +147,36 @@
 6.  ใส่ `.withFailureHandler()` เพื่อจัดการเมื่อเกิดข้อผิดพลาด โดยให้แสดง alert box พร้อมข้อความ error
 7.  ส่ง `event.target` (ซึ่งก็คือ form object) เป็น argument เข้าไปในฟังก์ชัน `saveData`
 
-<span class="prompt-label">รูปแบบ:</span> ขอเฉพาะโค้ดที่อยู่ภายใน &lt;script&gt; และ &lt;/script&gt; เท่านั้น
-                    </div>
-                    <button class="copy-button" id="copyBtn">
-                        <i class="fas fa-copy"></i>
-                        <i class="fas fa-check"></i>
-                        <span id="copyBtnText">Copy</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-footer">
-            <a href="slide39.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide41.html" class="nav-button">ต่อไป: ติดตั้ง JavaScript</a>
+ขอเฉพาะโค้ดที่อยู่ภายใน &lt;script&gt; และ &lt;/script&gt; เท่านั้น</div>
+            <button class="copy-button" id="copyBtn">
+                <i class="fas fa-copy"></i>
+                <span>Copy</span>
+            </button>
         </div>
     </div>
-
-    <!-- JavaScript ไม่เปลี่ยนแปลง -->
+    
     <script>
+        const showPromptBtn = document.getElementById('showPromptBtn');
+        const promptModal = document.getElementById('promptModal');
+        const closePromptBtn = document.getElementById('closePromptBtn');
         const copyButton = document.getElementById('copyBtn');
         const promptTextContainer = document.getElementById('promptTextContainer');
+
+        showPromptBtn.addEventListener('click', () => { promptModal.classList.add('visible'); });
+        const hideModal = () => { promptModal.classList.remove('visible'); };
+        closePromptBtn.addEventListener('click', hideModal);
+        promptModal.addEventListener('click', (event) => {
+            if (event.target === promptModal) { hideModal(); }
+        });
+
         copyButton.addEventListener('click', () => {
             navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
-                const copyButtonText = document.getElementById('copyBtnText');
+                const btnSpan = copyButton.querySelector('span');
                 copyButton.classList.add('copied');
-                copyButtonText.innerText = 'Copied!';
+                btnSpan.innerText = 'Copied!';
                 setTimeout(() => {
                     copyButton.classList.remove('copied');
-                    copyButtonText.innerText = 'Copy';
+                    btnSpan.innerText = 'Copy';
                 }, 2000);
             });
         });

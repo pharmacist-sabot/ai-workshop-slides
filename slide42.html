@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang/="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 42: Mission Complete!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Add a subtle gradient background for a celebratory feel */
+            background-image: radial-gradient(circle at top, rgba(132, 94, 194, 0.05), transparent 50%);
+        }
+
+        .achievement-container {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .achievement-badge {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffc107, #ff9800);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+            animation: popIn 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); }
+            to { transform: scale(1); }
+        }
+
+        .achievement-container h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .achievement-container h1 {
+            font-size: 3rem;
+            color: var(--dark-text);
+        }
+
+        .achievement-container .subtitle {
+            font-size: 1.3rem;
+            max-width: 650px;
+            margin: 1rem auto 2.5rem auto;
+        }
+        
+        .action-call {
+            background-color: #f8f7fa;
+            border: 2px dashed var(--secondary-color);
+            padding: 20px 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        .action-call p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <div class="achievement-container">
+
+                <div class="achievement-badge">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h1>คุณคือ "AI Web App Developer"</h1>
+                <p class="subtitle">
+                    ขอแสดงความยินดี คุณได้ใช้ทักษะการสั่งงาน AI สร้างเครื่องมือแก้ปัญหาหน้างานที่ใช้งานได้จริงสำเร็จแล้ว
+                </p>
+                
+                <div class="action-call">
+                    <p>
+                        <i class="fas fa-mouse-pointer"></i> ได้เวลาทดลองใช้งานจริง:<br>
+                        เปิด URL ของ Web App แล้วลองส่งข้อมูลดูผลลัพธ์ใน Google Sheets
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="slide41.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide43.html" class="nav-button">ก้าวต่อไปคืออะไร?</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -3,87 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 39: Step 2.4 - Install Backend Code</title>
+    <title>Slide 39: Install Backend Code</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
-    <!-- นำสไตล์จากสไลด์ 34 มาปรับใช้ -->
+    <!-- Internal CSS for this slide -->
     <style>
-        .step-container {
+        .overview-container {
             text-align: center;
+            margin-top: 2rem;
         }
-        .instructions {
-            text-align: left;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            background-color: #f8f7fa;
-            padding: 25px;
-            border-radius: 15px;
+        .main-icon {
+            font-size: 5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
         }
-        .instructions ol {
-            padding-left: 25px;
-            font-size: 1.15rem;
-            line-height: 1.8;
+        .summary-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 2.5rem;
         }
-        .instructions li {
-            margin-bottom: 15px;
+        .summary-steps .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .instructions code {
-            background-color: #e9e0f8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
+        .show-guide-button {
+            background: var(--primary-color);
+            color: white;
+            font-family: 'Prompt', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(132, 94, 194, 0.3);
         }
-        .screenshot-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+        .show-guide-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.4);
         }
-        .screenshot-wrapper img {
-            width: 100%;
-            display: block;
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
+            z-index: 1000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
+        .modal-overlay.visible { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--card-background); border-radius: 15px; padding: 30px;
+            width: 90%; max-width: 900px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 1.5rem; color: var(--primary-color); }
+        .close-button {
+            background: #f1f1f1; border: none; border-radius: 50%; width: 35px; height: 35px;
+            cursor: pointer; font-size: 1.2rem; color: #888; transition: all 0.2s ease;
+        }
+        .close-button:hover { background: #e0e0e0; color: #333; }
+        
+        .modal-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: start;}
+        .modal-instructions ol { list-style: none; padding: 0; counter-reset: step-counter; }
+        .modal-instructions li { position: relative; padding-left: 40px; margin-bottom: 18px; font-size: 1.05rem; }
+        .modal-instructions li::before {
+            counter-increment: step-counter; content: counter(step-counter);
+            position: absolute; left: 0; top: 0; width: 30px; height: 30px;
+            border-radius: 50%; background-color: var(--primary-color); color: white;
+            font-weight: 700; text-align: center; line-height: 30px;
+        }
+        .code-preview-wrapper {
+            border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            font-size: 0.85rem; max-height: 280px; overflow-y: auto;
+        }
+        pre[class*="language-"] { margin: 0; }
+        
+        @media (max-width: 900px) { .modal-layout { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
-        
         <div class="card-body">
-            <h2>Main Project: Step 2.4</h2>
-            <h1>ติดตั้งโค้ด "เจ้าหน้าที่" (Backend)</h1>
-            <p class="subtitle">เราจะนำโค้ด `saveData` ไปประจำการในไฟล์ `Code.gs` เพื่อรอรับข้อมูล</p>
+            <h1><i class="fas" style="color:var(--primary-color);">&#xf121;</i> ติดตั้งโค้ด "หลังบ้าน" (Backend)</h1>
+            <p class="subtitle">เราจะนำโค้ด <code>saveData</code> ไปประจำการในไฟล์ <code>Code.gs</code> เพื่อรอรับข้อมูล</p>
 
-            <div class="step-container">
-                <div class="instructions">
-                    <p style="font-size: 1.15rem; margin-bottom: 20px;">
-                        <i class="fas fa-info-circle"></i> กลับมาที่หน้าต่าง Apps Script Editor และทำตามขั้นตอนต่อไปนี้:
-                    </p>
-                    <ol>
-                        <li>ตรวจสอบให้แน่ใจว่าคุณกำลังเปิดไฟล์ <code>Code.gs</code></li>
-                        <li><strong>นำโค้ดฟังก์ชัน `saveData`</strong> ที่เพิ่งได้จาก AI มาวางต่อท้ายฟังก์ชัน `doGet` ที่มีอยู่เดิม</li>
-                        <li>กดที่ไอคอนรูปแผ่นดิสก์ <i class="fas fa-save"></i> <strong>เพื่อ Save Project</strong></li>
-                    </ol>
+            <div class="overview-container">
+                <div class="main-icon"><i class="fas fa-puzzle-piece"></i></div>
+                <h3>ภาพรวม: นำชิ้นส่วน Backend ไปต่อท้าย</h3>
+                <div class="summary-steps">
+                    <div class="step"><span>เปิด Code.gs</span> <i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="step"><span>วางโค้ด</span> <i class="fas fa-long-arrow-alt-right"></i></div>
+                    <div class="step"><span>บันทึก</span></div>
                 </div>
-
-                <div class="screenshot-wrapper">
-                    <img src="install_backend.png" alt="Screenshot showing where to paste the backend function in Code.gs">
-                </div>
-                 <p class="subtitle" style="text-align:center; margin-top: 2rem;">
-                    ตอนนี้ "เจ้าหน้าที่" ของเราเข้าประจำการแล้ว แต่เขายังไม่ได้ยินเสียงเรียกจาก "เคาน์เตอร์"...<br>ขั้นตอนต่อไป เราจะไปติดตั้ง "สายไฟ" เพื่อเชื่อมทั้งสองส่วนเข้าด้วยกัน!
-                </p>
+                <button class="show-guide-button" id="showGuideBtn">
+                    <i class="fas fa-book-open"></i> &nbsp; ดูขั้นตอนอย่างละเอียด
+                </button>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide38.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide40.html" class="nav-button">ต่อไป: สร้างสายไฟ (JS)</a>
         </div>
     </div>
 
+    <!-- Modal HTML (Hidden by default) -->
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cogs"></i> Installation Guide</h3>
+                <button class="close-button" id="closeGuideBtn">&times;</button>
+            </div>
+            <div class="modal-layout">
+                <div class="modal-instructions">
+                    <ol>
+                        <li>เปิดไฟล์ <code>Code.gs</code></li>
+                        <li><strong>วางโค้ดฟังก์ชัน <code>saveData</code></strong> ที่ได้จาก AI ต่อท้ายโค้ด <code>doGet</code> ที่มีอยู่เดิม</li>
+                        <li>กด <i class="fas fa-save"></i> <strong>Save project</strong> เพื่อบันทึก</li>
+                    </ol>
+                </div>
+                <div class="code-preview-wrapper">
+<pre><code class="language-javascript">// File: Code.gs
+
+function doGet() {
+  // ... โค้ดเดิม
+}
+
+// วางโค้ดใหม่ต่อท้ายตรงนี้
+function saveData(formObject) {
+  // ... โค้ดจาก AI
+}
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const showGuideBtn = document.getElementById('showGuideBtn');
+        const guideModal = document.getElementById('guideModal');
+        const closeGuideBtn = document.getElementById('closeGuideBtn');
+
+        showGuideBtn.addEventListener('click', () => { guideModal.classList.add('visible'); });
+        const hideModal = () => { guideModal.classList.remove('visible'); };
+        closeGuideBtn.addEventListener('click', hideModal);
+        guideModal.addEventListener('click', (event) => {
+            if (event.target === guideModal) { hideModal(); }
+        });
+    </script>
 </body>
 </html>

@@ -3,99 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slide 41: Step 3.2 - Install & Final Deploy</title>
+    <title>Slide 41: Final Steps</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- นำสไตล์จากสไลด์ก่อนๆ มาปรับใช้ -->
+    <!-- Internal CSS for this slide -->
     <style>
-        .step-container {
+        .checklist-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            align-items: flex-start;
+            margin-top: 2.5rem;
         }
-        .instructions-panel h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        .instructions {
+
+        .checklist-panel {
             background-color: #f8f7fa;
-            padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
+            padding: 30px;
         }
-        .instructions ol {
-            padding-left: 20px;
+        
+        .checklist-panel h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .checklist-panel h3 .step-circle {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 35px; height: 35px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .checklist-panel ol {
+            list-style: none;
+            padding: 0;
             font-size: 1.1rem;
-            line-height: 1.7;
+            line-height: 2; /* Add more vertical space */
         }
-        .instructions li { margin-bottom: 10px; }
-        .instructions code {
+        .checklist-panel li {
+            display: flex;
+            align-items: center;
+        }
+        .checklist-panel li i {
+            width: 25px;
+            color: var(--light-text);
+        }
+        .checklist-panel code {
             background-color: #e9e0f8;
             padding: 2px 6px;
             border-radius: 4px;
         }
-        .screenshot-wrapper {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        
+        /* Thematic Coloring */
+        .redeploy-panel h3 .step-circle {
+            background-color: #f5222d; /* Red for "Live" */
         }
-        .screenshot-wrapper img { width: 100%; display: block; }
-        @media (max-width: 768px) {
-            .step-container { grid-template-columns: 1fr; }
+        .redeploy-panel .crucial-step {
+            background-color: #fffbe6;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid #ffc107;
+        }
+
+        @media (max-width: 900px) {
+            .checklist-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="slide-card">
         <div class="card-body">
-            <h2>Main Project: Step 3.2</h2>
-            <h1>ติดตั้ง JavaScript และ Deploy ครั้งสุดท้าย!</h1>
-            <p class="subtitle">ขั้นตอนสุดท้ายแล้ว! เราจะนำ "สายไฟ" ไปติดตั้งและเปิดใช้งานระบบทั้งหมด</p>
-
-            <div class="step-container">
-                <!-- Panel 1: Install JavaScript -->
-                <div class="instructions-panel">
-                    <h3><i class="fas fa-plug" style="color:var(--secondary-color)"></i> ตอนที่ 1: ติดตั้ง "สายไฟ"</h3>
-                    <div class="instructions">
-                        <ol>
-                            <li>เปิดไฟล์ <code>Index.html</code></li>
-                            <li>เลื่อนไปที่<strong>ล่างสุด</strong>ของไฟล์</li>
-                            <li><strong>วางโค้ด <code>&lt;script&gt;...&lt;/script&gt;</code> ทั้งหมด</strong> ที่ได้จาก AI ลงไปก่อนบรรทัดปิด <code>&lt;/body&gt;</code></li>
-                            <li>กด <i class="fas fa-save"></i> <strong>Save Project</strong></li>
-                        </ol>
-                    </div>
-                    <div class="screenshot-wrapper" style="margin-top: 15px;">
-                        <img src="install_js.png" alt="Screenshot showing where to paste the JavaScript code">
-                    </div>
+            <h1>ติดตั้ง "สายไฟ" และ Deploy ครั้งสุดท้าย</h1>
+            <p class="subtitle">ขั้นตอนสุดท้ายแล้ว เราจะนำทุกชิ้นส่วนมาประกอบกันและเปิดใช้งานระบบทั้งหมด</p>
+            
+            <div class="checklist-container">
+                <!-- Part 1: Install JavaScript -->
+                <div class="checklist-panel js-install-panel">
+                    <h3><span class="step-circle">1</span>ติดตั้ง JavaScript</h3>
+                    <ol>
+                        <li><i class="fas fa-file-code"></i> เปิดไฟล์ <code>Index.html</code></li>
+                        <li><i class="fas fa-arrow-down"></i> เลื่อนไปที่ล่างสุดของไฟล์</li>
+                        <li><i class="fas fa-paste"></i> วางโค้ด <code>&lt;script&gt;</code> ก่อน <code>&lt;/body&gt;</code></li>
+                        <li><i class="fas fa-save"></i> กด Save project</li>
+                    </ol>
                 </div>
-                
-                <!-- Panel 2: Final Deploy -->
-                <div class="instructions-panel">
-                    <h3><i class="fas fa-rocket" style="color:var(--primary-color)"></i> ตอนที่ 2: Deploy Version ใหม่</h3>
-                    <div class="instructions">
-                         <ol>
-                            <li>กดปุ่มสีน้ำเงิน <strong>Deploy</strong></li>
-                            <li>เลือก <strong>Manage deployments</strong></li>
-                            <li>คลิกไอคอนรูปดินสอ <i class="fas fa-edit"></i> เพื่อแก้ไข</li>
-                            <li>ในช่อง <strong>Version</strong>, เลือก <strong>New version</strong> (สำคัญมาก!)</li>
-                            <li>กดปุ่ม <strong>Deploy</strong> เพื่ออัปเดต Web App ของเรา</li>
-                        </ol>
-                    </div>
-                    <div class="screenshot-wrapper" style="margin-top: 15px;">
-                        <img src="redeploy.png" alt="Screenshot showing how to redeploy a new version">
-                    </div>
+
+                <!-- Part 2: Redeploy -->
+                <div class="checklist-panel redeploy-panel">
+                    <h3><span class="step-circle">2</span>Deploy Version ใหม่</h3>
+                    <ol>
+                        <li><i class="fas fa-rocket"></i> กด Deploy > Manage</li>
+                        <li><i class="fas fa-edit"></i> คลิกไอคอนดินสอ (Edit)</li>
+                        <li class="crucial-step"><i class="fas fa-star"></i> เลือก Version เป็น <strong>"New version"</strong></li>
+                        <li><i class="fas fa-cloud-upload-alt"></i> กด Deploy เพื่ออัปเดต</li>
+                    </ol>
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <a href="slide40.html" class="nav-button">ย้อนกลับ</a>
-            <a href="slide42.html" class="nav-button">Mission Complete!</a>
+            <a href="slide42.html" class="nav-button">Mission Complete</a>
         </div>
     </div>
-
 </body>
 </html>
