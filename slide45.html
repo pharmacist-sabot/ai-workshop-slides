@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 45: Dashboard Frontend</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Internal CSS for this slide -->
+    <style>
+        .instruction-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch; /* Make panels equal height */
+            margin-top: 2rem;
+        }
+
+        .setup-panel h3 {
+            font-size: 1.3rem; font-weight: 500;
+            margin-bottom: 20px; color: var(--dark-text);
+        }
+        .setup-panel ol { list-style: none; padding: 0; counter-reset: step-counter; }
+        .setup-panel li {
+            position: relative; padding-left: 45px;
+            margin-bottom: 18px; font-size: 1.05rem; line-height: 1.7;
+        }
+        .setup-panel li::before {
+            counter-increment: step-counter; content: counter(step-counter);
+            position: absolute; left: 0; top: 0; width: 32px; height: 32px;
+            border-radius: 50%; background-color: var(--primary-color); color: white;
+            font-weight: 700; text-align: center; line-height: 32px;
+        }
+        .setup-panel code {
+            background-color: #e9e0f8; padding: 2px 6px; border-radius: 4px;
+        }
+        
+        .prompt-trigger-panel {
+            background-color: #fff8f6;
+            border: 2px dashed var(--secondary-color);
+            border-radius: 15px; padding: 40px; text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .prompt-trigger-panel h3 {
+            font-size: 1.3rem; font-weight: 500;
+            margin-bottom: 15px; color: var(--secondary-color);
+        }
+        .prompt-trigger-panel p {
+            color: var(--light-text); margin-bottom: 25px;
+        }
+        .show-prompt-button {
+            background: var(--secondary-color); color: white;
+            font-family: 'Prompt', sans-serif; font-size: 1.2rem;
+            font-weight: 500; padding: 15px 40px; border-radius: 50px;
+            border: none; cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 128, 102, 0.3);
+        }
+        .show-prompt-button:hover {
+            background-color: var(--alert-color); transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 128, 102, 0.4);
+        }
+
+        /* --- Modal Styles --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
+            z-index: 1000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.visible { display: flex; opacity: 1; }
+        .modal-content {
+            background: var(--card-background); border-radius: 15px; padding: 30px;
+            width: 90%; max-width: 800px; /* Wider modal for long prompt */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { margin: 0; font-size: 1.5rem; color: var(--secondary-color); }
+        .close-button {
+            background: #f1f1f1; border: none; border-radius: 50%; width: 35px; height: 35px;
+            cursor: pointer; font-size: 1.2rem; color: #888; transition: all 0.2s ease;
+        }
+        .close-button:hover { background: #e0e0e0; color: #333; }
+        .prompt-to-copy {
+            background-color: #f8f7fa; border: 1px solid #eee; padding: 20px; border-radius: 8px;
+            font-size: 0.95rem; line-height: 1.8; font-family: 'Sarabun', 'Courier New', monospace;
+            white-space: pre-wrap; word-wrap: break-word; max-height: 60vh; overflow-y: auto;
+        }
+        .copy-button {
+            background: var(--primary-color); color: white; border: none;
+            padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 1rem;
+            font-family: 'Prompt', sans-serif; margin-top: 20px; float: right; transition: all 0.2s ease;
+        }
+        .copy-button:hover { background: var(--primary-dark); }
+        .copy-button.copied { background: #20c997; }
+
+        @media (max-width: 900px) { .instruction-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1><i class="fas fa-palette" style="color:var(--secondary-color);"></i> สั่ง AI สร้างหน้า Dashboard (Frontend)</h1>
+            <p class="subtitle">นี่คือ Master Prompt ที่ซับซ้อนที่สุด เราจะสั่งให้ AI สร้างหน้าเว็บที่มีชีวิตชีวาในคำสั่งเดียว!</p>
+            
+            <div class="instruction-layout">
+                <!-- Left Column: Setup -->
+                <div class="setup-panel">
+                    <h3><i class="fas fa-list-check"></i> ขั้นตอนการติดตั้ง:</h3>
+                    <ol>
+                        <li>สร้างไฟล์ใหม่ ประเภท <strong>HTML</strong></li>
+                        <li>ตั้งชื่อไฟล์ว่า <code>Dashboard</code></li>
+                        <li><strong>Copy Prompt</strong> จากปุ่มด้านขวาไปรันใน AI</li>
+                        <li>นำโค้ด HTML ทั้งหมดที่ได้มา<strong>วางทับ</strong>ของเดิม</li>
+                        <li>กด <i class="fas fa-save"></i> Save Project</li>
+                    </ol>
+                </div>
+
+                <!-- Right Column: Prompt Trigger -->
+                <div class="prompt-trigger-panel">
+                    <h3>The "All-in-One" Prompt</h3>
+                    <p>คำสั่งนี้จะให้ AI เป็นทั้ง Web Dev, Data Viz Expert, และ JS Programmer ในคนเดียว!</p>
+                    <button class="show-prompt-button" id="showPromptBtn">
+                        <i class="fas fa-scroll"></i> &nbsp; แสดง Master Prompt
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="slide44.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide46.html" class="nav-button">ต่อไป: เปิดประตู Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Modal HTML (Hidden by default) -->
+    <div class="modal-overlay" id="promptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Dashboard Master Prompt</h3>
+                <button class="close-button" id="closePromptBtn">&times;</button>
+            </div>
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือ Web Developer ผู้เชี่ยวชาญด้าน Data Visualization
+
+โปรดสร้างโค้ด HTML ทั้งหมดสำหรับไฟล์ชื่อ 'Dashboard.html' โดยมีเงื่อนไขดังนี้:
+1.  ใช้ Bootstrap 5 และ Chart.js version 3 จาก CDN
+2.  มีหัวข้อหลักว่า "Medication Risk Dashboard"
+3.  มีส่วนแสดงผลตัวเลขสรุป (Card) 1 อันสำหรับ "จำนวนรายงานทั้งหมด" โดยให้มี id คือ 'totalReportsCard'
+4.  มี &lt;canvas&gt; สำหรับวาดกราฟวงกลม (Pie Chart) 1 อัน โดยให้มี id คือ 'riskCategoryChart'
+5.  มีตาราง (Table) สำหรับแสดง "5 รายงานล่าสุด" โดยให้ &lt;tbody&gt; ของตารางมี id คือ 'latestReportsTableBody'
+6.  เขียนโค้ด JavaScript ทั้งหมดใน &lt;script&gt; tag โดยให้:
+    a. เมื่อหน้าเว็บโหลด (DOMContentLoaded), ให้แสดงข้อความ Loading และเรียกใช้ฟังก์ชันหลังบ้าน 'getDataForDashboard()' ผ่าน `google.script.run`
+    b. สร้าง Success Handler 'handleData(data)' ที่จะทำงานเมื่อได้รับข้อมูลกลับมา
+    c. ในฟังก์ชัน 'handleData(data)', ให้ประมวลผลข้อมูลเพื่อ:
+       - นับจำนวนรายงานทั้งหมด (data.length) แล้วแสดงผลใน '#totalReportsCard'
+       - นับจำนวนของแต่ละ 'ErrorCategory' เพื่อเตรียมข้อมูลสำหรับกราฟ แล้วใช้ Chart.js วาด Pie Chart ลงบน '#riskCategoryChart'
+       - นำข้อมูล 5 แถวสุดท้าย (ข้อมูลล่าสุด) มาสร้างเป็นแถว '&lt;tr&gt;' ในตาราง '#latestReportsTableBody'
+
+ขอโค้ด HTML ที่สมบูรณ์พร้อม JavaScript ภายในไฟล์เดียว</div>
+            <button class="copy-button" id="copyBtn">
+                <i class="fas fa-copy"></i>
+                <span>Copy</span>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        const showPromptBtn = document.getElementById('showPromptBtn');
+        const promptModal = document.getElementById('promptModal');
+        const closePromptBtn = document.getElementById('closePromptBtn');
+        const copyButton = document.getElementById('copyBtn');
+        const promptTextContainer = document.getElementById('promptTextContainer');
+
+        showPromptBtn.addEventListener('click', () => { promptModal.classList.add('visible'); });
+        const hideModal = () => { promptModal.classList.remove('visible'); };
+        closePromptBtn.addEventListener('click', hideModal);
+        promptModal.addEventListener('click', (event) => {
+            if (event.target === promptModal) { hideModal(); }
+        });
+
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
+                const btnSpan = copyButton.querySelector('span');
+                copyButton.classList.add('copied');
+                btnSpan.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyButton.classList.remove('copied');
+                    btnSpan.innerText = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
