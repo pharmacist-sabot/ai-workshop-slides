@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 47: The Masterpiece!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .reveal-container {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .reveal-container h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .reveal-container h1 {
+            font-size: 3rem;
+            color: var(--dark-text);
+        }
+        
+        .action-call {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <div class="reveal-container">
+                <h2>The Grand Finale</h2>
+                <h1>ขอแนะนำ... ผลงานชิ้นเอกของคุณ</h1>
+                <p class="subtitle">
+                    ยินดีด้วย คุณได้สร้าง Dashboard สรุปข้อมูลความเสี่ยงด้านยาแบบ Real-time สำเร็จแล้ว
+                </p>
+
+                <p class="action-call">
+                    <i class="fas fa-mouse-pointer" style="color:var(--secondary-color);"></i>
+                    ได้เวลาเปิด URL ของ Dashboard แล้วไปดูผลงานของคุณกันเลย
+                </p>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="slide46.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide48.html" class="nav-button">บทต่อไป</a>
+        </div>
+    </div>
+</body>
+</html>
