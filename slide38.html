@@ -138,23 +138,17 @@
                 <h3>Backend Master Prompt</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ Google Apps Script ผู้เชี่ยวชาญ
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน Google Apps Script 
 
-ฉันมี Google Sheet ชื่อ "Risk_Log" ที่มีคอลัมน์ตามลำดับดังนี้: Timestamp, EventDate, PatientType, ErrorCategory, Description, SeverityLevel
+ฉันมี Google Sheet ชื่อ "Risk_Log" ที่มีคอลัมน์ตามลำดับดังนี้: Timestamp, EventDate, PatientType, SeverityLevel, Description
 
-โปรดเขียนฟังก์ชันชื่อ `saveData(formObject)` โดยให้ทำงานดังนี้:
+โปรดเขียนฟังก์ชัน saveData โดยให้ทำงานดังนี้:
 1.  เข้าถึงชีทที่ชื่อว่า "Risk_Log"
-2.  เพิ่มแถวใหม่ (appendRow) ต่อท้ายข้อมูลที่มีอยู่
-3.  ข้อมูลในแถวใหม่จะต้องเรียงตามลำดับคอลัมน์ของชีท คือ:
-    - วันที่และเวลาปัจจุบัน (new Date())
-    - ข้อมูลจาก `formObject.EventDate`
-    - ข้อมูลจาก `formObject.PatientType`
-    - ข้อมูลจาก `formObject.ErrorCategory`
-    - ข้อมูลจาก `formObject.Description`
-    - ข้อมูลจาก `formObject.SeverityLevel`
-4.  เมื่อบันทึกสำเร็จ ให้ return ข้อความกลับไปว่า "บันทึกรายงานสำเร็จ!"
+2.  เพิ่มแถวใหม่ต่อท้ายข้อมูลที่มีอยู่
+3.  ข้อมูลในแถวใหม่จะต้องเรียงตามลำดับคอลัมน์ของชีท ซึ่งจะมาจากข้อมูลที่ผู้ใช้งานกรอก
+4.  เมื่อบันทึกสำเร็จ ให้ตอบข้อความกลับไปว่า "บันทึกรายงานสำเร็จ"
 
-ขอเฉพาะโค้ดฟังก์ชัน `saveData` เท่านั้น</div>
+ขอเฉพาะโค้ดฟังก์ชันนี้เท่านั้น</div>
             <button class="copy-button" id="copyBtn">
                 <i class="fas fa-copy"></i>
                 <span>Copy</span>

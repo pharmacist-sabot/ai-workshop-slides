@@ -108,8 +108,7 @@
                     <h3><i class="fas fa-lightbulb"></i> หัวใจของ Prompt นี้:</h3>
                     <ul>
                         <li><i class="fas fa-check-circle"></i>บอก AI ว่าเราใช้ google.script.run ซึ่งเป็นคำสั่งพิเศษของ Apps Script</li>
-                        <li><i class="fas fa-check-circle"></i>สั่งงานเป็นขั้นตอนที่โปรแกรมเมอร์เข้าใจ (ดัก event, ป้องกัน reload, เรียกฟังก์ชันหลังบ้าน)</li>
-                        <li><i class="fas fa-check-circle"></i>ระบุคำสั่งสำคัญ เช่น .withSuccessHandler() และ .withFailureHandler()</li>
+                        <li><i class="fas fa-check-circle"></i>สั่งงานเป็นขั้นตอนที่โปรแกรมเมอร์เข้าใจ (เช่น เรียกฟังก์ชันหลังบ้าน)</li>
                     </ul>
                 </div>
 
@@ -134,18 +133,15 @@
                 <h3>JavaScript Master Prompt</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ JavaScript ผู้เชี่ยวชาญ
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน JavaScript 
 
-ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formObject)` ที่พร้อมรับข้อมูลจากฟอร์ม
+ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formData)` ที่พร้อมรับข้อมูลจากฟอร์ม
 
 โปรดเขียนโค้ด JavaScript ทั้งหมดที่ต้องใส่ใน &lt;script&gt; tag สำหรับไฟล์ `Index.html` โดยโค้ดจะต้อง:
-1.  หา form element ในหน้าเว็บ
-2.  ดักฟัง (listen for) event 'submit' ของ form นั้น
-3.  เมื่อ form ถูก submit, ให้สั่ง `event.preventDefault()` เพื่อป้องกันไม่ให้หน้าเว็บโหลดใหม่
-4.  เรียกใช้ฟังก์ชันหลังบ้าน `saveData` ผ่าน `google.script.run`
-5.  ใส่ `.withSuccessHandler()` เพื่อจัดการเมื่อโค้ดหลังบ้านทำงานสำเร็จ โดยให้แสดง alert box ด้วยข้อความที่ส่งกลับมา แล้วทำการ reset ฟอร์มให้ว่าง
-6.  ใส่ `.withFailureHandler()` เพื่อจัดการเมื่อเกิดข้อผิดพลาด โดยให้แสดง alert box พร้อมข้อความ error
-7.  ส่ง `event.target` (ซึ่งก็คือ form object) เป็น argument เข้าไปในฟังก์ชัน `saveData`
+1.  เรียกใช้ฟังก์ชันหลังบ้าน `saveData(formData)` ผ่าน `google.script.run`
+2.  ส่งข้อมูลจากฟอร์มไปยังฟังก์ชัน `saveData(formData)` เมื่อผู้ใช้กดปุ่ม submit
+3.  ป้องกันไม่ให้ฟอร์มรีเฟรชหน้าเว็บเมื่อกด submit
+4.  แสดงข้อความแจ้งเตือน "Report submitted successfully" เมื่อข้อมูลถูกส่งไปยังฟังก์ชันหลังบ้านเรียบร้อยแล้ว
 
 ขอเฉพาะโค้ดที่อยู่ภายใน &lt;script&gt; และ &lt;/script&gt; เท่านั้น</div>
             <button class="copy-button" id="copyBtn">
