@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 48: Module 4 - Leveling Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; 
+            align-items: stretch; 
+            gap: 25px; 
+            margin-top: 2.5rem;
+        }
+
+        .panel {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #eee;
+            display: flex;
+            align-items: center; 
+            gap: 20px;
+        }
+        
+        .panel .icon-wrapper {
+            flex-shrink: 0;
+            font-size: 2.8rem; 
+        }
+
+        .panel .text-wrapper {
+            text-align: left;
+        }
+
+        .panel h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+        }
+
+        .panel p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        .blackbox-panel .icon-wrapper {
+            color: var(--light-text);
+        }
+
+        .toolbox-panel {
+            background-color: #f9f6ff;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 8px 25px rgba(132, 94, 194, 0.1);
+        }
+        .toolbox-panel .icon-wrapper {
+            color: var(--primary-color);
+        }
+        .toolbox-panel h3 {
+            color: var(--primary-color);
+        }
+
+        .arrow-separator {
+            display: flex;
+            align-items: center;
+            font-size: 3rem; 
+            color: var(--light-text);
+        }
+        
+        @media (max-width: 900px) {
+            .comparison-layout {
+                grid-template-columns: 1fr;
+            }
+            .arrow-separator {
+                transform: rotate(90deg);
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>Module 4: Leveling Up</h2>
+            <h1>จาก "กล่องดำ" สู่ "กล่องเครื่องมือ"</h1>
+            <p class="subtitle">ได้เวลาเปลี่ยนโค้ดที่ดูน่ากลัว ให้กลายเป็นเครื่องมือที่เรา "เป็นเจ้าของ" และปรับแก้ได้ตามใจชอบ</p>
+
+            <div class="comparison-layout">
+                <div class="panel blackbox-panel">
+                    <div class="icon-wrapper"><i class="fas fa-box"></i></div>
+                    <div class="text-wrapper">
+                        <h3>The Blackbox</h3>
+                        <p>โค้ดที่ใช้งานได้ แต่เราไม่เข้าใจและไม่กล้าแตะต้อง</p>
+                    </div>
+                </div>
+
+                <div class="arrow-separator">
+                    <i class="fas fa-arrow-right-long"></i>
+                </div>
+
+                <div class="panel toolbox-panel">
+                    <div class="icon-wrapper"><i class="fas fa-toolbox"></i></div>
+                    <div class="text-wrapper">
+                        <h3>The Toolbox</h3>
+                        <p>โค้ดที่เราเข้าใจโครงสร้าง สามารถหยิบมาแก้ไขและต่อยอดได้</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide47.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide49.html" class="nav-button">เริ่มทัวร์ห้องเครื่อง</a>
+        </div>
+    </div>
+</body>
+</html>
