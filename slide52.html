@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 52: Level Up 2 - Add Dropdown Option</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <style>
+        .edit-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .instructions-panel h3 {
+            font-size: 1.4rem; font-weight: 500;
+            margin-bottom: 20px; color: var(--dark-text);
+        }
+        .instructions-panel ol {
+            list-style: none; padding: 0; counter-reset: step-counter;
+        }
+        .instructions-panel li {
+            position: relative; padding-left: 45px;
+            margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7;
+        }
+        .instructions-panel li::before {
+            counter-increment: step-counter; content: counter(step-counter);
+            position: absolute; left: 0; top: 0; width: 32px; height: 32px;
+            border-radius: 50%; background-color: var(--primary-color); color: white;
+            font-weight: 700; text-align: center; line-height: 32px;
+        }
+        .instructions-panel code {
+            background-color: #e9e0f8; padding: 2px 6px; border-radius: 4px;
+        }
+
+        .code-diff-panel {
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15); font-size: 0.95rem;
+        }
+        pre[class*="language-"] { margin: 0; }
+        pre[class*="language-diff"] .token.deleted-line,
+        pre[class*="language-diff"] .token.deleted {
+            background-color: rgba(255, 99, 132, 0.15); display: block;
+        }
+        pre[class*="language-diff"] .token.inserted-line,
+        pre[class*="language-diff"] .token.inserted {
+            background-color: rgba(75, 192, 192, 0.15); display: block;
+        }
+        pre[class*="language-diff"] .token.prefix { user-select: none; }
+
+        @media (max-width: 900px) { .edit-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1><i class="fas fa-list-ul" style="color:var(--primary-color);"></i> Level Up 2: เพิ่มตัวเลือกใน Dropdown</h1>
+            <p class="subtitle">มาลองเพิ่มตัวเลือกใหม่ๆ ในช่อง "ประเภทผู้ป่วย" กัน</p>
+            
+            <div class="edit-layout">
+                <div class="instructions-panel">
+                    <h3><i class="fas fa-tasks"></i> ภารกิจของคุณ:</h3>
+                    <ol>
+                        <li>เปิดไฟล์ <code>Index.html</code></li>
+                        <li><strong>เพิ่มตัวเลือก "อื่นๆ"</strong> โดยการคัดลอกบรรทัด <code>&lt;option&gt;</code> ที่มีอยู่ แล้วแก้ไขข้อความ</li>
+                        <li>กด <i class="fas fa-save"></i> Save แล้ว Redeploy เพื่อดูผลลัพธ์</li>
+                    </ol>
+                </div>
+
+                <div class="code-diff-panel">
+<pre><code class="language-diff">
+    &lt;option value="ผู้ป่วยนอก"&gt;ผู้ป่วยนอก (OPD)&lt;/option&gt;
+    &lt;option value="ผู้ป่วยใน"&gt;ผู้ป่วยใน (IPD)&lt;/option&gt;
++   &lt;option value="อื่นๆ"&gt;อื่นๆ (Others)&lt;/option&gt;
+  &lt;/select&gt;
+</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide51.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide53.html" class="nav-button">Level Up ต่อไป</a>
+        </div>
+    </div>
+</body>
+</html>
