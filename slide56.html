@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 56: Using The Developer Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .debug-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 40px;
+            align-items: start;
+            margin-top: 2rem;
+        }
+
+        .instructions-panel h3 {
+            font-size: 1.4rem; font-weight: 500;
+            margin-bottom: 20px; color: var(--dark-text);
+        }
+        .instructions-panel ol {
+            list-style: none; padding: 0; counter-reset: step-counter;
+        }
+        .instructions-panel li {
+            position: relative; padding-left: 45px;
+            margin-bottom: 20px; font-size: 1.1rem; line-height: 1.7;
+        }
+        .instructions-panel li::before {
+            counter-increment: step-counter; content: counter(step-counter);
+            position: absolute; left: 0; top: 0; width: 32px; height: 32px;
+            border-radius: 50%; background-color: var(--alert-color); color: white;
+            font-weight: 700; text-align: center; line-height: 32px;
+        }
+        .instructions-panel kbd {
+            background-color: #333; color: white; padding: 4px 8px;
+            border-radius: 4px; font-family: monospace;
+        }
+
+        .screenshot-wrapper {
+            border-radius: 10px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 1px solid #ddd;
+        }
+        .screenshot-wrapper img {
+            width: 100%; display: block;
+        }
+
+        @media (max-width: 900px) { .debug-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1><i class="fas fa-terminal" style="color:var(--alert-color);"></i> เมื่อสิ่งต่างๆ ไม่เป็นใจ: การใช้ Console (F12)</h1>
+            <p class="subtitle">มาเรียนรู้เครื่องมือของนักพัฒนาเว็บ ที่จะช่วยให้เราเห็น "เบื้องหลัง" การทำงานของหน้าเว็บ</p>
+            
+            <div class="debug-layout">
+                <div class="instructions-panel">
+                    <h3><i class="fas fa-search"></i> วิธีการสืบสวน (Frontend):</h3>
+                    <ol>
+                        <li>เปิด Web App ของเราในเบราว์เซอร์</li>
+                        <li>กดปุ่ม <kbd>F12</kbd> (หรือ `Ctrl+Shift+I` / `Cmd+Opt+I`) เพื่อเปิด Developer Tools</li>
+                        <li>คลิกที่แท็บ <strong>"Console"</strong></li>
+                        <li>ข้อความ Error ที่เป็นสีแดง <span style="color:red; font-weight: bold;">(Red Text)</span> คือ "เบาะแส" ที่บอกเราว่าโค้ด JavaScript ผิดพลาดตรงไหน</li>
+                    </ol>
+                </div>
+                <div class="screenshot-wrapper">
+                    <img src="images/console_log_example.png" alt="Screenshot of the browser's Developer Console showing a JavaScript error">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide55.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide57.html" class="nav-button">สรุป Module 4</a>
+        </div>
+    </div>
+</body>
+</html>
