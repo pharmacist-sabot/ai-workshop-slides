@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 64: Thank You!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .closing-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; 
+            align-items: center;
+            gap: 50px;
+        }
+
+        .thank-you-panel h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .thank-you-panel p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+        }
+
+        .contact-panel {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .contact-panel .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .contact-panel h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0 0 5px 0;
+        }
+        
+        .contact-panel .job-title {
+            font-size: 1rem;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+        .contact-links li {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-links i {
+            width: 30px;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 900px) {
+            .closing-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .contact-links {
+                display: block; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <div class="closing-layout">
+                <!-- Left: Thank You Message -->
+                <div class="thank-you-panel">
+                    <h1>ขอบคุณครับ</h1>
+                    <p>
+                        หวังว่า Workshop นี้จะเป็นจุดเริ่มต้นที่ดีในการนำพลังของ AI มาใช้พัฒนางานเภสัชกรรมของเราต่อไป<br>
+                        ขอให้สนุกกับการเป็น "ผู้กำกับ AI" ครับ
+                    </p>
+                </div>
+
+                <!-- Right: Contact Info -->
+                <div class="contact-panel">
+                    <img src="images/profile-1.jpg" alt="รูปโปรไฟล์วิทยากร" class="profile-picture">
+                    <h3>สุรเดช ประถมศักดิ์</h3>
+                    <p class="job-title">เภสัชกรชำนาญการ รพ.สระโบสถ์</p>
+                    <ul class="contact-links">
+                        <li><i class="fas fa-envelope"></i> pharmacistsabot@gmail.com</li>
+                        <li><i class="fab fa-github"></i> https://github.com/pharmacist-sabot</li>
+                        <li><i class="fas fa-link"></i> https://rxdevnotes.vercel.app</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer" style="justify-content: flex-end;"> 
+            <a href="slide63.html" class="nav-button">ย้อนกลับ</a>
+        </div>
+    </div>
+</body>
+</html>
