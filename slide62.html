@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 62: What's Next?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            text-align: center;
+        }
+
+        .next-steps-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
+        .main-idea-panel {
+            background-color: #f9f6ff;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .main-idea-panel .icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .main-idea-panel h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 0 B10px 0;
+            color: var(--dark-text);
+        }
+        .main-idea-panel p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--light-text);
+            margin: 0;
+        }
+        
+        .other-ideas-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            gap: 20px;
+        }
+        .other-ideas-list li {
+            background-color: #f8f7fa;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #eee;
+        }
+        .other-ideas-list .icon {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+        .other-ideas-list h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .next-steps-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1>แล้วจะทำอะไรต่อดี? (What's Next?)</h1>
+            <p class="subtitle">ทักษะที่คุณได้เรียนรู้ สามารถนำไปต่อยอดสร้างเครื่องมือแก้ปัญหาอื่นๆ ได้อีกมากมาย</p>
+
+            <div class="next-steps-layout">
+                <!-- Main Idea -->
+                <div class="main-idea-panel">
+                    <div class="icon"><i class="fas fa-calendar-times"></i></div>
+                    <h3>สร้างระบบแจ้งเตือนยาใกล้หมดอายุ</h3>
+                    <p>
+                        ลองจินตนาการถึงการสร้างระบบที่ตรวจสอบวันหมดอายุของยาในสต็อก 
+                    </p>
+                </div>
+                
+                <!-- Other Ideas -->
+                <div class="other-ideas-panel">
+                    <ul class="other-ideas-list">
+                        <li>
+                            <div class="icon"><i class="fas fa-comment-dots"></i></div>
+                            <h4>เครื่องมือช่วยเขียน Counseling</h4>
+                        </li>
+                        <li>
+                            <div class="icon"><i class="fas fa-file-alt"></i></div>
+                            <h4>AI ช่วยสรุป Guideline/บทความ</h4>
+                        </li>
+                        <li>
+                            <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                            <h4>เครื่องมือตรวจสอบ Drug Interaction</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide61.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide63.html" class="nav-button">มีคำถามไหม? (Q&A)</a>
+        </div>
+    </div>
+</body>
+</html>
