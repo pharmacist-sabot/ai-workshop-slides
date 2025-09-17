@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 63: Q&A</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .qa-container {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .main-icon {
+            font-size: 6rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+        }
+
+        .qa-container h1 {
+            font-size: 3.5rem;
+            color: var(--dark-text);
+        }
+
+        .qa-container .subtitle {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-top: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <div class="qa-container">
+
+                <div class="main-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+
+                <h1>Q & A</h1>
+                <p class="subtitle">
+                    ช่วงสุดท้าย: มีคำถาม, ข้อสงสัย, หรือไอเดียที่อยากแลกเปลี่ยนกันไหมครับ?
+                </p>
+
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide62.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide64.html" class="nav-button">ปิดท้าย Workshop</a>
+        </div>
+    </div>
+</body>
+</html>
