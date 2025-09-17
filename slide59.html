@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 59: Key Takeaways</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            text-align: center;
+        }
+
+        .recap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 2.5rem;
+        }
+
+        .recap-item {
+            background-color: #f8f7fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-bottom: 4px solid #eee;
+            transition: all 0.3s ease;
+        }
+        .recap-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(75, 68, 83, 0.1);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .recap-item .icon {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .recap-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+            color: var(--dark-text);
+        }
+        .recap-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .recap-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1>Key Takeaways: หัวใจสำคัญ 3 ประการ</h1>
+            <p class="subtitle">นี่คือ 3 แนวคิดหลักที่เป็นรากฐานของการทำงานกับ AI ทั้งหมดที่เราได้เรียนรู้</p>
+
+            <div class="recap-grid">
+                <!-- Recap 1: Mindset -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>The Director Mindset</h3>
+                    <p>เปลี่ยนบทบาทจาก "ผู้ลงมือทำ" มาเป็น "ผู้กำกับ" ที่มีวิสัยทัศน์ชัดเจน</p>
+                </div>
+                
+                <!-- Recap 2: Prompt -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-comments"></i></div>
+                    <h3>The Language of AI</h3>
+                    <p>เข้าใจว่า Prompt คือ "ภาษา" ที่เราใช้สื่อสารและสั่งงาน AI</p>
+                </div>
+
+                <!-- Recap 3: R-C-T-F -->
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-scroll"></i></div>
+                    <h3>The R-C-T-F Formula</h3>
+                    <p>มี "สูตรลับ" ในการสร้าง Prompt ที่ทรงพลังและแม่นยำ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide58.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide60.html" class="nav-button">ประเด็นด้านจริยธรรม</a>
+        </div>
+    </div>
+</body>
+</html>
