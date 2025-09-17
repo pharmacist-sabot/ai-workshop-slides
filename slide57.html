@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 57: Module 4 Recap</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .recap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 25px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .recap-item {
+            display: flex;
+            align-items: center;
+            background-color: #f8f7fa;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #ddd;
+        }
+
+        .recap-item .icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-right: 20px;
+            width: 40px;
+        }
+        
+        .recap-item .text-content h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin: 0 0 2px 0;
+            color: var(--dark-text);
+        }
+        
+        .recap-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--light-text);
+            margin: 0;
+        }
+        
+        .next-module-announcement {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--dark-text);
+            margin-top: 1rem;
+        }
+        .next-module-announcement strong {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .recap-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h2>Module 4 Complete</h2>
+            <h1>คุณได้อัปเกรด "กล่องเครื่องมือ" ของคุณแล้ว</h1>
+            <div class="recap-grid">
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-book-open"></i></div>
+                    <div class="text-content">
+                        <h3>การอ่านโค้ด</h3>
+                        <p>เข้าใจโครงสร้างของไฟล์ <code>Code.gs</code> และ <code>Index.html</code></p>
+                    </div>
+                </div>
+                
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-pencil-alt"></i></div>
+                    <div class="text-content">
+                        <h3>การแก้ไขเบื้องต้น</h3>
+                        <p>สามารถเปลี่ยนข้อความ, เพิ่มตัวเลือก, และปรับปรุง UX ง่ายๆ ได้</p>
+                    </div>
+                </div>
+
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
+                    <div class="text-content">
+                        <h3>การต่อยอดฟังก์ชัน</h3>
+                        <p>ใช้ AI สร้างฟังก์ชันใหม่ (ส่งอีเมล) และเชื่อมต่อเข้ากับระบบเดิมได้</p>
+                    </div>
+                </div>
+
+                <div class="recap-item">
+                    <div class="icon"><i class="fas fa-bug"></i></div>
+                    <div class="text-content">
+                        <h3>การแก้ปัญหา</h3>
+                        <p>รู้วิธีใช้ Developer Console (F12) เพื่อหา "เบาะแส" เมื่อเกิดข้อผิดพลาด</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide56.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide58.html" class="nav-button">เริ่ม Module 5</a>
+        </div>
+    </div>
+</body>
+</html>
