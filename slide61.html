@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 61: Human in the Loop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            text-align: center;
+        }
+
+        .hierarchy-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: stretch;
+            gap: 30px;
+            margin-top: 2.5rem;
+        }
+        
+        .role-panel {
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .role-panel .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .role-panel .role-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .role-panel h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 0 10px 0;
+        }
+        .role-panel p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--light-text);
+            margin: 0;
+        }
+        
+        .captain-panel {
+            background-color: #f9f6ff;
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(132, 94, 194, 0.15);
+        }
+        .captain-panel .icon, .captain-panel .role-title {
+            color: var(--primary-color);
+        }
+        
+        .copilot-panel {
+            background-color: #f8f7fa;
+            border-color: #eee;
+        }
+        .copilot-panel .icon, .copilot-panel .role-title {
+            color: var(--light-text);
+        }
+        .copilot-panel h3 {
+            color: var(--dark-text);
+        }
+
+        .arrow-separator {
+            display: flex;
+            align-items: center;
+            font-size: 3rem;
+            color: var(--light-text);
+        }
+        
+        @media (max-width: 900px) {
+            .hierarchy-container {
+                grid-template-columns: 1fr; 
+                gap: 0; 
+                justify-items: center;
+            }
+            .arrow-separator {
+                transform: rotate(90deg); 
+                margin: 30px 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1>AI คือ "ผู้ช่วย" ไม่ใช่ "ผู้ตัดสินใจ"</h1>
+            <p class="subtitle">จำไว้เสมอว่า เทคโนโลยีคือเครื่องมือสนับสนุน แต่ความรับผิดชอบสุดท้ายยังคงอยู่ที่เรา</p>
+
+            <div class="hierarchy-container">
+                <!-- The Captain (Pharmacist) -->
+                <div class="role-panel captain-panel">
+                    <div class="icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="role-title">The Captain</div>
+                    <h3>เภสัชกร (มนุษย์)</h3>
+                    <p>ผู้ตัดสินใจสุดท้าย, ตรวจสอบความถูกต้อง, และรับผิดชอบต่อผู้ป่วย</p>
+                </div>
+
+                <div class="arrow-separator">
+                    <i class="fas fa-arrows-alt-h"></i>
+                </div>
+
+                <!-- The Co-pilot (AI) -->
+                <div class="role-panel copilot-panel">
+                    <div class="icon"><i class="fas fa-robot"></i></div>
+                    <div class="role-title">The Co-pilot</div>
+                    <h3>ปัญญาประดิษฐ์ (AI)</h3>
+                    <p>ประมวลผลข้อมูล, สร้างผลงานตามคำสั่ง, และเป็นผู้ช่วยลดภาระงาน</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide60.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide62.html" class="nav-button">แล้วจะทำอะไรต่อดี?</a>
+        </div>
+    </div>
+</body>
+</html>
