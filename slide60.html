@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 60: Ethics & Limitations</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .card-body {
+            text-align: center;
+        }
+
+        .caution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px;
+            margin-top: 2.5rem;
+        }
+
+        .caution-card {
+            background-color: #fffaf0; 
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #ffe58f;
+            border-top: 4px solid var(--alert-color); 
+            transition: all 0.3s ease;
+        }
+        .caution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(195, 74, 54, 0.15);
+        }
+
+        .caution-card .icon {
+            font-size: 2.8rem;
+            color: var(--alert-color);
+            margin-bottom: 15px;
+        }
+        .caution-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+            color: var(--dark-text);
+        }
+        .caution-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--light-text);
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .caution-grid {
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-card">
+        <div class="card-body">
+            <h1><i class="fas fa-exclamation-triangle" style="color:var(--alert-color);"></i> จริยธรรมและข้อจำกัดของ AI</h1>
+            <p class="subtitle">เมื่อเรามีพลังที่ยิ่งใหญ่ ความรับผิดชอบที่ใหญ่ยิ่งก็ย่อมตามมาเสมอ</p>
+
+            <div class="caution-grid">
+                <!-- 1. Data Privacy -->
+                <div class="caution-card">
+                    <div class="icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>ความปลอดภัยข้อมูล (Data Privacy)</h3>
+                    <p>ห้ามส่งข้อมูลส่วนบุคคลของผู้ป่วย เข้าไปในโมเดล AI สาธารณะโดยเด็ดขาด</p>
+                </div>
+                
+                <!-- 2. Hallucination -->
+                <div class="caution-card">
+                    <div class="icon"><i class="fas fa-ghost"></i></div>
+                    <h3>ข้อมูลผิดพลาด (Hallucination)</h3>
+                    <p>AI อาจ "แต่งเรื่อง" หรือให้ข้อมูลที่ไม่ถูกต้องได้เสมอ เราต้องตรวจสอบความจริงทุกครั้ง</p>
+                </div>
+
+                <!-- 3. Human Responsibility -->
+                <div class="caution-card">
+                    <div class="icon"><i class="fas fa-user-check"></i></div>
+                    <h3>ความรับผิดชอบ</h3>
+                    <p>AI เป็นเพียงเครื่องมือ "เภสัชกร" คือผู้รับผิดชอบสุดท้ายในการตัดสินใจและดูแลผู้ป่วย</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="slide59.html" class="nav-button">ย้อนกลับ</a>
+            <a href="slide61.html" class="nav-button">AI คือผู้ช่วย</a>
+        </div>
+    </div>
+</body>
+</html>
