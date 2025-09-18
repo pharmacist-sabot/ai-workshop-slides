@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Internal CSS for this slide only -->
     <style>
         .instruction-layout {
             display: grid;
@@ -42,7 +41,7 @@
             color: white; font-weight: 700; text-align: center; line-height: 32px;
         }
         .instructions-panel code {
-            background-color: #e6f4ea; /* Light Green */
+            background-color: #e6f4ea; 
             padding: 2px 6px;
             border-radius: 4px;
             font-family: 'Courier New', Courier, monospace;
@@ -67,7 +66,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .table-simulation th {
-            background-color: #e6f4ea; /* Light Green */
+            background-color: #e6f4ea; 
             color: #155724;
             padding: 12px;
             border: 1px solid #c3e6cb;
@@ -99,7 +98,7 @@
                     <h3><i class="fas fa-list-check"></i> สิ่งที่ต้องทำ:</h3>
                     <ol>
                         <li>ในไฟล์ "AI Pharmacist Tools" ให้สร้างชีทใหม่ (กด <i class="fas fa-plus"></i>)</li>
-                        <li>เปลี่ยนชื่อชีทใหม่เป็น <code>Risk_Log</code></li>
+                        <li>เปลี่ยนชื่อชีทใหม่เป็น <code>MedicationErrors</code></li>
                         <li>สร้างหัวตารางในแถวที่ 1 ตามนี้</li>
                     </ol>
                 </div>
@@ -111,10 +110,10 @@
                         <thead>
                             <tr>
                                 <th>A: Timestamp</th>
-                                <th>B: EventDate</th>
-                                <th>C: PatientType</th>
-                                <th>D: SeverityLevel</th>
-                                <th>E: Description</th>
+                                <th>B: PatientType</th>
+                                <th>C: ErrorCategory</th>
+                                <th>D: EventDate</th>
+                                <th>E: ErrorSubtype</th>
                             </tr>
                         </thead>
                         <tbody>
