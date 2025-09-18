@@ -6,9 +6,7 @@
     <title>Slide 38: The Backend Logic Prompt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide -->
     <style>
         .instruction-layout {
             display: grid;
@@ -54,7 +52,6 @@
             box-shadow: 0 8px 25px rgba(132, 94, 194, 0.4);
         }
 
-        /* --- Modal Styles --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -138,17 +135,24 @@
                 <h3>Backend Master Prompt</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน Google Apps Script 
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือผู้เชี่ยวชาญ Google Apps Script ด้านการจัดการข้อมูล
 
-ฉันมี Google Sheet ชื่อ "Risk_Log" ที่มีคอลัมน์ตามลำดับดังนี้: Timestamp, EventDate, PatientType, SeverityLevel, Description
+ฉันต้องการคำสั่ง saveData ที่จะทำงานเป็น "หลังบ้าน" สำหรับรับข้อมูลจากหน้าเว็บไปบันทึกใน Google Sheet โปรดเขียนฟังก์ชันนี้ให้ทำงานตามเงื่อนไขต่อไปนี้ทั้งหมด:
 
-โปรดเขียนฟังก์ชัน saveData โดยให้ทำงานดังนี้:
-1.  เข้าถึงชีทที่ชื่อว่า "Risk_Log"
-2.  เพิ่มแถวใหม่ต่อท้ายข้อมูลที่มีอยู่
-3.  ข้อมูลในแถวใหม่จะต้องเรียงตามลำดับคอลัมน์ของชีท ซึ่งจะมาจากข้อมูลที่ผู้ใช้งานกรอก
-4.  เมื่อบันทึกสำเร็จ ให้ตอบข้อความกลับไปว่า "บันทึกรายงานสำเร็จ"
-
-ขอเฉพาะโค้ดฟังก์ชันนี้เท่านั้น</div>
+1. เป้าหมาย: บันทึกข้อมูลลงใน Google Sheet ที่มีชีตชื่อว่า "MedicationErrors"
+2. ความฉลาดของชีต:
+    * ถ้ายังไม่มีชีตชื่อ "MedicationErrors" ให้สร้างชีตใหม่ขึ้นมาเองโดยอัตโนมัติ
+    * ถ้าชีตนั้นยังว่างอยู่ (เพิ่งสร้างใหม่) ให้ใส่หัวข้อตารางในแถวแรกตามลำดับนี้: `Timestamp`, `PatientType`, `ErrorCategory`, `EventDate`, `ErrorSubtype`, `Description`, `SeverityLevel`, `PatientName`, `PatientHN`
+3. การจัดการข้อมูล:
+    * ฟังก์ชันนี้จะได้รับข้อมูลจากหน้าเว็บมาเป็นชุด (Object)
+    * นำข้อมูลที่ได้รับมาจัดเรียงเพื่อสร้างเป็นแถวใหม่ โดย:
+       * คอลัมน์ `Timestamp` ให้ใส่วันและเวลาปัจจุบันที่กดบันทึกโดยอัตโนมัติ
+       * คอลัมน์ `PatientName` และ `PatientHN` หากหน้าเว็บไม่ได้ส่งข้อมูลมา ให้ใส่เป็นค่าว่างไว้ ห้ามเกิด error
+    * นำแถวข้อมูลใหม่นี้ไปต่อท้ายข้อมูลที่มีอยู่เดิมในชีต
+4. การตอบกลับ:
+    * เมื่อบันทึกสำเร็จ ให้ตอบกลับไปในรูปแบบ `{ status: 'success', message: 'บันทึกข้อมูลเรียบร้อยแล้ว' }`
+    * หากเกิดข้อผิดพลาดระหว่างการบันทึก ให้ตรวจจับและตอบกลับไปในรูปแบบ `{ status: 'error', message: '...' }` โดยให้มีข้อความอธิบายปัญหาที่เกิดขึ้นด้วย
+ขอเฉพาะโค้ดของฟังก์ชัน `saveData` นี้เท่านั้น</div>
             <button class="copy-button" id="copyBtn">
                 <i class="fas fa-copy"></i>
                 <span>Copy</span>
