@@ -6,9 +6,7 @@
     <title>Slide 33: Step 2 - The HTML Prompt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide -->
     <style>
         .instruction-layout {
             display: grid;
@@ -54,14 +52,13 @@
             box-shadow: 0 8px 25px rgba(132, 94, 194, 0.4);
         }
 
-        /* --- Modal Styles --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(40, 40, 60, 0.7);
             backdrop-filter: blur(5px);
             z-index: 1000;
-            display: none; /* Hidden by default */
+            display: none; 
             align-items: center; justify-content: center;
             opacity: 0; transition: opacity 0.3s ease;
         }
@@ -119,9 +116,9 @@
                 <div class="analysis-panel">
                     <h3><i class="fas fa-lightbulb"></i> หัวใจของ Prompt นี้:</h3>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> <strong>Role:</strong> สั่งให้เป็นผู้เชี่ยวชาญด้านการออกแบบเว็บไซต์</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Context:</strong> บอกว่าจะนำไปใช้ใน Google Apps Script</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Task:</strong> ระบุชนิดของ Input แต่ละช่องอย่างชัดเจน</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Role:</strong> ผู้เชี่ยวชาญด้านการออกแบบหน้าเว็บ</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Context:</strong> ต้องการสร้าง Web App</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Task:</strong> โครงสร้างและขั้นตอนการใช้งาน</li>
                         <li><i class="fas fa-check-circle"></i> <strong>Format:</strong> ขอเฉพาะโค้ด HTML ที่สมบูรณ์เท่านั้น</li>
                     </ul>
                 </div>
@@ -147,23 +144,41 @@
                 <h3>HTML Master Prompt</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือ Senior Frontend Developer ที่เชี่ยวชาญด้าน HTML และ CSS
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือผู้เชี่ยวชาญด้านการออกแบบหน้าเว็บ (Frontend Developer) ที่เก่งทั้ง HTML และ CSS และเข้าใจการสร้างเว็บสำหรับ Google Apps Script
 
-ฉันกำลังสร้าง Web App ที่จะรันบน Google Apps Script สำหรับให้เภสัชกรใช้บันทึกความเสี่ยงด้านยา
+ฉันต้องการสร้าง Web App สำหรับให้บุคลากรทางการแพทย์ใช้บันทึกความคลาดเคลื่อนทางยา โปรดสร้างโค้ดสำหรับไฟล์ HTML หลักที่ชื่อ `Index.html` โดยมีรายละเอียดดังนี้:
 
-โปรดสร้างโค้ดสำหรับไฟล์ HTML ไฟล์เดียว ที่ทำงานตามเงื่อนไขต่อไปนี้ทั้งหมด:
-1.  ใช้ CSS ในไฟล์ HTML โดยใช้ font "Prompt" จาก Google Fonts
-2.  ใช้คูสีดังต่อไปนี้ในการออกแบบ คือ #CD1C18,#FFA896,#9B1313 และ #38000A
-3.  ออกแบบ Layout ให้ดูสะอาดตา ทันสมัย เป็นมืออาชีพ และ Responsive (รองรับทุกขนาดหน้าจอ)
-4.  ใส่หัวข้อหลักว่า "Medication Error Reporting Form"
-5.  สร้างฟอร์มที่มีช่องกรอกข้อมูลต่อไปนี้ พร้อม label ที่ชัดเจน:
-    -   วันที่เกิดเหตุ (EventDate): ใช้ &lt;input type="date"&gt;
-    -   ประเภทผู้ป่วย (PatientType): ใช้ &lt;select&gt; ที่มีตัวเลือก "ผู้ป่วยนอก" และ "ผู้ป่วยใน"
-    -   ระดับความรุนแรง (SeverityLevel): ใช้ &lt;select&gt; ที่มีตัวเลือก "A" ถึง "I"
-    -   รายละเอียดเหตุการณ์ (Description): ใช้ &lt;textarea&gt; ที่มี 4 แถว
-6.  มีปุ่ม Submit สีน้ำเงิน ที่มีข้อความว่า "Submit Report"
+โครงสร้างและขั้นตอนการใช้งาน:
+เว็บจะต้องมีลักษณะเป็นขั้นตอน 3 หน้าจอ เพื่อนำทางผู้ใช้ ไม่ใช่ฟอร์มยาวๆ หน้าเดียว
+1.  หน้าจอที่ 1: เลือกประเภทผู้ป่วย
+    * มีหัวข้อว่า "เลือกประเภทผู้ป่วย"
+    * มี "การ์ด" สวยงาม 2 ใบให้เลือก คือ "ผู้ป่วยนอก (OPD)" และ "ผู้ป่วยใน (IPD)"
+    * แต่ละการ์ดให้มีไอคอนที่สื่อความหมาย (เช่น ไอคอนคนเดินสำหรับ OPD, ไอคอนเตียงนอนสำหรับ IPD)
+2.  หน้าจอที่ 2: เลือกประเภทความคลาดเคลื่อน**
+    * มีหัวข้อว่า "เลือกประเภทความคลาดเคลื่อน"
+    * มีปุ่มใหญ่ๆ 5 ปุ่มให้เลือก: Prescribing, Transcribing, Pre-Dispensing, Dispensing, และ Administration Error
+    * มีปุ่ม "ย้อนกลับ" เพื่อกลับไปหน้าจอที่ 1
+3.  หน้าจอที่ 3: กรอกรายละเอียด
+    * เป็นฟอร์มสำหรับกรอกข้อมูล โดยมีช่องต่างๆ ดังนี้:
+        * วันที่เกิดเหตุการณ์: เป็นช่องเลือกวันที่
+        * ระดับความรุนแรง (A-I): เป็น Dropdown ที่มีคำอธิบายของแต่ละระดับ เช่น "A: เหตุการณ์ที่อาจนำไปสู่ความคลาดเคลื่อน", "B: เกิดขึ้น แต่ยังไม่ถึงตัวผู้ป่วย" ไปจนถึง I
+        * ประเภทความคลาดเคลื่อนย่อย: เป็น Dropdown ที่มีตัวเลือก เช่น "ยาผิดชนิด", "ยาผิดขนาด", "ผู้ป่วยผิดคน" ฯลฯ
+        * รายละเอียดเหตุการณ์: เป็นกล่องข้อความขนาดใหญ่
+    * ส่วนพิเศษ: มีส่วนสำหรับกรอก "ชื่อ-สกุล" และ "HN" ของผู้ป่วย ซึ่งส่วนนี้จะแสดงขึ้นมาเมื่อผู้ใช้เลือกระดับความรุนแรงตั้งแต่ D ขึ้นไปเท่านั้น ถ้าเลือก A, B, C ส่วนนี้ต้องซ่อนไว้
+    * มีปุ่ม "ย้อนกลับ" เพื่อกลับไปหน้าจอที่ 2 และปุ่ม "บันทึกข้อมูล"
 
-ขอเฉพาะโค้ด HTML และ CSS ที่สมบูรณ์และพร้อมใช้งานเท่านั้น ไม่ต้องมีคำอธิบายอื่น</div>
+การออกแบบและหน้าตา (CSS):
+* ใช้ฟอนต์ "Prompt" จาก Google Fonts
+* ใช้ชุดสีนี้เป็นหลัก:
+    * สีหลัก (Primary): สีน้ำเงินเข้มอมเทา `#496580`
+    * สีรอง (Accent): สีฟ้าอ่อน `#BADDFF`
+    * สีพื้นหลังไล่ระดับ: จากสีฟ้าอ่อนไปสีส้มอ่อนพีช `#FFDBBB`
+* ออกแบบให้ดูสะอาดตา เป็นมิตร ทันสมัย และใช้งานง่ายบนมือถือ (Responsive)
+* ใช้ไอคอนจาก "Font Awesome" ในส่วนต่างๆ เช่น หัวข้อ, การ์ด, และปุ่ม เพื่อความสวยงาม
+* มีส่วนหัว (Header) ที่แสดงชื่อระบบ "Medication Error" และชื่อโรงพยาบาล
+* มีส่วนท้าย (Footer) ที่แสดงข้อมูลติดต่อและปีลิขสิทธิ์ปัจจุบัน
+
+ขอโค้ด HTML ที่สมบูรณ์พร้อม CSS ภายใน `&lt;style&gt;` tag และขอแค่โค้ด HTML เท่านั้น *ส่วน Javascript จะสร้างในภายหลังไม่ต้องใส่มาในโค้ด HTML นี้*</div>
             <button class="copy-button" id="copyBtn">
                 <i class="fas fa-copy"></i>
                 <span>Copy</span>
