@@ -6,9 +6,7 @@
     <title>Slide 40: The JavaScript Prompt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide -->
     <style>
         .instruction-layout {
             display: grid;
@@ -54,7 +52,6 @@
             box-shadow: 0 8px 25px rgba(255, 128, 102, 0.4);
         }
 
-        /* --- Modal Styles --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
@@ -107,8 +104,9 @@
                 <div class="analysis-panel">
                     <h3><i class="fas fa-lightbulb"></i> หัวใจของ Prompt นี้:</h3>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i>บอก AI ว่าเราใช้ google.script.run ซึ่งเป็นคำสั่งพิเศษของ Apps Script</li>
-                        <li><i class="fas fa-check-circle"></i>สั่งงานเป็นขั้นตอนที่โปรแกรมเมอร์เข้าใจ (เช่น เรียกฟังก์ชันหลังบ้าน)</li>
+                        <li><i class="fas fa-check-circle"></i>สั่งให้จัดการสลับหน้าจอ 3 ขั้นตอน และจำค่าที่เลือกไว้</li>
+                        <li><i class="fas fa-check-circle"></i>ระบุเงื่อนไขการซ่อน/แสดงฟอร์มตามค่าที่เลือก</li>
+                        <li><i class="fas fa-check-circle"></i>อธิบาย UX ตอนส่งข้อมูลอย่างละเอียด</li>
                     </ul>
                 </div>
 
@@ -133,17 +131,35 @@
                 <h3>JavaScript Master Prompt</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ผู้เชี่ยวชาญด้าน JavaScript 
-
-ฉันมีฟอร์ม HTML ที่มีปุ่ม submit อยู่ภายใน &lt;form&gt; tag และมีฟังก์ชันหลังบ้านของ Google Apps Script ชื่อ `saveData(formData)` ที่พร้อมรับข้อมูลจากฟอร์ม
-
-โปรดเขียนโค้ด JavaScript ทั้งหมดที่ต้องใส่ใน &lt;script&gt; tag สำหรับไฟล์ `Index.html` โดยโค้ดจะต้อง:
-1.  เรียกใช้ฟังก์ชันหลังบ้าน `saveData(formData)` ผ่าน `google.script.run`
-2.  ส่งข้อมูลจากฟอร์มไปยังฟังก์ชัน `saveData(formData)` เมื่อผู้ใช้กดปุ่ม submit
-3.  ป้องกันไม่ให้ฟอร์มรีเฟรชหน้าเว็บเมื่อกด submit
-4.  แสดงข้อความแจ้งเตือน "Report submitted successfully" เมื่อข้อมูลถูกส่งไปยังฟังก์ชันหลังบ้านเรียบร้อยแล้ว
-
-ขอเฉพาะโค้ดที่อยู่ภายใน &lt;script&gt; และ &lt;/script&gt; เท่านั้น</div>
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ JavaScript ที่เข้าใจการทำงานของ Google Apps Script เป็นอย่างดี
+ฉันต้องการโค้ด JavaScript ทั้งหมดเพื่อควบคุมการทำงานของหน้าเว็บที่สร้างขึ้น โดยเว็บนี้มี 3 หน้าจอที่ต้องสลับการแสดงผล และมีฟังก์ชันหลังบ้านชื่อ `saveData` รอรับข้อมูลอยู่ โปรดเขียนโค้ดที่ทำหน้าที่ต่อไปนี้ทั้งหมด:
+1. การควบคุมหน้าจอ (Navigation):
+   * สร้างระบบสลับการแสดงผลทีละหน้าจอ (ซ่อนหน้าที่ไม่ใช้ แสดงเฉพาะหน้าที่กำลังใช้)
+   * เมื่อผู้ใช้เลือกประเภทผู้ป่วย (หน้า 1) ให้จำค่าที่เลือกไว้ แล้วเปลี่ยนไปแสดงหน้า 2
+   * เมื่อผู้ใช้เลือกประเภทความคลาดเคลื่อน (หน้า 2) ให้จำค่าที่เลือกไว้ แล้วเปลี่ยนไปแสดงหน้า 3
+   * ที่หัวข้อของหน้า 2 และ 3 ให้แสดงข้อมูลที่ผู้ใช้เลือกมาจากขั้นตอนก่อนหน้าด้วย
+2. การทำงานในหน้าฟอร์ม (Page 3):
+   * เมื่อหน้าเว็บโหลดเสร็จ ให้ตั้งค่าวันที่ในช่อง "วันที่เกิดเหตุ" เป็นวันปัจจุบันโดยอัตโนมัติ
+   * คอยตรวจสอบช่อง "ระดับความรุนแรง" ตลอดเวลา:
+      * ถ้าผู้ใช้เลือกระดับ D ถึง I ให้แสดงส่วนกรอกข้อมูลผู้ป่วย
+      * ถ้าผู้ใช้เลือกระดับอื่น (A, B, C) ให้ซ่อนส่วนกรอกข้อมูลผู้ป่วย และล้างค่าออกด้วย
+3. การส่งข้อมูล (Form Submission):
+   * เมื่อผู้ใช้กดปุ่ม "บันทึกข้อมูล":
+      * ห้ามให้หน้าเว็บรีเฟรช
+      * เปลี่ยนปุ่มบันทึกให้อยู่ในสถานะ "กำลังโหลด" และกดซ้ำไม่ได้
+      * รวบรวมข้อมูลทั้งหมดจากฟอร์ม และข้อมูลที่จำไว้จากหน้า 1-2
+      * ส่งข้อมูลไปให้ฟังก์ชันหลังบ้าน `saveData` โดยใช้ `google.script.run`
+4. การจัดการผลลัพธ์:
+   * ถ้าบันทึกสำเร็จ:
+      * แสดงข้อความแจ้งว่า "บันทึกข้อมูลเรียบร้อยแล้ว" 
+      * ล้างข้อมูลในฟอร์มทั้งหมด
+      * รอ 1 วินาที แล้วกลับไปที่หน้าแรกสุดอัตโนมัติ
+   * ถ้าบันทึกล้มเหลว:
+      * แสดงข้อความแจ้งข้อผิดพลาด
+      * ทำให้ปุ่มบันทึกกลับมากดได้เหมือนเดิม
+5. อื่นๆ:
+   * ใส่ปีปัจจุบันในส่วนท้ายของเว็บ (Footer) โดยอัตโนมัติ
+ขอโค้ดทั้งหมดที่ต้องใส่ในแท็ก &lt;script&gt; เพื่อให้หน้าเว็บทำงานได้ตามนี้</div>
             <button class="copy-button" id="copyBtn">
                 <i class="fas fa-copy"></i>
                 <span>Copy</span>
