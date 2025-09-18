@@ -6,15 +6,13 @@
     <title>Slide 35: Step 4 - The doGet Prompt</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide -->
     <style>
         .instruction-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            align-items: stretch; /* Make columns equal height */
+            align-items: stretch;
             margin-top: 2rem;
         }
 
@@ -47,33 +45,42 @@
             margin-right: 15px;
         }
 
-        /* Prompt Panel */
         .prompt-panel .prompt-wrapper {
             position: relative;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
         }
+
         .prompt-panel .prompt-to-copy {
-            background-color: #f6ffed; /* Light Green */
+            background-color: #f6ffed; 
             border: 2px dashed #b7eb8f;
             padding: 20px;
             border-radius: 12px;
             font-size: 1.05rem;
             line-height: 1.8;
-            font-family: 'Sarabun', monospace;
-            height: 100%;
+            flex-grow: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .copy-button {
-            position: absolute; bottom: 15px; right: 15px;
-            background-color: #52c41a; color: white; border: none;
-            padding: 8px 15px; border-radius: 8px; cursor: pointer;
-            font-size: 0.9rem; font-family: 'Prompt', sans-serif;
+            align-self: flex-end;
+            background-color: #52c41a; 
+            color: white; 
+            border: none;
+            padding: 8px 15px; 
+            border-radius: 8px; 
+            cursor: pointer;
+            font-size: 0.9rem; 
+            font-family: 'Prompt', sans-serif;
             transition: all 0.2s ease;
+            margin-top: auto;
         }
         .copy-button:hover { background-color: #389e0d; }
         .copy-button.copied { background-color: #20c997; }
 
-        /* Installation Panel */
         .installation-panel ol {
             list-style: none;
             padding: 0;
@@ -95,6 +102,13 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 600px) {
+            .copy-button {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -111,7 +125,7 @@
                         <div class="prompt-to-copy" id="promptTextContainer"><strong>บทบาท:</strong> โปรแกรมเมอร์ Google Apps Script
 
 <strong>งาน:</strong> เขียนฟังก์ชัน `doGet` เพื่อแสดงผลไฟล์ HTML ที่ชื่อว่า `Index.html` ให้เป็น Web App</div>
-                    <button class="copy-button" id="copyBtn"><i class="fas fa-copy"></i> <span>Copy</span></button> 
+                        <button class="copy-button" id="copyBtn"><i class="fas fa-copy"></i> <span>Copy</span></button> 
                     </div>
                 </div>
 
