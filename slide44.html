@@ -6,13 +6,11 @@
     <title>Slide 44: Dashboard Backend</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Internal CSS for this slide -->
     <style>
         .instruction-layout {
             display: grid;
-            grid-template-columns: 1fr 1.2fr; /* Left side smaller */
+            grid-template-columns: 1fr 1.2fr;
             gap: 40px;
             align-items: start;
             margin-top: 2rem;
@@ -61,7 +59,6 @@
             box-shadow: 0 8px 25px rgba(82, 196, 26, 0.4);
         }
 
-        /* --- Modal Styles --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
@@ -71,7 +68,8 @@
         .modal-overlay.visible { display: flex; opacity: 1; }
         .modal-content {
             background: var(--card-background); border-radius: 15px; padding: 30px;
-            width: 90%; max-width: 700px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 90%; max-width: 800px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             position: relative; transform: scale(0.95); transition: transform 0.3s ease;
         }
         .modal-overlay.visible .modal-content { transform: scale(1); }
@@ -85,7 +83,8 @@
         .prompt-to-copy {
             background-color: #f8f7fa; border: 1px solid #eee; padding: 20px; border-radius: 8px;
             font-size: 1rem; line-height: 1.8; font-family: 'Sarabun', 'Courier New', monospace;
-            white-space: pre-wrap; word-wrap: break-word; max-height: 50vh; overflow-y: auto;
+            white-space: pre-wrap; word-wrap: break-word; max-height: 60vh; 
+            overflow-y: auto; text-align: left; 
         }
         .copy-button {
             background: var(--secondary-color); color: white; border: none;
@@ -110,11 +109,12 @@
                     <h3><i class="fas fa-list-check"></i> ขั้นตอนเตรียมการ:</h3>
                     <ol>
                         <li>สร้างโปรเจกต์ Apps Script ใหม่<br>(ไปที่ Google Drive > + New)</li>
-                        <li>ตั้งชื่อโปรเจกต์ว่า <code>Risk Dashboard</code></li>
-                        <li><strong>Copy Spreadsheet ID</strong> จาก URL ของไฟล์ Sheet "AI Pharmacist Tools"</li>
+                        <li>ตั้งชื่อโปรเจกต์ว่า <code>Medication Error Dashboard</code></li>
+                        <li><strong>Copy Spreadsheet ID</strong> จาก URL ของไฟล์ Sheet ของคุณ</li>
+                        <li>นำ ID ที่ได้ไปแทนที่ <code>"YOUR_SHEET_ID_HERE"</code> ใน Prompt</li>
                     </ol>
                     <div class="screenshot-wrapper">
-                        <img src="get_sheet_id.png" alt="How to get Spreadsheet ID from URL">
+                        <img src="/images/get_sheet_id.png" alt="How to get Spreadsheet ID from URL">
                     </div>
                 </div>
 
@@ -122,10 +122,10 @@
                 <div class="prompt-trigger-panel">
                     <h3><i class="fas fa-robot"></i> สั่งงาน AI</h3>
                     <p style="color:var(--light-text); margin-bottom: 20px;">
-                        นำ Sheet ID ที่คัดลอกมา<br>ไปใส่ใน Prompt ที่กำลังจะแสดงนี้
+                        คัดลอก Prompt ด้านล่างนี้<br>ไปวางใน AI Chatbot ที่คุณใช้งาน
                     </p>
                     <button class="show-prompt-button" id="showPromptBtn">
-                        <i class="fas fa-scroll"></i> &nbsp; แสดง Master Prompt
+                        <i class="fas fa-scroll"></i> &nbsp; แสดง Prompt (Backend)
                     </button>
                 </div>
             </div>
@@ -140,20 +140,39 @@
     <div class="modal-overlay" id="promptModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Backend Master Prompt</h3>
+                <h3><i class="fas fa-cogs"></i> Prompt สำหรับสร้าง Backend</h3>
                 <button class="close-button" id="closePromptBtn">&times;</button>
             </div>
-            <div class="prompt-to-copy" id="promptTextContainer">คุณคือโปรแกรมเมอร์ Google Apps Script
+            <div class="prompt-to-copy" id="promptTextContainer">คุณคือผู้เชี่ยวชาญ Google Apps Script ที่สามารถอธิบายเรื่องยากให้เป็นเรื่องง่ายได้
 
-โปรดเขียนฟังก์ชันชื่อ `getDataForDashboard()` โดยให้ทำงานดังนี้:
-1.  เข้าถึง Spreadsheet ด้วย ID โดยใช้ `SpreadsheetApp.openById("YOUR_SHEET_ID_HERE")` **&lt;-- วาง ID ของคุณที่นี่**
-2.  เลือกชีทที่ชื่อว่า `Risk_Log`
-3.  อ่านข้อมูลทั้งหมดในชีท (ใช้ `getDataRange().getValues()`)
-4.  ดึงแถว Header (แถวแรกสุด) ออกมาเก็บไว้
-5.  วนลูปข้อมูลที่เหลือ (ไม่รวม Header) เพื่อแปลงข้อมูลจาก Array 2 มิติ ให้อยู่ในรูปแบบ Array ของ Objects โดยให้แต่ละ Object มี key ตรงกับชื่อ Header ที่ดึงมาในข้อ 4
-6.  Return Array ของ Objects นี้ออกมา
+งานของคุณคือเขียนโค้ดสำหรับ Server (ไฟล์ code.gs) เพื่อทำระบบรายงานความคลาดเคลื่อนทางยา โดยมีขั้นตอนดังนี้:
 
-ขอเฉพาะโค้ดฟังก์ชัน `getDataForDashboard` เท่านั้น</div>
+ส่วนที่ 1: การตั้งค่าพื้นฐาน
+1. กำหนดค่าเริ่มต้น: สร้างตัวแปรสำหรับเก็บ ID ของ Google Sheets และชื่อของชีทต่างๆ ที่เราจะใช้:
+    * `SPREADSHEET_ID`: "YOUR_SHEET_ID_HERE" &lt;-- *วาง ID ของคุณที่นี่*
+    * `ERROR_SHEET_NAME`: "MedicationErrors" (สำหรับเก็บข้อมูลความคลาดเคลื่อน)
+    * `DENOMINATOR_SHEET_NAME`: "Denominator_Monthly" (สำหรับเก็บข้อมูลตัวหารรายเดือน)
+2. สร้างทางเข้าเว็บแอป: เขียนฟังก์ชัน `doGet(e)` ง่ายๆ เพื่อบอกว่าเมื่อมีคนเปิดลิงก์เว็บแอปของเรา ให้แสดงหน้าเว็บที่ชื่อว่า 'Dashboard'
+3. สร้างตัวช่วย: เพิ่มฟังก์ชัน `include(filename)` สำหรับดึงโค้ดจากไฟล์อื่นมาใช้ในหน้าเว็บ (เช่น ไฟล์ CSS และ JS)
+
+ส่วนที่ 2: ฟังก์ชันหลักสำหรับเตรียมข้อมูล (หัวใจของระบบ)
+สร้างฟังก์ชันซึ่งจะรับ "วันที่เริ่มต้น" และ "วันที่สิ้นสุด" มาจากหน้าเว็บ แล้วทำงานตามลำดับนี้
+
+1. เปิด Spreadsheet และเตรียมอ่านข้อมูลจากชีท "MedicationErrors" และ "Denominator_Monthly"
+2. กรองข้อมูลความคลาดเคลื่อน: จากชีท "MedicationErrors" ให้เลือกมาเฉพาะรายการที่คอลัมน์ `EventDate` อยู่ภายในช่วงวันที่ที่ผู้ใช้เลือก
+3. กรองข้อมูลตัวหาร: จากชีท "Denominator_Monthly" ให้เลือกมาเฉพาะเดือนที่เกี่ยวข้องกับช่วงวันที่ที่ผู้ใช้เลือก ชีทนี้จะมีการเก็บข้อมูลดังนี้
+    * คอลัมน์ `Month` (รูปแบบ "DD-MM-YYYY")
+    * คอลัมน์ `OPD_Prescriptions` (ยอดรวมใบสั่งยาผู้ป่วยนอก)
+    * คอลัมน์ `IPD_PatientDays` (ยอดรวมวันนอนผู้ป่วยใน)
+4. รวมยอดตัวหาร: คำนวณ "ยอดรวมใบสั่งยาผู้ป่วยนอก" และ "ยอดรวมวันนอนผู้ป่วยใน" จากข้อมูลที่กรองมาในข้อ 3
+5. คำนวณตัวชี้วัดหลัก (KPI): นำข้อมูลที่กรองได้จากข้อ 2 และ 4 ไปคำนวณค่าต่างๆ ดังนี้:
+    * อัตราความคลาดเคลื่อน 5 ประเภทหลัก (Prescribing, Transcribing, Pre-Dispensing, Dispensing, Administration) โดยแยกเป็นของผู้ป่วยนอก (OPD) และผู้ป่วยใน (IPD)
+        * สูตร OPD: (จำนวนครั้งของแต่ละประเภท / ยอดรวมใบสั่งยา OPD) * 1000
+        * สูตร IPD: (จำนวนครั้งของแต่ละประเภท / ยอดรวมวันนอน IPD) * 1000
+    * นับจำนวนตามระดับความรุนแรง: นับว่ามีความรุนแรงระดับ A, B, C, D อย่างละกี่ครั้ง และนับรวมระดับ E ถึง I เป็นกลุ่มเดียวกัน (E-I)
+6. รวบรวมและส่งกลับ: นำผลลัพธ์ทั้งหมดจากข้อ 5 มารวมกันในรูปแบบที่ฝั่งหน้าเว็บ (Frontend) จะเข้าใจได้ง่าย แล้วส่งข้อมูลกลับไป
+
+โปรดเขียนโค้ดทั้งหมดสำหรับไฟล์ `code.gs` ให้สมบูรณ์ตามนี้</div>
             <button class="copy-button" id="copyBtn">
                 <i class="fas fa-copy"></i>
                 <span>Copy</span>
@@ -161,9 +180,6 @@
         </div>
     </div>
     
-    <!-- ============================================= -->
-    <!-- JAVASCRIPT SECTION (CORRECTED)                -->
-    <!-- ============================================= -->
     <script>
         const showPromptBtn = document.getElementById('showPromptBtn');
         const promptModal = document.getElementById('promptModal');
@@ -175,9 +191,8 @@
             promptModal.classList.add('visible');
         });
         
-        // **CORRECTED FUNCTION**
         const hideModal = () => {
-            promptModal.classList.remove('visible'); // Use 'promptModal', not 'guideModal'
+            promptModal.classList.remove('visible');
         };
 
         closePromptBtn.addEventListener('click', hideModal);
