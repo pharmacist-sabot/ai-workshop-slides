@@ -10,108 +10,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
-    <!-- Internal CSS for this slide -->
     <style>
-        .overview-container {
-            text-align: center;
-            margin-top: 2rem;
-        }
-        .main-icon {
-            font-size: 3rem;
-            color: #f5222d; /* Red for "Live" */
-            margin-bottom: 1.5rem;
-        }
-        .summary-steps {
+        .card-body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            font-size: 1.2rem;
-            color: var(--light-text);
-            margin-bottom: 2.5rem;
-        }
-        .summary-steps .step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .show-guide-button {
-            background: linear-gradient(135deg, #ff4d4f, #f5222d);
-            color: white;
-            font-family: 'Prompt', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 500;
-            padding: 15px 40px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(245, 34, 45, 0.4);
-        }
-        .show-guide-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(245, 34, 45, 0.5);
+            text-align: center;
         }
 
-        /* --- Modal Styles --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(40, 40, 60, 0.7); backdrop-filter: blur(5px);
-            z-index: 1000; display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
-        }
-        .modal-overlay.visible { display: flex; opacity: 1; }
-        .modal-content {
-            background: var(--card-background); border-radius: 15px; padding: 30px;
-            width: 90%; max-width: 900px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            position: relative; transform: scale(0.95); transition: transform 0.3s ease;
-        }
-        .modal-overlay.visible .modal-content { transform: scale(1); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h3 { margin: 0; font-size: 1.5rem; color: #f5222d; }
-        .close-button {
-            background: #f1f1f1; border: none; border-radius: 50%; width: 35px; height: 35px;
-            cursor: pointer; font-size: 1.2rem; color: #888; transition: all 0.2s ease;
-        }
-        .close-button:hover { background: #e0e0e0; color: #333; }
-        
-        /* CORRECTED MODAL LAYOUT */
-        .modal-layout { 
+        .process-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr; 
-            gap: 30px; 
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 0.5rem;
         }
-        .modal-instructions ol { 
-            list-style: none; padding: 0; 
-            counter-reset: step-counter; 
+
+        .process-step {
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: default; 
         }
-        .modal-instructions li { 
-            position: relative; padding-left: 40px; 
-            margin-bottom: 18px; font-size: 1.1rem; 
+
+        .process-step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(245, 34, 45, 0.5);
         }
-        .modal-instructions li::before {
-            counter-increment: step-counter; content: counter(step-counter);
-            position: absolute; left: 0; top: 0; width: 30px; height: 30px;
-            border-radius: 50%; background-color: #f5222d; color: white;
-            font-weight: 700; text-align: center; line-height: 30px;
+
+        .process-step .icon {
+            font-size: 2.8rem;
+            color: #f5222d; 
+            margin-bottom: 10px;
+            display: inline-block;
         }
-        .code-snippet-wrapper {
-            border-radius: 8px; overflow: hidden; font-size: 0.9rem;
-            margin-top: 10px; 
-            margin-left: 40px; 
+
+        .process-step h3 {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 10px;
         }
-        pre[class*="language-"] { margin: 0; }
-        .modal-screenshot img { 
-            width: 100%; border-radius: 8px; 
-            border: 1px solid #ddd;
-            margin-top: 20px; 
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: var(--medium-text);
+            line-height: 1.6;
+            margin: 0;
         }
-        
-        @media (max-width: 900px) { 
-            .modal-layout { grid-template-columns: 1fr; } 
-            .modal-screenshot { order: -1; }
-        }
+
     </style>
 </head>
 <body>
@@ -119,67 +70,30 @@
         <div class="card-body">
             <h1><i class="fas fa-rocket" style="color:#f5222d;"></i> เปิดประตู Dashboard และ Deploy</h1>
             <p class="subtitle">ขั้นตอนสุดท้าย เราจะนำทุกชิ้นส่วนมาประกอบกันและนำ Dashboard ของเราขึ้นออนไลน์</p>
-            <div class="overview-container">
-                <div class="main-icon"><i class="fas fa-satellite-dish"></i></div>
-                <h3>ภาพรวมกระบวนการ</h3>
-                <div class="summary-steps">
-                    <div class="step"><span>เพิ่ม doGet</span> <i class="fas fa-long-arrow-alt-right"></i></div>
-                    <div class="step"><span>Deploy</span> <i class="fas fa-long-arrow-alt-right"></i></div>
-                    <div class="step"><span>Launch</span></div>
+        
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h3>1. ตรวจสอบ function doGet</h3>
+                    <p>ตรวจสอบฟังก์ชัน <code>doGet()</code> เพื่อบอกให้ Apps Script รู้ว่าต้องแสดงไฟล์ HTML ไหนเมื่อมีคนเข้ามาที่ลิงก์</p>
                 </div>
-                <button class="show-guide-button" id="showGuideBtn">
-                    <i class="fas fa-book-open"></i> &nbsp; ดูขั้นตอนอย่างละเอียด
-                </button>
+                <div class="process-step">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>2. Deploy</h3>
+                    <p>เผยแพร่โปรเจกต์เป็น Web App และตั้งค่าการเข้าถึงเป็น "Anyone" เพื่อให้ทุกคนสามารถเข้ามาดู Dashboard ได้</p>
+                </div>
+                <div class="process-step">
+                    <div class="icon"><i class="fas fa-external-link-alt"></i></div>
+                    <h3>3. Launch</h3>
+                    <p>คัดลอก URL ที่ได้จากการ Deploy นี่คือลิงก์ Dashboard ที่พร้อมใช้งานและแชร์ให้คนอื่นได้ทันที</p>
+                </div>
             </div>
+
         </div>
         <div class="card-footer">
             <a href="slide45.html" class="nav-button">ย้อนกลับ</a>
             <a href="slide47.html" class="nav-button">ไปดูผลงานชิ้นเอก</a>
         </div>
-    </div>
-
-    <!-- Modal HTML (Hidden by default) -->
-    <div class="modal-overlay" id="guideModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-rocket"></i> Deployment Guide</h3>
-                <button class="close-button" id="closeGuideBtn">&times;</button>
-            </div>
-            <div class="modal-layout">
-                <!-- ฝั่งซ้าย: ขั้นตอนทั้งหมด -->
-                <div class="modal-instructions">
-                    <ol>
-                        <li>เปิดไฟล์ <code>Code.gs</code> แล้วเพิ่มฟังก์ชัน <code>doGet</code> นี้เข้าไป:
-                            <div class="code-snippet-wrapper">
-<pre><code class="language-javascript">function doGet() {
-  return HtmlService
-    .createHtmlOutputFromFile('Dashboard');
-}</code></pre>
-                            </div>
-                        </li>
-                        <li>กด <i class="fas fa-save"></i> <strong>Save Project</strong></li>
-                        <li><strong>Deploy โปรเจกต์ใหม่นี้</strong> (Deploy > New deployment > Web app > Access: Anyone)</li>
-                        <li><strong>Copy URL ใหม่</strong> ที่ได้มา นี่คือลิงก์ Dashboard ของคุณ!</li>
-                    </ol>
-                </div>
-                <!-- ฝั่งขวา: ภาพประกอบ -->
-                <div class="modal-screenshot">
-                    <img src="final_deploy.png" alt="Deployment steps screenshot">
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        const showGuideBtn = document.getElementById('showGuideBtn');
-        const guideModal = document.getElementById('guideModal');
-        const closeGuideBtn = document.getElementById('closeGuideBtn');
-        showGuideBtn.addEventListener('click', () => { guideModal.classList.add('visible'); });
-        const hideModal = () => { guideModal.classList.remove('visible'); };
-        closeGuideBtn.addEventListener('click', hideModal);
-        guideModal.addEventListener('click', (event) => {
-            if (event.target === guideModal) { hideModal(); }
-        });
-    </script>
+    </div>  
 </body>
 </html>
