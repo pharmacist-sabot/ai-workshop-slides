@@ -20,12 +20,17 @@
             font-size: 1.4rem;
             margin-bottom: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
         .instructions-panel ol {
             list-style: none;
             padding: 0;
             counter-reset: step-counter;
         }
+
         .instructions-panel li {
             position: relative;
             padding-left: 45px;
@@ -33,18 +38,19 @@
             font-size: 1.1rem;
             line-height: 1.7;
         }
+
         .instructions-panel li::before {
             counter-increment: step-counter;
             content: counter(step-counter);
             position: absolute; left: 0; top: 0; width: 32px; height: 32px;
-            border-radius: 50%; background-color: #34A853; /* Green for Sheets */
+            border-radius: 50%; background-color: #34A853;
             color: white; font-weight: 700; text-align: center; line-height: 32px;
         }
+
         .instructions-panel code {
             background-color: #e6f4ea; 
             padding: 2px 6px;
             border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
             border: 1px solid #d4eadc;
         }
 
@@ -53,35 +59,156 @@
             border-radius: 15px;
             padding: 25px;
         }
+
         .table-preview-panel h3 {
             text-align: center;
             font-size: 1.3rem;
             margin-bottom: 20px;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
+
         .table-simulation {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 0 auto;
+            table-layout: fixed;
+            overflow-x: auto;
+            border: 1px solid #eee;
         }
+
+        .table-simulation th,
+        .table-simulation td {
+            padding: 12px;
+            border: 1px solid #eee;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%; 
+        }
+
         .table-simulation th {
             background-color: #e6f4ea; 
             color: #155724;
-            padding: 12px;
-            border: 1px solid #c3e6cb;
             font-weight: 700;
+            line-height: 1.4; 
+            font-size: 0.95rem;
         }
+
         .table-simulation td {
             background-color: #fff;
-            padding: 12px;
-            border: 1px solid #eee;
-            color: var(--light-text);
+            color: #555;
+            line-height: 1.4;
         }
-        
+
+        .table-simulation th:nth-child(1), .table-simulation td:nth-child(1) { min-width: 130px; }
+        .table-simulation th:nth-child(2), .table-simulation td:nth-child(2) { min-width: 130px; }
+        .table-simulation th:nth-child(3), .table-simulation td:nth-child(3) { min-width: 150px; }
+        .table-simulation th:nth-child(4), .table-simulation td:nth-child(4) { min-width: 130px; }
+        .table-simulation th:nth-child(5), .table-simulation td:nth-child(5) { min-width: 150px; }
+
         @media (max-width: 900px) {
             .instruction-layout {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .instructions-panel h3 {
+                font-size: 1.2rem;
+            }
+
+            .instructions-panel li {
+                font-size: 1rem;
+                padding-left: 40px;
+                margin-bottom: 16px;
+            }
+
+            .instructions-panel li::before {
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .table-preview-panel {
+                padding: 15px;
+            }
+
+            .table-preview-panel h3 {
+                font-size: 1.15rem;
+            }
+
+            .table-simulation {
+                font-size: 0.85rem;
+            }
+
+            .table-simulation th,
+            .table-simulation td {
+                padding: 8px 6px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .slide-card {
+                padding: 20px !important;
+                margin: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .subtitle {
+                font-size: 1rem !important;
+                line-height: 1.5;
+            }
+
+            .table-preview-panel {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                padding: 10px;
+            }
+
+            .table-simulation {
+                min-width: 600px;
+                width: auto;
+            }
+
+            .card-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .table-preview-panel::-webkit-scrollbar {
+                height: 6px;
+            }
+            .table-preview-panel::-webkit-scrollbar-thumb {
+                background: #ccc;
+                border-radius: 3px;
+            }
+            .table-preview-panel::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
             }
         }
     </style>
@@ -93,7 +220,6 @@
             <p class="subtitle">ก่อนจะสร้างฟอร์ม เราต้องเตรียม "หลังบ้าน" สำหรับเก็บข้อมูลให้พร้อมเสียก่อน</p>
 
             <div class="instruction-layout">
-                <!-- Left Column: Steps to do -->
                 <div class="instructions-panel">
                     <h3><i class="fas fa-list-check"></i> สิ่งที่ต้องทำ:</h3>
                     <ol>
@@ -103,7 +229,6 @@
                     </ol>
                 </div>
                 
-                <!-- Right Column: Visual Result -->
                 <div class="table-preview-panel">
                     <h3><i class="fas fa-table-cells"></i> หน้าตาผลลัพธ์ที่ต้องการ:</h3>
                     <table class="table-simulation">
