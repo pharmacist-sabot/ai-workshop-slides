@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Internal CSS for this slide only -->
     <style>
         .project-overview-layout {
             display: grid;
-            grid-template-columns: 1fr auto 1fr; /* Frontend | Arrow | Backend */
+            grid-template-columns: 1fr auto 1fr; 
             align-items: center;
             gap: 25px;
             margin-top: 2rem;
@@ -23,7 +22,7 @@
             padding: 25px;
             text-align: center;
             border: 1px solid #eee;
-            min-height: 280px; /* Set a min-height for alignment */
+            min-height: 280px; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,9 +44,8 @@
             color: var(--light-text);
         }
 
-        /* Thematic Coloring */
         .frontend-panel .icon { color: var(--primary-color); }
-        .backend-panel .icon { color: #34A853; } /* Google Green */
+        .backend-panel .icon { color: #34A853; } 
 
         .connector-arrow {
             font-size: 3.5rem;
@@ -60,14 +58,18 @@
         }
         
         @media (max-width: 900px) {
-            .project-overview-layout {
-                grid-template-columns: 1fr;
-            }
-            .connector-arrow {
-                transform: rotate(90deg);
-                margin: 10px 0;
-            }
-        }
+         .project-overview-layout {
+            grid-template-columns: 1fr;
+            gap: 20px;
+       }
+          .connector-arrow {
+            margin: 0;
+            justify-self: center;
+       }
+          .connector-arrow i {
+            transform: rotate(90deg); 
+       }
+     }
     </style>
 </head>
 <body>
@@ -78,19 +80,17 @@
             <p class="subtitle">ได้เวลาเปลี่ยนจาก "ผู้ใช้" AI มาเป็น "ผู้สร้าง" เครื่องมือเต็มรูปแบบ ที่แก้ปัญหาหน้างานของเราได้จริง</p>
 
             <div class="project-overview-layout">
-                <!-- Frontend Panel -->
+
                 <div class="system-panel frontend-panel">
                     <div class="icon"><i class="fas fa-desktop"></i></div>
                     <h3>หน้าบ้าน (Frontend)</h3>
                     <p>ฟอร์มออนไลน์ที่ใช้งานง่ายสำหรับทุกคนในหน่วยงาน เพื่อกรอกข้อมูลความเสี่ยงด้านยา</p>
                 </div>
 
-                <!-- Connector -->
                 <div class="connector-arrow">
                     <i class="fas fa-long-arrow-alt-right"></i>
                 </div>
 
-                <!-- Backend Panel -->
                 <div class="system-panel backend-panel">
                     <div class="icon"><i class="fas fa-database"></i></div>
                     <h3>หลังบ้าน (Backend)</h3>
