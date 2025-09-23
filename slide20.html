@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Internal CSS for this slide only -->
     <style>
         .activity-container {
             text-align: center;
@@ -32,7 +31,7 @@
         }
 
         .prompt-wrapper {
-            position: relative; /* ทำให้ปุ่ม copy อ้างอิงตำแหน่งได้ */
+            position: relative; 
         }
 
         .prompt-to-copy {
@@ -44,8 +43,7 @@
             line-height: 1.7;
             text-align: left;
             color: var(--dark-text);
-            /* เว้นที่ว่างด้านขวาสำหรับปุ่ม copy */
-            padding-right: 120px;
+            padding-right: 1rem;
         }
 
         .prompt-to-copy strong {
@@ -55,8 +53,8 @@
         
         .copy-button {
             position: absolute;
-            top: 15px;
             right: 15px;
+            bottom: 10px;
             background-color: var(--primary-color);
             color: white;
             border: none;
@@ -72,7 +70,7 @@
             background-color: var(--primary-dark);
         }
         .copy-button.copied {
-            background-color: #20c997; /* Teal color for success */
+            background-color: #20c997;
         }
 
         .link-buttons-container {
@@ -80,7 +78,7 @@
             justify-content: center;
             gap: 20px;
             margin-top: 25px;
-            flex-wrap: wrap; /* ให้ปุ่มขึ้นบรรทัดใหม่บนจอเล็ก */
+            flex-wrap: wrap; 
         }
         
         .ai-link-button {
@@ -97,6 +95,40 @@
             background-color: var(--alert-color);
             transform: scale(1.05);
         }
+
+        @media (max-width: 600px) {
+            .action-box {
+                padding: 20px 15px; 
+            }
+
+            .action-box h3 {
+                font-size: 1.25rem; 
+            }
+
+            .prompt-to-copy {
+                font-size: 1rem; 
+                padding: 15px;  
+                text-align: center; 
+            }
+
+            .prompt-wrapper {
+                position: static; 
+            }
+            
+            .copy-button {
+                position: static; 
+                display: block; 
+                width: 150px;   
+                margin: 15px auto 0;
+            }
+
+            .link-buttons-container {
+                flex-direction: column; 
+                align-items: stretch;
+                gap: 15px; 
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -132,19 +164,14 @@
         </div>
     </div>
    
-    <!-- JavaScript สำหรับปุ่ม Copy -->
     <script>
         const copyButton = document.getElementById('copyBtn');
         const promptTextContainer = document.getElementById('promptTextContainer');
 
         copyButton.addEventListener('click', () => {
-            // ใช้ API ของเบราว์เซอร์ในการ copy ข้อความ
             navigator.clipboard.writeText(promptTextContainer.innerText).then(() => {
-                // ถ้า copy สำเร็จ
                 copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
                 copyButton.classList.add('copied');
-
-                // เปลี่ยนกลับเป็นเหมือนเดิมใน 2 วินาที
                 setTimeout(() => {
                     copyButton.innerHTML = '<i class="fas fa-copy"></i> Copy';
                     copyButton.classList.remove('copied');
